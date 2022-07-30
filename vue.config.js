@@ -8,5 +8,5 @@ const buildTargetMaps = {
     libary: buildConfig,
     doc: buildDocConfig
 }
-
+console.log(process.env.NODE_ENV)
 module.exports = buildTargetMaps[process.env.NODE_ENV] || buildTargetMaps.libary;

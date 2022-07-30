@@ -3,6 +3,10 @@
   "version": "1.0.1",
   "main": "lib/index.js",
   "description": "douluo-ui Vue2组件库",
+  "keywords": [
+    "vue",
+    "element-ui"
+  ],
   "license": "ISC",
   "author": {
     "name": "",
@@ -12,13 +16,13 @@
   "files": [
     "lib"
   ],
-  "private": false,
   "scripts": {
     "dev": "vue-cli-service serve",
+    "build": "vue-cli-service build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
     "docs:deploy": "bash ./config/docs.sh",
-    "build:lib": "yarn lint && yarn run lint:eslint && yarn run build",
+    "build:lib": "yarn run build",
     "lint": "vue-cli-service lint && yarn lint:eslint",
     "lint:eslint": "eslint --ext \\packages\\.js --ext \\examples\\.js --ext \\src\\.js --fix"
   },

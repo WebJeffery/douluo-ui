@@ -1,4 +1,5 @@
 const { chainWebpackConfig } = require("./utils");
+const alias  = require('./alias')
 
 
 module.exports = {
@@ -15,7 +16,11 @@ module.exports = {
     },
   },
 
-  configureWebpack: {},
+  configureWebpack: {
+    resolve: {
+      alias: alias
+    }
+  },
 
   chainWebpack: (config) => {
     config.optimization.delete("splitChunks");

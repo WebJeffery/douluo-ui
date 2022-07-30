@@ -1,4 +1,5 @@
 const path = require('path')
+const alias = require('../../config/alias');
 const guideRoutes = require('./sidebarRoutes/guide.js')
 const developerGuideRoutes = require('./sidebarRoutes/developer.js')
 const elementUIRoutes = require('./sidebarRoutes/element.js')
@@ -71,11 +72,7 @@ module.exports = {
   // 修改内部的webpack设置
   configureWebpack: {
     resolve: {
-      alias: {
-        "@": path.resolve(process.cwd(), "../../src"),
-        "@docs": path.resolve(process.cwd(), "./"),
-        "@docs/packages": path.resolve(process.cwd(), "./packages"),
-      }
+      alias: alias
     }
   },
 }

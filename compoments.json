@@ -1,17 +1,5 @@
 {
   "index": "./src/index.js",
-  "pagination": "./packages/element-ui/pagination/index.js",
-  "table": "./packages/element-ui/table/index.js",
-  "form": "./packages/element-ui/form/index.js",
-  "select": "./packages/element-ui/select/index.js",
-  "number": "./packages/element-ui/number/index.js",
-  "fmtcardnum": "./packages/element-ui/fmtcardnum/index.js",
-  "searchtips": "./packages/element-ui/searchtips/index.js",
-  "querylist": "./packages/element-ui/querylist/index.js",
-  "toollist": "./packages/element-ui/toollist/index.js",
-  "uploader": "./packages/element-ui/uploader/index.js",
-  "cropper": "./packages/element-ui/cropper/index.js",
-  "sensitiveinput": "./packages/element-ui/sensitiveinput/index.js",
-  "sensitive": "./packages/element-ui/sensitive/index.js",
-  "steps": "./packages/element-ui/steps/index.js"
+  "button": "./packages/element-ui/button/index.js",
+  "checkbox": "./packages/element-ui/checkbox/index.js"
 }

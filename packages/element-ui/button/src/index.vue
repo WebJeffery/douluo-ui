@@ -8,6 +8,7 @@
 
 <script >
 export default {
+    name: 'button',
     inheritAttrs: false,
     props: {},
 }

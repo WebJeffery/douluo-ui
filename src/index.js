@@ -1,30 +1,15 @@
-import { createNamespace } from './utils/create';
-import { getThemeConfigFunc } from './utils/themePicker.js';
-import { useThemes } from './theme/';
-
-// 自动导入 全部 组件
-const requireComponent = require.context('../packages/element-ui', true, /\.\/.+\/index\.js$/);
-
-const components = {};
-
-requireComponent.keys().forEach((fName) => {
-  // // 获取组件配置
-  const componentConfig = requireComponent(fName);
-
-  const [, name] = fName.match(/^.*\/(.*)\/index.js$/i);
-
-  // // 注册组件
-  components[name] = componentConfig.default;
-});
+import { createNamespace } from 'src/utils/create';
+import { getThemeConfigFunc } from 'src/utils/themePicker.js';
+import { useThemes } from 'src/theme/index';
+import components from '/src/ui/index'
 
 const install = (Vue, options = {}) => {
   // 判断是否安装
   if (install.installed) return;
   install.installed = true;
 
-  // 遍历组件列表，将组件注入进vue组件中
-  Object.entries(components).forEach(([key, value]) => {
-    Vue.component(createNamespace(key, { prefix: options.prefix }), value);
+  components.forEach(component => {
+    Vue.component(createNamespace(component.name, { prefix: options.prefix }), component);
   });
 };
 

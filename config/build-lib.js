@@ -1,16 +1,31 @@
+const path = require('path')
+const webpack = require('webpack');
+const version = process.env.VERSION || require('../package.json').version;
 const { chainWebpackConfig } = require('./utils');
+const components = require('../compoments.json')
 
-const fs = require('fs');
-const path = require('path');
-const folderPath = path.join('./', 'packages');
-
-const files = fs.readdirSync(folderPath);
-
-const components = { index: './src/index.js' };
-
-for (const fileName of files) {
-  components[fileName] = `./${folderPath}/${fileName}/index.js`;
-}
+const banner =
+  ' douluo-ui.js v' +
+  version +
+  '\n' +
+  ' (c) 2022-' +
+  new Date().getFullYear() +
+  ' Jeffery\n' +
+  ' Released under the MIT License.\n';
+const externals = {
+  'vue': {
+    root: 'Vue',
+    commonjs2: 'vue',
+    commonjs: 'vue',
+    amd: 'vue'
+  },
+  'element-ui': {
+    root: 'ELEMENT',
+    commonjs2: 'element-ui',
+    commonjs: 'element-ui',
+    amd: 'element-ui'
+  }
+};
 
 module.exports = {
   outputDir: 'lib',
@@ -20,14 +35,21 @@ module.exports = {
     entry: components,
     output: {
       filename: '[name].js',
-      libraryTarget: 'commonjs2',
+      chunkFilename: '[id].js',
+      libraryTarget: 'umd',
       libraryExport: 'default',
-      library: 'douluo-ui'
-    }
+      library: 'DouluoUI',
+      umdNamedDefine: true,
+      globalObject: 'typeof self !== \'undefined\' ? self : this'
+    },
+    externals: externals,
+    plugins: [
+      new webpack.BannerPlugin(banner)
+    ],
   },
 
   css: {
-    sourceMap: true
+    sourceMap: false
   },
 
   chainWebpack: (config) => {
