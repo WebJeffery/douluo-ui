@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "experimentalDecorators": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./examples/*"],
+      "src/*": ["./src/*"],
+    }
+  },
+  "implicitProjectConfig":{
+    "experimentalDecorators": true
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+}
+

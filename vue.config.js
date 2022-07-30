@@ -1,6 +1,12 @@
-const devConfig = require('./build/config.dev');
-const prodConfig = require('./build/config.prod');
+const devConfig = require('./config/build-dev');
+const buildConfig = require('./config/build-lib');
+const buildDocConfig = require('./config/build-doc');
 
-const isProd = process.env.NODE_ENV === 'production' ? true : false;
+// 环境打包对应配置
+const buildTargetMaps = {
+    development: devConfig,
+    libary: buildConfig,
+    doc: buildDocConfig
+}
 
-module.exports = isProd ? prodConfig : devConfig;
+module.exports = buildTargetMaps[process.env.NODE_ENV] || buildTargetMaps.libary;
