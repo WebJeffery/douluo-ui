@@ -1,0 +1,7 @@
+color-helper($codeColor, $codeBgColor) {
+  --code-color: $codeColor;
+  --code-line-color: alpha($codeColor, 0.67);
+  --code-bg-color: $codeBgColor;
+  --code-border-color: darken(saturate($codeBgColor, 20%), 10%);
+  --code-highlight-line-color: darken(saturate($codeBgColor, 10%), 5%);
+}

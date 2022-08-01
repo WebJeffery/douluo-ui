@@ -12,31 +12,9 @@ sidebar: 3
 
 基础的按钮用法。
 
-<style>
-  .demo-block .el-row {
-    margin-bottom: 20px;
-  }
-  .demo-block .el-row:last-child {
-    margin-bottom: 0;
-  }
-
-  .demo-block .el-row .el-button + .el-button {
-    margin-left: 10px;
-  }
-
-  .demo-block .el-row .el-button-group .el-button + .el-button {
-    margin-left: 0;
-  }
-
-  .demo-block .el-row .el-button-group + .el-button-group {
-    margin-left: 10px;
-  }
-
-</style>
-
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
 
-```html
+```vue
 <el-row>
   <dl-button>默认按钮</dl-button>
   <dl-button type="primary">主要按钮</dl-button>

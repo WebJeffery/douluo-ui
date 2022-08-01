@@ -2,18 +2,29 @@
 
 module.exports = [
   {
-    title: '开发指南',
+    title: '介绍说明',
     collapsable: false,
     children: [
       {
-        title: '前言',
+        title: '背景',
         collapsable: false,
-        path: '/guide/',
+        path: '/guide/instroduce',
       },
       {
-        title: '开始',
+        title: '概念',
         collapsable: false,
-        path: '/guide/start',
+        path: '/guide/concept',
+      }
+    ]
+  },
+  {
+    title: 'Basic 基础',
+    collapsable: false,
+    children: [
+      {
+        title: 'Button 按钮',
+        collapsable: false,
+        path: '/guide/button',
       }
     ]
   }

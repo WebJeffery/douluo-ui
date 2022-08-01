@@ -1,0 +1,19 @@
+body {
+  --accent-color: $accentColor;
+  --accent-color-light: lighten($accentColor, 10%);
+  --accent-color-dark: darken($accentColor, 10%);
+  --accent-color-a15: alpha($accentColor, 15%);
+}
+
+theme-color($themeColor, $colorName) {
+  body.theme-{$colorName} {
+    --accent-color: $themeColor;
+    --accent-color-light: lighten($themeColor, 10%);
+    --accent-color-dark: darken($themeColor, 10%);
+    --accent-color-a15: alpha($themeColor, 15%);
+  }
+}
+
+for key, value in $colorPicker {
+  theme-color(value, key);
+}

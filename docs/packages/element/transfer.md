@@ -91,7 +91,6 @@
       filterable
       :left-default-checked="[2, 3]"
       :right-default-checked="[1]"
-      :render-content="renderFunc"
       :titles="['Source', 'Target']"
       :button-texts="['到左边', '到右边']"
       :format="{
@@ -151,10 +150,7 @@
       return {
         data: generateData(),
         value: [1],
-        value4: [1],
-        renderFunc(h, option) {
-          return <span>{ option.key } - { option.label }</span>;
-        }
+        value4: [1]
       };
     },
 

@@ -115,6 +115,7 @@ Element 为了避免视觉传达差异，使用一套特定的调色板来规定
 
 Element 主要品牌颜色是鲜艳、友好的蓝色。
 
+:::
 <el-row :gutter="12">
   <el-col :span="10" :xs="{span: 12}">
     <div class="demo-color-box" :style="{ background: primary }">Brand Color
@@ -130,11 +131,13 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
     </div>
   </el-col>
 </el-row>
+:::
 
 ### 辅助色
 
 除了主色外的场景色，需要在不同的场景中使用（例如危险色表示危险的操作）。
 
+:::
 <el-row :gutter="12">
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box"
@@ -205,11 +208,12 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
     </div>
   </el-col>
 </el-row>
-
+:::
 ### 中性色
 
 中性色用于文本、背景和边框颜色。通过运用不同的中性色，来表现层次结构。
 
+:::
 <el-row :gutter="12">
   <el-col :span="6" :xs="{span: 12}">
     <div class="demo-color-box-group">
@@ -259,3 +263,4 @@ Element 主要品牌颜色是鲜艳、友好的蓝色。
     </div>
   </el-col>
 </el-row>
+:::

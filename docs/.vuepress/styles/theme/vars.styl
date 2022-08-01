@@ -1,0 +1,83 @@
+:root {
+  --bg-color: $bgColor;
+  --bg-color-light: $bgColorLight;
+  --bg-color-active: $bgColorActive;
+  --bg-color-back: $bgColorBlur;
+  --bg-color-float: $bgColorFloat;
+  --bg-color-blur: $bgColorBlur;
+  --bg-color-float-blur: $bgColorFloatBlur;
+  --border-color: $borderColor;
+  --box-shadow-color: $boxShadowColor;
+  --card-shadow-color: $cardShadowColor;
+  // text
+  --text-color: $textColor;
+  --text-color-light: lighten($textColor, 10%);
+  --text-color-lighter: lighten($textColor, 25%);
+  --text-color-bright: lighten($textColor, 40%);
+  // font
+  --font-family: $fontFamily;
+  --font-family-code: $codeFontFamily;
+  --font-family-fancy: $fancyFontFamily;
+  // transition
+  --color-transition: $colorTransition;
+  --transform-transition: $transformTransition;
+  // code
+  --code-bg-color: $codeBgColor;
+  // constant
+  --black: #000;
+  --dark-grey: #666;
+  --light-grey: #999;
+  --white: #fff;
+  --grey3: #333;
+  --grey12: #bbb;
+  --grey14: #eee;
+  // layout
+  --navbar-bg-color: var(--bg-color-float-blur);
+  --navbar-height: $navbarHeight;
+  --navbar-vertical-padding: $navbarVerticalPadding;
+  --navbar-horizontal-padding: $navbarHorizontalPadding;
+  --sidebar-bg-color: var(--bg-color-blur);
+  --sidebar-width: $sidebarWidth;
+  --content-width: $contentWidth;
+  --home-page-width: $homePageWidth;
+  --line-numbers-width: $lineNumbersWidth;
+
+  // override mobile variables
+  @media (max-width: $MQNarrow) {
+    --navbar-height: $navbarMobileHeight;
+    --navbar-vertical-padding: $navbarMobileVerticalPadding;
+    --navbar-horizontal-padding: $navbarMobileHorizontalPadding;
+    --sidebar-width: $sidebarMobileWidth;
+  }
+}
+
+html.dark {
+  --bg-color: $darkBgColor;
+  --bg-color-light: $darkBgColorLight;
+  --bg-color-active: $darkBgColorActive;
+  --bg-color-back: $darkBgColorBlur;
+  --bg-color-blur: $darkBgColorBlur;
+  --bg-color-float: $darkBgColorFloat;
+  --bg-color-float-blur: $darkBgColorFloatBlur;
+  --border-color: $darkBorderColor;
+  --box-shadow-color: $darkBoxShadowColor;
+  --card-shadow-color: $darkCardShadowColor;
+  // text
+  --text-color: $darkTextColor;
+  --text-color-light: lighten($darkTextColor, 10%);
+  --text-color-lighter: lighten($darkTextColor, 25%);
+  --text-color-bright: lighten($darkTextColor, 40%);
+  // layout
+  --navbar-bg-color: var(--bg-color-float-blur);
+  --sidebar-bg-color: var(--bg-color-blur);
+  // code
+  --code-bg-color: $darkCodeBgColor;
+  // constant
+  --black: #fff;
+  --dark-grey: #999;
+  --light-grey: #666;
+  --white: #000;
+  --grey3: #ccc;
+  --grey12: #333;
+  --grey14: #111;
+}

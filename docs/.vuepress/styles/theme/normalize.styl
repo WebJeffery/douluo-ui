@@ -1,0 +1,79 @@
+
+html, body {
+  background: var(--bg-color);
+  transition: background-color var(--color-transition);
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
+a {
+  color: var(--accent-color);
+}
+
+kbd {
+  border-color: var(--grey14);
+  background: var(--bg-color-light);
+  font-family: var(--font-family-code);
+}
+
+code {
+  font-family: var(--font-family-code);
+  transition: background-color var(--color-transition), color var(--color-transition);
+
+  html.dark & {
+    background: #333;
+  }
+
+  p a & {
+    color: var(--accent-color);
+  }
+}
+
+blockquote {
+  border-color: #eee;
+  color: #666;
+  transition: border-color var(--color-transition), color var(--color-transition);
+
+  html.dark & {
+    border-color: #333;
+  }
+}
+
+h1 {
+  @media (max-width: $MQMobileNarrow) {
+    font-size: 1.9rem;
+  }
+}
+
+h2 {
+  border-color: var(--border-color);
+  transition: border-bottom-color var(--color-transition);
+}
+
+hr {
+  border-color: var(--border-color);
+  transition: border-top-color var(--color-transition);
+}
+
+tr {
+  border-color: var(--grey14);
+
+  &:nth-child(2n) {
+    background: var(--bg-color-light);
+
+    html.dark & {
+      background: #252322;
+    }
+  }
+}
+
+th, td {
+  border-color: var(--grey14);
+}

@@ -1,0 +1,50 @@
+
+{$contentClass} {
+  &:not(.custom) {
+    wrapper();
+
+    > {
+      // heading fix
+      h1, h2, h3, h4, h5, h6 {
+        margin-top: calc(0.5rem - var(--navbar-height));
+        margin-bottom: 0.5rem;
+        padding-top: calc(1rem + var(--navbar-height));
+        outline: none;
+
+        .theme-container.no-navbar & {
+          margin-top: 1.5rem;
+          padding-top: 0;
+        }
+      }
+
+      // paragraph fix
+      p, ul p, ol p {
+        text-align: justify;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+
+        @media (max-width: $MQMobileNarrow) {
+          text-align: left;
+        }
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  &.custom {
+    margin: 0;
+    padding: 0;
+
+    img {
+      max-width: 100%;
+    }
+  }
+}

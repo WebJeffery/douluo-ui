@@ -1,0 +1,32 @@
+:root {
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track-piece {
+  -webkit-border-radius: 6px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 10%);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--accent-color);
+}
+
+.hide-in-mobile {
+  @media (max-width: $MQMobile) {
+    display: none !important;
+  }
+}
+
+.hide-in-pad {
+  @media (max-width: $MQNarrow) {
+    display: none !important;
+  }
+}

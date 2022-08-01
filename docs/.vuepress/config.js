@@ -1,11 +1,12 @@
-const path = require('path')
+
+const { config } =  require('vuepress-theme-hope')
 const alias = require('../../config/alias');
 const guideRoutes = require('./sidebarRoutes/guide.js')
 const developerGuideRoutes = require('./sidebarRoutes/developer.js')
 const elementUIRoutes = require('./sidebarRoutes/element.js')
 const businessRoutes = require('./sidebarRoutes/business.js')
 
-module.exports = {
+module.exports = config({
   title: 'Douluo-UI',
   description: 'A UI library build by Vue 2.0',
   markdown: {
@@ -33,8 +34,8 @@ module.exports = {
         link: '/'
       },
       {
-        text: '指南',
-        link: '/guide/'
+        text: '开发规范',
+        link: '/guide/instroduce'
       },
       {
         text: '开发指南',
@@ -62,17 +63,17 @@ module.exports = {
 
         }
       }
-    }
+    },
+    mdEnhance: {
+      codegroup: true
+    },
   },
   // 配置插件
-  plugins: [
-    '@vuepress/back-to-top',
-    'demo-container',
-  ],
+  plugins: ['demo-container'],
   // 修改内部的webpack设置
   configureWebpack: {
     resolve: {
       alias: alias
     }
-  },
-}
+  }
+})
