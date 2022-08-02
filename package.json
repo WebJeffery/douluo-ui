@@ -17,15 +17,19 @@
     "lib"
   ],
   "scripts": {
-    "commit" : "git-cz",
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
-    "docs:deploy": "bash ./config/docs.sh",
+    "docs:deploy": "bash ./scripts/docs.sh",
     "build:lib": "yarn run build",
+    "commit": "git-cz",
+    "install:husky": "is-ci || husky install",
+    "lint:ls-lint": "ls-lint",
+    "lint:lint-staged": "lint-staged -c ./.husky/lint-staged.config.js",
     "lint": "vue-cli-service lint && yarn lint:eslint",
-    "lint:eslint": "eslint --ext \\packages\\.js --ext \\examples\\.js --ext \\src\\.js --fix"
+    "lint:eslint": "eslint --ext \\packages\\.js --ext \\examples\\.js --ext \\src\\.js --fix",
+    "changelog": "npx conventional-changelog -p angular -i /docs/developer/changelog.md -s -r 0"
   },
   "dependencies": {
     "async-validator": "^1.11.5",
@@ -55,6 +59,7 @@
     "@babel/plugin-proposal-optional-chaining": "^7.16.7",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
+    "@ls-lint/ls-lint": "^1.11.2",
     "@types/lodash": "^4.14.182",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
@@ -69,9 +74,12 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-2": "^6.24.1",
     "commitizen": "^4.2.5",
+    "commitlint-config-cz": "^0.13.3",
+    "conventional-changelog-cli": "^2.2.2",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.0",
     "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^6.9.1",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
@@ -79,6 +87,8 @@
     "extract-text-webpack-plugin": "^3.0.2",
     "html-loader": "^1.3.2",
     "husky": "^7.0.4",
+    "is-ci": "^3.0.1",
+    "lint-staged": "^13.0.3",
     "markdown-loader": "^6.0.0",
     "node-sass": "^4.14.1",
     "prettier": "^2.6.2",
@@ -90,20 +100,6 @@
     "vuepress": "^1.9.7",
     "webpack": "^4.46.0"
   },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions",
@@ -111,7 +107,7 @@
   ],
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
+      "path": "./node_modules/cz-customizable"
     }
   }
 }
