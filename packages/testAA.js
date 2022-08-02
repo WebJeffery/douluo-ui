@@ -1,4 +1,4 @@
 
 let a = 33;
-  let b = 22;
+  let b = 22
 
