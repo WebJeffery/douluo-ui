@@ -6,7 +6,7 @@ module.exports = {
   // 使用制表符 (tab) 缩进
   useTabs: false,
   // 在语句末尾打印分号
-  semi: true,
+  semi: false,
   // 多行时尽可能打印尾随逗号
   trailingComma: 'none',
   // 使用单引号而不是双引号
@@ -17,4 +17,4 @@ module.exports = {
   jsxBracketSameLine: false,
   // auto | lf | crlf | cr
   endOfLine: 'lf'
-};
+}
