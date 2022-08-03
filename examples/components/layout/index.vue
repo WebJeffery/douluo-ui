@@ -1,23 +1,25 @@
 <template>
-  <el-container style="height:100%">
+  <el-container style="height: 100%">
     <el-aside width="200px">
       <h1 class="n-title">前端组件文档</h1>
       <section class="n-menu">
-        <el-menu :default-openeds="['1']" :default-active="$route.path">
+        <el-menu
+          :default-openeds="['1']"
+          :default-active="$route.path">
           <el-submenu index="1">
             <template slot="title"><i class="el-icon-message"></i>组件</template>
             <el-menu-item-group>
-              <template v-for="(item, index) in routes">
+              <template>
                 <router-link
+                  v-for="(item, index) in routes"
                   :to="item.path"
                   :key="item.path"
                 >
                   <el-menu-item
                     v-if="item.name !== 'root'"
-                    :i="'1-' + index"
+                    :i="'1-' + index" 
                     :key="item.path"
-                    :index="item.path"
-                  >
+                    :index="item.path">
                     {{ item.name }}
                   </el-menu-item>
                 </router-link>
@@ -51,23 +53,23 @@ export default {
       routes: [],
       currTime: '',
       lastModified: document.lastModified
-    };
+    }
   },
   mounted() {
-    this.routes = this.$router.getRoutes();
-    setInterval(() => this.currTime = this.getNow(), 1000)
+    this.routes = this.$router.getRoutes()
+    setInterval(() => (this.currTime = this.getNow()), 1000)
   },
   methods: {
     getNow() {
       const now = new Date()
-      const fmt = v => v < 10 ? `0${v}` : v
+      const fmt = (v) => (v < 10 ? `0${v}` : v)
       return `
         ${now.getFullYear()}年${fmt(now.getMonth() + 1)}月${fmt(now.getDate())}日
         ${fmt(now.getHours())}:${fmt(now.getMinutes())}:${fmt(now.getSeconds())}
       `
     }
   }
-};
+}
 </script>
 <style lang="scss">
 .el-header {
