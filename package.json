@@ -1,6 +1,6 @@
 {
   "name": "douluo-ui",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "lib/index.js",
   "description": "douluo-ui Vue2组件库",
   "keywords": [
@@ -24,6 +24,7 @@
     "docs:deploy": "bash ./scripts/docs.sh",
     "build:lib": "yarn run build",
     "commit": "git-cz",
+    "release": "standard-version",
     "install:husky": "is-ci || husky install",
     "lint:ls-lint": "ls-lint",
     "lint:lint-staged": "lint-staged -c ./.husky/lint-staged.config.js",
@@ -100,6 +101,7 @@
     "sass": "^1.43.4",
     "sass-loader": "^10.0.0",
     "ssh2": "^1.5.0",
+    "standard-version": "^9.5.0",
     "stylelint": "^14.9.1",
     "stylelint-config-prettier": "^9.0.3",
     "stylelint-config-recommended-vue": "^1.4.0",
