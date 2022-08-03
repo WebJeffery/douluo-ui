@@ -10,7 +10,7 @@ module.exports = {
     { value: ':rocket: chore', name: '🚀 chore: 变更构建流程或辅助工具' },
     { value: ':rewind: revert', name: '⏪️ revert: 代码回退' },
     { value: ':tada: init', name: '🎉 init: 项目初始化' },
-    { value: ':construction_worker: ci', name: '👷 对CI配置文件和脚本的更改' },
+    { value: ':construction_worker: ci', name: '👷 ci: 对CI配置文件和脚本的更改' },
     { value: ':package: build', name: '📦️ build: 变更项目构建或外部依赖' },
     { value: ':construction: WIP', name: '🚧 WIP: 进行中的工作' }
   ],

@@ -1,6 +1,7 @@
 module.exports = {
   ignores: [(commit) => commit.includes('init')],
-  extends: ['@commitlint/config-conventional', 'cz'],
+  // extends: ['@commitlint/config-conventional', 'cz'],
+  extends: ['gitmoji'],
   rules: {
     'body-leading-blank': [2, 'always'],
     'footer-leading-blank': [1, 'always'],
@@ -13,6 +14,7 @@ module.exports = {
       'always',
       [
         'feat',
+        ':sparkles: feat',
         'fix',
         'perf',
         'style',
@@ -21,6 +23,7 @@ module.exports = {
         'refactor',
         'build',
         'ci',
+        ':construction_worker: ci',
         'chore',
         'revert',
         'wip',
@@ -28,6 +31,23 @@ module.exports = {
         'types',
         'release'
       ]
+      // [
+      //   'feat',
+      //   'fix',
+      //   'perf',
+      //   'style',
+      //   'docs',
+      //   'test',
+      //   'refactor',
+      //   'build',
+      //   'ci',
+      //   'chore',
+      //   'revert',
+      //   'wip',
+      //   'workflow',
+      //   'types',
+      //   'release'
+      // ]
     ]
   }
-};
+}

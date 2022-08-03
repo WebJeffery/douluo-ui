@@ -2,11 +2,13 @@
 
 ## Git 版本规范
 
-组件库是一个多人协作的项目，Git 的提交说明精准，在后期协作以及 Bug 处理时会变得有据可查，项目的开发可以根据规范的提交说明快速生成开发日志，从而方便开发者或用户追踪项目的开发信息和功能特性，这也是一个优秀开源项目必备的规范，提交规范使用的是 [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/#)
+组件库是一个多人协作的项目，Git 的提交说明精准，在后期协作以及 Bug 处理时会变得有据可查，项目的开发可以根据规范的提交说明快速生成开发日志，从而方便开发者或用户追踪项目的开发信息和功能特性。提交规范使用的是 [Angular 团队规范](https://github.com/angular/angular.js/blob/master/DEVELOPERS.md#-git-commit-guidelines)
+
+`commit message` 提交符合 Angular 团队规范，需要在 comit 之前做校验，`husky` 这个工具可以定义拦截所有 `git` 钩子，对提交的文件和信息做校验和修复
 
 ### husky
 
-`husky` 拦截 git hooks 钩子，校验提交的文件和填写信息，项目的 husky 版本是 `^7.0.4`
+项目的 `husky` 版本是 `^7.0.4`
 
 husky 安装到开发依赖中
 
@@ -14,7 +16,7 @@ husky 安装到开发依赖中
 yarn add husky -D
 ```
 
-安装完后，我们需要在当前项目中创建一个.husky 目录并指定该目录为 git hooks 所在的目录。
+安装完后，我们需要在当前项目中创建一个.husky 目录，并指定该目录为 git hooks 所在的目录。
 
 使用以下命令快速创建 👇
 
@@ -29,7 +31,7 @@ npx --no-install husky install
 npx --no-instal husky add .husky/pre-commit "npm run lint"
 ```
 
-`pre-commit` 在 commit 之前会执行 `npm run lint` 校验代码，校验不通过不允许 commit 提交
+`pre-commit` 在 commit 之前会执行 `npm run lint` 校验代码，可以定义你的执行脚本，校验不通过不允许 `commit` 提交
 
 ### commitizen
 
@@ -41,13 +43,13 @@ npx --no-instal husky add .husky/pre-commit "npm run lint"
 yarn add commitizen -D
 ```
 
-安装完成后，一般我们都采用符合 Angular 的 Commit message 格式的提交规范，运行以下命令生成符合 Angular 提交规范格式的 Commit message
+安装完成后，一般我们都采用符合 Angular 的 `Commit message` 格式的提交规范，运行以下命令生成符合 Angular 提交规范格式的 Commit message
 
 ```shell
 npx --no-install commitizen init cz-conventional-changelog --save-dev --save-exact
 ```
 
-运行了上述命令后，它将为你项目安装 cz-conventional-changelog 适配器模块，把 config.commitizen 的密钥添加到文件的根目录添加到 package.json 中
+运行了上述命令后，它将为你项目安装 `cz-conventional-changelog` 适配器模块，把 `config.commitizen` 的密钥添加到文件的根目录添加到 `package.json` 中
 
 可以在 package.json 中看到，自动的新增了以下内容 👇
 
@@ -69,22 +71,22 @@ npx --no-install commitizen init cz-conventional-changelog --save-dev --save-exa
 
 ### 限制 commitlint
 
-由于 commitizen 并不是强制使用的，仍然可以通过 git commit 来提交，所以不管是 cz 还是 git commit 提交前，都要对 commit messag 进行一次校验，不符合规范的情况下是不允许进行 commit
+由于 commitizen 并不是强制使用的，仍然可以通过 git commit 来提交，所以不管是 `cz` 还是 `git commit` 提交前，都要对 `commit messag` 进行一次校验，不符合规范的情况下是不允许进行 commit
 
 首先我们需要安装 `commitlint`, `commitlint/config-conventional`
 
-```js
+```shell
 yarn add @commitlint/cli @commitlint/config-conventional -D
 ```
 
 使用以下命令快速创建 git hooks 的 commit-msg 钩子 👇
-这样每次 commit 的时候都会由 commitlint 对 commit message 进行一次检验
+这样每次 commit 的时候都会由 `commitlint` 对 commit message 进行一次检验
 
 ```shell
 npx --no-instal husky add .husky/commit-msg 'npx --no-install commitlint --edit "$1"'
 ```
 
-然后在项目根目录创建一个 commitlint 配置文件 `commitlint.config.js`，可以对这个文件进行配置
+然后在项目根目录创建一个 `commitlint` 配置文件 `commitlint.config.js`，可以对这个文件进行配置
 
 ```js
 module.exports = {
@@ -122,67 +124,74 @@ module.exports = {
 }
 ```
 
-上面的提示都是英文的，如果想自定义翻译成中文，需要安装 cz-customizable 来实现自定义 commit message 规则，以及安装对应的 commitlint-config-cz 来配套校验
+上面的提示都是英文的，如果想自定义翻译成中文，需要安装 `cz-customizable` 来实现自定义 commit message 规则，以及安装对应的 commitlint-config-cz 来配套校验
 
 在项目根目录，创建一个 `.cz-config.js` 文件，并复制 [cz-config-EXAMPLE.js](https://github.com/leoforfree/cz-customizable/blob/master/cz-config-EXAMPLE.js) 中的内容到其中。然后改成你自己想要的规则即可。
 
 ```js
 module.exports = {
   types: [
-    { value: 'feat', name: 'feat: 一个新的特性' },
-    { value: 'fix', name: 'fix: 修复一个Bug' },
-    { value: 'docs', name: 'docs: 变更的只有文档' },
-    { value: 'style', name: 'style: 代码风格,格式修复' },
-    { value: 'refactor', name: 'refactor: 代码重构，注意和feat、fix区分开' },
-    { value: 'perf', name: 'perf: 码优化,改善性能' },
-    { value: 'test', name: 'test: 测试' },
-    { alue: 'chore', name: 'chore: 变更构建流程或辅助工具' },
-    { value: 'revert', name: 'revert: 代码回退' },
-    { value: 'init', name: 'init: 项目初始化' },
-    { value: 'build', name: 'build: 变更项目构建或外部依赖' },
-    { value: 'WIP', name: 'WIP: 进行中的工作' }
+    { value: ':sparkles: feat', name: '✨ feat: 一项新功能' },
+    { value: ':bug: fix', name: '🐛 fix: 修复一个Bug' },
+    { value: ':memo: docs', name: '📝 docs: 文档变更' },
+    { value: ':lipstick: style', name: '💄 style: 代码风格，格式修复' },
+    { value: ':recycle: refactor', name: '♻️ refactor: 代码重构，注意和feat、fix区分开' },
+    { value: ':zap: perf', name: '⚡️ perf: 代码优化,改善性能' },
+    { value: ':white_check_mark: test', name: '✅ test: 测试' },
+    { value: ':rocket: chore', name: '🚀 chore: 变更构建流程或辅助工具' },
+    { value: ':rewind: revert', name: ':rewind: revert: 代码回退' },
+    { value: ':tada: init', name: '🎉 init: 项目初始化' },
+    { value: ':construction_worker: ci', name: '👷 对CI配置文件和脚本的更改' },
+    { value: ':package: build', name: '📦️ build: 变更项目构建或外部依赖' },
+    { value: ':construction: WIP', name: '🚧 WIP: 进行中的工作' }
   ],
-  scopes: [],
-  allowTicketNumber: false,
-  isTicketNumberRequired: false,
-  ticketNumberPrefix: 'TICKET-',
-  ticketNumberRegExp: '\\d{1,5}',
+  scopes: [
+    { name: 'component' },
+    { name: 'config' },
+    { name: 'docs' },
+    { name: 'src' },
+    { name: 'examples' },
+    { name: 'play' }
+  ],
+  // allowTicketNumber: false,
+  // isTicketNumberRequired: false,
+  // ticketNumberPrefix: 'TICKET-',
+  // ticketNumberRegExp: '\\d{1,5}',
   // it needs to match the value for field type. Eg.: 'fix'
-  /*
-  scopeOverrides: {
-    fix: [
-      {name: 'merge'},
-      {name: 'style'},
-      {name: 'e2eTest'},
-      {name: 'unitTest'}
-    ]
-  },
-  */
+  // scopeOverrides: {
+  //   feat: [
+  //     { name: 'element' }
+  //   ],
+  //   fix: [
+  //     { name: 'element' },
+  //     { name: 'style' },
+  //   ]
+  // },
   // override the messages, defaults are as follows
   messages: {
-    type: '选择一种你的提交类型:',
-    scope: '选择一个scope (可选):',
+    type: '请选择提交类型(必填):',
+    scope: '请选择一个scope (可选):',
+    customScope: '请输入文件修改范围(可选):',
     // used if allowCustomScopes is true
-    customScope: 'Denote the SCOPE of this change:',
-    subject: '简短说明(最多40个字):',
-    body: '长说明，使用"|"换行(可选)：\n',
-    breaking: '非兼容性说明 (可选):\n',
-    footer: '关联关闭的issue，例如：#12, #34(可选):\n',
-    confirmCommit: '确定提交?'
+    subject: '请简要描述提交(必填):',
+    body: '请输入详细描述，使用"|"换行(可选):\n',
+    breaking: '列出任务非兼容性说明 (可选):\n',
+    footer: '请输入要关闭的issue，例如：#12, #34(可选):\n',
+    confirmCommit: '确定提交此说明吗？'
   },
   allowCustomScopes: true,
   allowBreakingChanges: ['feat', 'fix'],
-  // skip any questions you want
-  skipQuestions: ['scope', 'body', 'breaking'],
-  // limit subject length
-  subjectLimit: 100
+  // 限制 subject 长度
+  subjectLimit: 72
+  // 跳过问题 skip any questions you want
+  // skipQuestions: ['body', 'footer'],
   // breaklineChar: '|', // It is supported for fields body and footer.
   // footerPrefix : 'ISSUES CLOSED:'
   // askForBreakingChangeFirst : true, // default is false
 }
 ```
 
-创建完 `.cz-config.js` 文件后，我们需要回到 `package.json` 文件中，将 `config.commitizen.path` 更改为 `node_modules/cz-customizable`，如果你的 `.cz-config.js` 文件在项目根目录下，那么可以不配置下面这条，`commitlint-config-cz` 会自动在项目根目录下寻找: `.cz-config.js` 或 `.config/cz-config.js`
+创建完 `.cz-config.js` 文件后，我们需要回到 `package.json` 文件中，将 `config.commitizen.path` 更改为 `node_modules/cz-customizable`
 
 ```js
 ...
@@ -190,10 +199,6 @@ module.exports = {
   "config": {
     "commitizen": {
       "path": "node_modules/cz-customizable"
-    },
-    // 如果你的.cz-config.js文件在项目根目录下，那么可以不配置下面这条，commitlint-config-cz会自动在项目根目录下寻找: .cz-config.js 或 .config/cz-config.js
-    "cz-customizable": {
-      "config": "你的文件路径/xxxconfig.js"
     }
   }
 }
@@ -202,13 +207,23 @@ module.exports = {
 
 关于 commitlint-config-cz 更高级的用法可以查看 👉 [commitlint-config-cz](https://github.com/leoforfree/cz-customizable/blob/master/cz-config-EXAMPLE.js)
 
-自定义的 commit message 的校验 ok 了 ✅
+为了提交更好看，在 commit 头部添加了表情 [gitmoji](https://gitmoji.dev/)，需要安装这个插件 [commitlint-config-gitmoji](https://www.npmjs.com/package/commitlint-config-gitmoji)
 
-![](https://image-static.segmentfault.com/370/349/370349285-34d0afb93a1cde6e)
+```shell
+yarn add commitlint-config-gitmoji -D
+```
+
+修改 `.commitlintrc.js` 内容
+
+```js
+// .commitlintrc.js
+
+module.exports = {
+  extends: ['gitmoji']
+}
+```
 
 ### comitmit 规范介绍
-
-- 内容规范
 
 ```html
 <type
@@ -221,7 +236,7 @@ module.exports = {
 ></type>
 ```
 
-大致分为三个部分(使用空行分割):
+介绍一下内容规范，大致分为三个部分(使用空行分割):
 
 1. 标题行: 必填, 描述主要修改类型和内容
 2. 主题内容: 描述为什么修改, 做了什么样的修改, 以及开发的思路等等
@@ -293,7 +308,7 @@ chore 的中文翻译为日常事务、例行工作，顾名思义，即不在�
   }
 ```
 
-当文件变化，我们 `git commit` 它们，`pre-commit` 钩子会启动，执行 `lint-staged` 命令，我们对于 `lint-staged` 如上文配置，对本次被 commited 中的所有 `.js` 文件，执行 `eslint --fix` 命令和 `git add` ,命令，前者的的目的是格式化，后者是对格式化之后的代码重新提交。
+当文件变化，执行 `git commit`，`pre-commit` 钩子会启动，执行 `lint-staged` 命令，我们对于 `lint-staged` 如上文配置，对本次被 commited 中的所有 `.js` 文件，执行 `eslint --fix` 和 `git add` 命令，前者的的目的是格式化，后者是对格式化之后的代码重新提交。
 
 **使用步骤**
 
@@ -336,6 +351,57 @@ module.exports = {
 }
 ```
 
+### CHANGELOG 自动生成
+
+CHANGELOG 记录项目所有的 commit 信息并归类版本，可以快速跳转到该条 `commit` 记录，方便知道项目哪个版本做了哪些功能有哪些 bug 等信息。也方便排查 bug，对于提交记录一目了然，不用一个一个去翻去查
+
+用 [standard-version](https://github.com/conventional-changelog/standard-version) 来实现自动生成 CHANGELOG，[conventional-changelog](https://github.com/conventional-changelog/conventional-changelog) 也可以生产 CHANGELOG，不过它推荐用 standard-version （这都是同一个团队的东西，基于 conventional-changelog 实现的）
+
+安装
+
+```shell
+npm i -D standard-version
+```
+
+package.json
+
+```json
+{
+  "scripts": {
+    "release": "standard-version"
+  }
+}
+```
+
+当 `commit type` 是 `feat` 和 `fix` 的时候执行这个命令，它会自增版本号
+
+`standard-version` 提供自定义配置不同类型对应显示文案，在根目录新建 `.versionrc.js` 文件
+
+```js
+module.exports = {
+  types: [
+    { type: 'feat', section: '✨ Features | 新功能' },
+    { type: 'fix', section: '🐛 Bug Fixes | Bug 修复' },
+    { type: 'init', section: '🎉 Init | 初始化' },
+    { type: 'docs', section: '✏️ Documentation | 文档' },
+    { type: 'style', section: '💄 Styles | 风格' },
+    { type: 'refactor', section: '♻️ Code Refactoring | 代码重构' },
+    { type: 'perf', section: '⚡ Performance Improvements | 性能优化' },
+    { type: 'test', section: '✅ Tests | 测试' },
+    { type: 'revert', section: '⏪ Revert | 回退' },
+    { type: 'build', section: '📦‍ Build System | 打包构建' },
+    { type: 'chore', section: '🚀 Chore | 构建/工程依赖/工具' },
+    { type: 'ci', section: '👷 Continuous Integration | CI 配置' }
+  ]
+}
+```
+
+执行以下命令，就会根据你的 commit 信息自动生成 `CHANGELOG.md` 文件
+
+```shell
+npm run release
+```
+
 ## Lint 规范校验
 
 ### ls-lint 校验文件命名
@@ -376,6 +442,68 @@ npm run lint:ls-lint
 # Format and submit code according to lintstagedrc.js configuration
 npm run lint:lint-staged
 ```
+
+### ESLint 校验
+
+[Eslint](https://eslint.org/docs/latest/user-guide/getting-started) 是针对 EScript 的一款代码检测工具，它可以检测项目中编写不规范的代码，如果写出不符合规范的代码会被警告
+
+安装依赖
+
+- `eslint` - Eslint 本体
+- `eslint-plugin-vue` - 适用于 Vue 文件的 ESLint 插件
+- `vue-eslint-parser` - 使用 `eslint-plugin-vue` 时必须安装的 eslint 解析器
+
+```js
+yarn add eslint eslint-plugin-vue vue-eslint-parser -D
+```
+
+添加 ESLint 配置文件，根目录创建配置文件 `.eslintrc.js`
+
+```js
+module.exports = {
+  root: true,
+  env: {
+    browser: true,
+    es6: true,
+    node: true
+  },
+  extends: ['eslint:recommended', 'plugin:vue/recommended'],
+  parser: 'vue-eslint-parser',
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module',
+    parser: 'babel-eslint'
+  },
+  rules: {}
+}
+```
+
+`.eslintignore` 配置不想被 `eslint` 校验的文件
+
+```
+*.sh
+node_modules
+*.md
+*.woff
+*.ttf
+.vscode
+.idea
+dist
+/public
+/docs
+.husky
+.local
+/bin
+Dockerfile
+```
+
+`.husky/lint-staged.config.js` 添加脚本命令 `eslint --fix`
+
+::: tip
+添加 `--fix` 可以开启 `eslint` 的自动修复功能。
+如果您使用的编辑起是 `vscode` ，请安装 `eslint` 的插件进行使用喔
+有时候编辑器的问题，配置不会立马生效，需要关闭编辑器重新开启项目，让编辑器重新加载配置。
+:::
 
 ### Prettier
 
@@ -427,84 +555,26 @@ module.exports = {
 /public/*
 ```
 
-### ESLint 校验
+### ESLint 配合 Prettier
 
-[Eslint](https://eslint.org/docs/latest/user-guide/getting-started) 是用于约束 `js` 等代码中的一些语法,让编写者能够及时发现编写上的语法错误
+安装依赖
 
-安装
-
-```js
-yarn add -D eslint
-```
-
-根目录创建配置文件 `.eslintrc.js`
-
-```js
-module.exports = {
-  root: true,
-  env: {
-    browser: true,
-    es2021: true,
-    node: true
-  },
-  extends: [
-    'plugin:vue/essential'
-    // 'airbnb-base',
-  ],
-  parser: 'vue-eslint-parser',
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-    parser: 'babel-eslint'
-  },
-  plugins: ['vue'],
-  rules: {}
-}
-```
-
-`.eslintignore` 配置不想被 `eslint` 校验的文件
-
-```
-*.sh
-node_modules
-*.md
-*.woff
-*.ttf
-.vscode
-.idea
-dist
-/public
-/docs
-.husky
-.local
-/bin
-Dockerfile
-```
-
-`.husky/lint-staged.config.js` 添加脚本命令 `eslint --fix`
-
-::: tip
-添加 `--fix` 可以开启 `eslint` 的自动修复功能。
-如果您使用的编辑起是 `vscode` ，请安装 `eslint` 的插件进行使用喔
-有时候编辑器的问题，配置不会立马生效，需要关闭编辑器重新开启项目，让编辑器重新加载配置。
-:::
-
-### 与 Prettier 配合
-
-1. 安装
+- `eslint-config-prettier` - 关闭所有与 eslint 冲突的规则，请注意，该插件只有关闭冲突的规则的作用
+- `eslint-plugin-prettier` - 如果您禁用与代码格式相关的所有其他 ESLint 规则，并且仅启用检测潜在错误的规则，则此插件效果最佳。换句话说，就是你想单独配置某一项时，使用这个插件。值得一提的是，这个插件附带了一个 plugin:prettier/recommended 配置，可以和 eslint-config-prettier 一次性设置插件。该配置最主要的就是解决回调函数的格式化问题
 
 ```shell
-yarn add -D eslint-config-prettier eslint-plugin-prettier
+yarn add eslint-config-prettier eslint-plugin-prettier -D
 ```
 
-- `eslint-config-prettier`：关闭所有与 eslint 冲突的规则，请注意，该插件只有关闭冲突的规则的作用
-- `eslint-plugin-prettier`: 如果您禁用与代码格式相关的所有其他 ESLint 规则，并且仅启用检测潜在错误的规则，则此插件效果最佳。换句话说，就是你想单独配置某一项时，使用这个插件。值得一提的是，这个插件附带了一个 plugin:prettier/recommended 配置，可以 eslint-config-prettier 一次性设置插件。该配置最主要的就是解决回调函数的格式化问题
+1. 修改 `.eslintrc.js`
 
-2. 修改 `.eslintrc.js`
-
-```json
+```js
 {
-  "extends": ["prettier", "plugin:prettier/recommended"]
+  extends: [
+    'eslint:recommended',
+    'plugin:vue/recommended',
+    'plugin:prettier/recommended',
+  ],
 }
 ```
 
@@ -512,18 +582,26 @@ yarn add -D eslint-config-prettier eslint-plugin-prettier
 
 `Stylelint` 是一款强大的现代 `linter`，可帮助您避免错误并强制执行样式中的约定，帮助统一团队中书写样式代码的规则。
 
+Stylelint 是一个强大、先进的 CSS 代码检查器（linter），可以帮助你规避 CSS 代码中的错误并保持一致的编码风格。
+
+安装依赖
+
+- `stylelint` - Stylelint 本体
+- `stylelint-config-prettier` - 关闭 Stylelint 中与 Prettier 中会发生冲突的规则。
+- `stylelint-config-rational-order` - 对 CSS 声明进行排序
+- `stylelint-config-standard` - Stylelint 官方推荐规则
+- `stylelint-order` 使用 stylelint-config-rational-order 时依赖的模块
+
 安装
 
 ```shell
-yarn add -D stylelint stylelint-config-standard stylelint-order
+yarn add stylelint stylelint-config-prettier stylelint-config-standard
+stylelint-config-rational-order stylelint-order -D
 ```
-
-- `stylelint stylelint-config-standard`: 官方需要下载的 `stylelint` 安装包
-- `stylelint-order`: 可以自定义样式代码编写顺序的 styllint 插件
 
 `stylelint.config.js` 配置文件
 
-```
+```js
 module.exports = {
   root: true,
   plugins: ['stylelint-order'],
@@ -532,20 +610,20 @@ module.exports = {
     'selector-pseudo-class-no-unknown': [
       true,
       {
-        ignorePseudoClasses: ['global'],
-      },
+        ignorePseudoClasses: ['global']
+      }
     ],
     'selector-pseudo-element-no-unknown': [
       true,
       {
-        ignorePseudoElements: ['v-deep'],
-      },
+        ignorePseudoElements: ['v-deep']
+      }
     ],
     'at-rule-no-unknown': [
       true,
       {
-        ignoreAtRules: ['function', 'if', 'each', 'include', 'mixin'],
-      },
+        ignoreAtRules: ['function', 'if', 'each', 'include', 'mixin']
+      }
     ],
     'no-empty-source': null,
     'named-grid-areas-no-invalid': null,
@@ -558,8 +636,8 @@ module.exports = {
     'rule-empty-line-before': [
       'always',
       {
-        ignore: ['after-comment', 'first-nested'],
-      },
+        ignore: ['after-comment', 'first-nested']
+      }
     ],
     'unit-no-unknown': [true, { ignoreUnits: ['rpx'] }],
     'order/order': [
@@ -570,15 +648,15 @@ module.exports = {
         'declarations',
         {
           type: 'at-rule',
-          name: 'supports',
+          name: 'supports'
         },
         {
           type: 'at-rule',
-          name: 'media',
+          name: 'media'
         },
-        'rules',
+        'rules'
       ],
-      { severity: 'warning' },
+      { severity: 'warning' }
     ],
     // Specify the alphabetical order of the attributes in the declaration block
     'order/properties-order': [
@@ -727,11 +805,11 @@ module.exports = {
       'page',
       'set-link-source',
       'unicode-bidi',
-      'speak',
-    ],
+      'speak'
+    ]
   },
-  ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts'],
-};
+  ignoreFiles: ['**/*.js', '**/*.jsx', '**/*.tsx', '**/*.ts']
+}
 ```
 
 `.stylelintignore` 忽略校验目录文件
@@ -753,12 +831,11 @@ stylelint 会与 prettier 产生冲突，要做兼容
 安装
 
 ```shell
-yarn add stylelint-config-prettier stylelint-config-standard
+yarn add stylelint-config-prettier
 stylelint-scss stylelint-config-standard-scss postcss postcss-html postcss-scss -D
 ```
 
 - stylelint-config-prettier ---- 基于 prettier 代码风格的 stylelint 规则
-- stylelint-config-standard ---- stylelint 的标准可共享配置
 - stylelint-config-standard-scss ---- 针对 scss 的标准可共享配置。
 - postcss ---- 用于 postcss-html 和 postcss-scss 的支持
 - postcss-html ---- 解析 `<style>` 类 `vue、html` 文件标签中的样式
@@ -773,49 +850,3 @@ module.exports = {
   extends: ['stylelint-config-standard', 'stylelint-config-standard-scss']
 }
 ```
-
-### Vue 与 Eslint 结合
-
-安装
-
-```shell
-yarn add -D eslint-plugin-vue vue-eslint-parser
-```
-
-- `eslint-plugin-vue`: vue 官方推荐的 eslint 插件
-- `vue-eslint-parser`：将 `.vue` 文件 `parse` 成 `eslint` 能够识别的文件,对 `template` 和 `<script>` 进行解析生成特定的增强的 AST
-
-修改 `.eslintrc.js`
-
-```js
-module.exports = {
-  parser: 'vue-eslint-parser',
-  extends: ['plugin:vue/vue-recommended'],
-  rules: {
-    'vue/attributes-order': 'off',
-    'vue/one-component-per-file': 'off',
-    'vue/html-closing-bracket-newline': 'off',
-    'vue/max-attributes-per-line': 'off',
-    'vue/multiline-html-element-content-newline': 'off',
-    'vue/singleline-html-element-content-newline': 'off',
-    'vue/attribute-hyphenation': 'off',
-    'vue/require-default-prop': 'off',
-    'vue/html-self-closing': [
-      'error',
-      {
-        html: {
-          void: 'always',
-          normal: 'never',
-          component: 'always'
-        },
-        svg: 'always',
-        math: 'always'
-      }
-    ]
-  }
-}
-```
-
-::: tip
-由于 prettier 和 stylelint 官方已经对 vue 和 react 进行内置支持了，这里可以不用再进行其他的操作
-:::
