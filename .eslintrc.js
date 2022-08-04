@@ -11,6 +11,14 @@ module.exports = {
     // myGlobal: false
   },
   parser: 'vue-eslint-parser',
+  parserOptions: {
+    ecmaVersion: 6,
+    sourceType: 'module',
+    parser: 'babel-eslint',
+    ecmaFeatures: {
+      jsx: true
+    }
+  },
   extends: [
     'eslint:recommended',
     // 继承 eslint-plugin-vue 插件的规则
@@ -18,21 +26,16 @@ module.exports = {
     'plugin:prettier/recommended'
   ],
   plugins: ['import'],
-  parserOptions: {
-    ecmaVersion: 12,
-    sourceType: 'module',
-    parser: 'babel-eslint',
-    allowImportExportEverywhere: true
-  },
   rules: {
     // 'vue/no-multiple-template-root': 'off', // plugin:vue/essential有开启  TODO(VUE3可以使用)
     'prettier/prettier': [
       // 两者混合使用时候，需要修改规则，以防止重复或冲突；eslint-config-prettier 即为解决此问题的存在，可以使用它关闭所有可能引起冲突的规则。
       'warn',
       {
-        endOfLine: 'auto'
+        endOfLine: 'auto',
       }
     ],
+    "quotes": 'off',
     // 缩进代码
     'vue/html-indent': 'error',
     // 强制每行的最大属性数，默认是 1
@@ -57,6 +60,48 @@ module.exports = {
         },
         svg: 'always',
         math: 'always'
+      }
+    ],
+    // 组件/实例的选项的顺序
+    'vue/order-in-components': [
+      'error',
+      {
+        order: [
+          'el',
+          'name',
+          'key',
+          'parent',
+          'functional',
+          ['delimiters', 'comments'],
+          ['components', 'directives', 'filters'],
+          'extends',
+          'mixins',
+          ['provide', 'inject'],
+          'ROUTER_GUARDS',
+          'layout',
+          'middleware',
+          'validate',
+          'scrollToTop',
+          'transition',
+          'loading',
+          'meta',
+          'inheritAttrs',
+          'model',
+          ['props', 'propsData'],
+          'emits',
+          'setup',
+          'asyncData',
+          'data',
+          'fetch',
+          'head',
+          'computed',
+          'watch',
+          'watchQuery',
+          'LIFECYCLE_HOOKS',
+          'methods',
+          ['template', 'render'],
+          'renderError'
+        ]
       }
     ],
     // eslint:recommended: 禁止对象字面量中出现重复的 key

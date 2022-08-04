@@ -1,24 +1,15 @@
 import cssVars from 'css-vars-ponyfill';
-import { assign, omit } from 'lodash';
+import diamond from './src/diamond';
+import gold from './src/gold';
+import normal from './src/normal';
 
-const requireTheme = require.context('./src', false, /\.js$/);
-// 导入 主题
-const themes = {};
+export function useThemes(mark = 'normal') {
+  let variables = Object.assign({}, normal);
 
-requireTheme.keys().forEach((fName) => {
-  // 获取主题配置
-  const themeConfig = requireTheme(fName);
-  // 获取主题名称
-  const cName = fName.replace(/^.*\/(.+)\.js$/, '$1');
-
-  themes[cName] = themeConfig.default || themeConfig;
-});
-
-export function useThemes(mark = 'normal', options = {}, customThemes = {}) {
-  let variables = assign({}, themes.normal, customThemes.normal);
-
-  if (themes[mark]) {
-    variables = assign({}, themes[mark], customThemes[mark]);
+  if (mark === 'diamond') {
+    variables = Object.assign({}, diamond);
+  } else if (mark === 'gold') {
+    variables = Object.assign({}, gold,);
   }
 
   cssVars({
@@ -26,7 +17,6 @@ export function useThemes(mark = 'normal', options = {}, customThemes = {}) {
     watch: true,
     silent: true,
     onlyLegacy: true,
-    ...omit(options, ['variables'])
   });
 }
 

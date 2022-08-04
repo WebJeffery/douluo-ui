@@ -1,7 +1,7 @@
-import { createNamespace } from 'src/utils/create';
-import { getThemeConfigFunc } from 'src/utils/themePicker.js';
-import { useThemes } from 'src/theme/index';
-import components from '/src/ui/index'
+import { createNamespace } from './utils/create';
+import { getThemeConfigFunc } from './utils/themePicker';
+import { useThemes } from './theme/index';
+import components from './ui/index'
 
 const install = (Vue, options = {}) => {
   // 判断是否安装
