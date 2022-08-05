@@ -1,8 +1,9 @@
-# vue-cli 打包vue-cli组件库迁移到 rollup 打包
+# vue-cli 打包组件库迁移到 rollup 打包
 
 ### 前言
 
-vue-cli 打包是基于 webpack，打包的缺点是：一 打包时间很长，第二是打包的体积很大，这对组件库来说不是很好，而 rollup 打包库更合适，而且 vite 也是基于 rollup 打包的
+vue-cli 打包是基于 webpack 打包的，缺点是：一 打包时间长，二是打包的体积大，这对组件库来说不是很好，而 rollup 打包库更合适，它的缺点是打包一些静态资源比如 图片、图标需要安装很多插件支持，所以尽量避免在组件库中增加静态资源，可以设计组件扩展插槽或接口
+
 
 ### 安装 rollup
 
@@ -16,9 +17,7 @@ rollup 打包完整的 vue 项目需要用到大量的插件，做个分类
 - rollup-plugin-node-resolve  帮助 rollup 识别外部模块
 - rollup-plugin-commonjs 将commonjs模块转为es模块
 - rollup-plugin-terser 压缩代码
-- rollup-plugin-vue vue2.x使用5.x版本 vue3使用6.x版本
-
-- rollup-plugin-postcss
+- rollup-plugin-postcss css 打包插件，plugins 属性支持 css 预编译器 sass、less
 - rollup-plugin-copy 直接复制静态文件
 
 
@@ -41,6 +40,32 @@ script: {
 ```
 
 运行 `npm run rollup:lib`, 将 `process.env.NODE_ENV` 赋值 `production` 生产环境标识打包，删除 `lib` 目录，执行 `build/rollup.build.js` 打包文件
+
+### rollup-plugin-vue 打包 vue 文件
+
+`rollup-plugin-vue` 用于处理 `.vue` 文件。`vue2` 和 `vue3` 项目所用的 `rollup-plugin-vue` 版本不一样，vue的编译器也不一样
+
+- vue2：`rollup-plugin-vue^5.1.9` + `vue-template-compiler`
+- vue3：`rollup-plugin-vue^6.0.0` + `@vue/compiler-sfc`
+
+Vue2 项目安装
+
+```shell
+yan add rollup-plugin-vue@5.1.9 vue-template-compiler --D
+```
+
+修改 `rollup.config.js` 
+
+```js
+import vue from 'rollup-plugin-vue'
+export default {
+  ...
+  plugins:[
+    vue()
+  ]
+}
+```
+
 
 
 #### rollup 命令行
@@ -68,3 +93,58 @@ script: {
 --silent                    不要将警告打印到控制台
 -w, --watch                  监听源文件是否有改动，如果有改动，重新打包
 ```
+
+###  PostCSS 插件打包样式
+
+安装 `rollup-plugin-postcss`
+
+```shell
+npm install --save-dev rollup-plugin-postcss
+```
+
+修改 `rollup.config.js`
+
+```js
+plugins: [
+  postcss({
+    extensions: [ '.css' ],
+  })
+]
+```
+
+`postcss` 好处是它支持插件化，可以使用你需要的那些特性，去掉不想用的特性，介绍项目中用到的几个插件
+
+- `postcss-simple-vars` —— 这个插件允许你试用 `Sass` 式的变量，比如说：可以声明`$myColor:#fff` ，并在代码中像 `color:$myColor` 这样使用
+- `postcss-css-variables`
+- `postcss-nested` —— 这个插件允许使用嵌套的语法
+- `postcss-cssnext` —— 这个插件可以让你使用更为现代甚至是面向未来的CSS语法
+- `cssnano` —— 这个插件可以将输出的CSS压缩和简化
+
+在 `postcss` 的配置对象中增加一个 `plugins` 属性
+
+```js
+plugins: [
+  postcss({
+    plugins: [
+      simplevars(), 
+      nested(), 
+      cssnext({ warnForDuplicates: false }), 
+      cssnano()
+    ],
+    extensions: [ '.css' ],
+  })
+]
+```
+
+::: tip
+`cssnext()` 传入 `{ warnForDuplicates:false }`，因为 `cssnext()` 和 `cssnano()` 都会使用到 `Autoprefixer`，这会触发一个警告。`Autoprefixer` 会执行两次并且不会报出警告，放弃使用
+:::
+
+**支持 scss 打包**
+
+安装 `sass`，`node-sass`, `sass-loader`
+
+
+
+### 为Rollup增加一个监听插件
+

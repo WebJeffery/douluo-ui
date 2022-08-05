@@ -1,11 +1,11 @@
-const version = require('../package.json').version
+const { version, author } = require('../package.json')
 
 module.exports = {
-  banner: `/*
-  * douluo-ui v ${version}
-  * Copyright © 2022-${new Date().getFullYear()} douluo-ui
-  * Released under the MIT License.\n
-  */`,
+  banner:`/*
+* douluo-ui v${version}
+* Copyright ©2022-${new Date().getFullYear()} ${author.name}
+* Released under the MIT License.
+*/\n`,
   // 打包样式目录
   styleOutputPath: 'theme',
   // 打包脚步目录

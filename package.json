@@ -1,7 +1,8 @@
 {
   "name": "douluo-ui",
-  "version": "1.0.3",
-  "main": "lib/index.js",
+  "version": "1.0.4",
+  "main": "lib/index.cjs.min.js",
+  "module": "lib/index.es.min.js",
   "description": "douluo-ui Vue2组件库",
   "keywords": [
     "vue",
@@ -99,6 +100,7 @@
     "markdown-loader": "^6.0.0",
     "node-sass": "^7.0.1",
     "postcss": "^8.4.14",
+    "postcss-css-variables": "^0.18.0",
     "postcss-cssnext": "^3.1.1",
     "postcss-html": "^1.5.0",
     "postcss-nested": "^5.0.6",
@@ -109,6 +111,7 @@
     "rollup": "^2.77.2",
     "rollup-plugin-alias": "^2.2.0",
     "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-cleanup": "^3.2.1",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-filesize": "^9.1.2",
     "rollup-plugin-img": "^1.1.0",
