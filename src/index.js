@@ -11,6 +11,8 @@ const install = (Vue, options = {}) => {
   components.forEach(component => {
     Vue.component(createNamespace(component.name, { prefix: options.prefix }), component);
   });
+
+  useThemes()
 };
 
 // 判断调用vue加载器，实现全局加载

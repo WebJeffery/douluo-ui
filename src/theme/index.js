@@ -1,16 +1,8 @@
 import cssVars from 'css-vars-ponyfill';
-import diamond from './src/diamond';
-import gold from './src/gold';
-import normal from './src/normal';
+import variableTheme from './variable';
 
-export function useThemes(mark = 'normal') {
-  let variables = Object.assign({}, normal);
-
-  if (mark === 'diamond') {
-    variables = Object.assign({}, diamond);
-  } else if (mark === 'gold') {
-    variables = Object.assign({}, gold,);
-  }
+export function useThemes(colorTheme = {}) {
+  const variables = Object.assign({}, variableTheme, colorTheme);
 
   cssVars({
     variables,
@@ -18,18 +10,4 @@ export function useThemes(mark = 'normal') {
     silent: true,
     onlyLegacy: true,
   });
-}
-
-/**
- * @description 8位颜色Hex码 定义颜色透明度
- * @param {string} color
- * @param {number} alpha 0 - 1 透明度
- */
-export function colorPalette(color, alpha) {
-  alpha = Math.round(alpha * 100) / 100;
-  alpha = Math.round(alpha * 255);
-
-  let hex = (alpha + 0x10000).toString(16).substr(-2).toLocaleLowerCase();
-
-  return `${color}${hex}`;
 }
