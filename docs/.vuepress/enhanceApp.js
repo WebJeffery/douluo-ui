@@ -1,9 +1,8 @@
 // 引入 @internal/page-components 解决组件内部注册报错
 import pageComponents from '@internal/page-components'
 import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/lib/theme-chalk/index.css';
 // import { getThemeConfigFunc } from '../../src/utils/themePicker';
-import '../../styles/element-ui/index.scss'
 import DouluoUI from '../../src/index'
 
 
