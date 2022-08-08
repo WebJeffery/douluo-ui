@@ -1,4 +1,4 @@
-import _default from "./src/index.vue";
+import _default from "./src/button.vue";
 import { createNamespace } from "../../../src/utils/create";
 
 _default.install = (Vue, options = {}) => {

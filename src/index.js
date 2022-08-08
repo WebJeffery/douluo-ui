@@ -2,6 +2,7 @@ import { createNamespace } from './utils/create';
 import { getThemeConfigFunc } from './utils/themePicker';
 import { useThemes } from './theme/index';
 import components from './ui/index'
+// import '../styles/index.scss'
 
 const install = (Vue, options = {}) => {
   // 判断是否安装
