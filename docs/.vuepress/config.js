@@ -27,6 +27,7 @@ module.exports = config({
     }
   },
   themeConfig: {
+    iconPrefix: 'icon-',
     // 配置顶部导航栏
     nav: [
       {

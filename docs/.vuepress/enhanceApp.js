@@ -4,6 +4,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 // import { getThemeConfigFunc } from '../../src/utils/themePicker';
 import DouluoUI from '../../src/index'
+import '../../styles/src/index.scss'
 
 
 export default async ({ Vue, options, router, siteData, isServer }) => {

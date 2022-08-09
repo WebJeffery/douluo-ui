@@ -1,7 +1,7 @@
 ---
 title: Button 按钮
 pageClass: demo-button
-sidebar: 3
+icon: button-component
 ---
 
 # Button 按钮
@@ -14,7 +14,7 @@ sidebar: 3
 
 :::demo 使用`type`、`plain`、`round`和`circle`属性来定义 Button 的样式。
 
-```vue
+```html
 <el-row>
   <dl-button>默认按钮</dl-button>
   <dl-button type="primary">主要按钮</dl-button>
@@ -110,7 +110,7 @@ sidebar: 3
 
 以按钮组的方式出现，常用于多项类似操作。
 
-:::demo 使用`<dl-button-group>`标签来嵌套你的按钮。
+:::demo 使用`<el-button-group>`标签来嵌套你的按钮。
 
 ```html
 <el-button-group>

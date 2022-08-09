@@ -18,7 +18,6 @@ const cssvariables = require("postcss-css-variables");
 const nested = require('postcss-nested') // 使用 css 嵌套
 const cssnext = require('postcss-cssnext') // css 新的特性
 const cssnano = require('cssnano') // CSS压缩和简化
-const sass = require('node-sass')
 
 const { getAssetsPath, env, fsExistsSync, chalkConsole } = require('./utils')
 const rollupAlias = require('../config/alias')
@@ -59,34 +58,34 @@ function createPlugins({ min } = {}) {
       limit: 8192, // default 8192(8k)
       exclude
     }),
-    postcss({
-      plugins: [
-        cssvariables(),
-        simplevars(),
-        nested(),
-        cssnext({ warnForDuplicates: false }),
-        cssnano()
-      ],
-      inject: false,
-      // sourceMap: true,
-      extract: true, // 输出路径，将css抽离成单独的文件
-      minimize: true, // 生产环境开启压缩
-      extensions: ['.css', '.scss'],
-      // 在打包过程中需要配合 node-sass 使用
-      process: function(context) {
-        return new Promise((resolve, reject) => {
-          sass.render({
-            file: context
-          }, function(err, result) {
-            if (!err) {
-              resolve(result)
-            } else {
-              reject(err)
-            }
-          })
-        })
-      }
-    }),
+    // postcss({
+    //   plugins: [
+    //     cssvariables(),
+    //     simplevars(),
+    //     nested(),
+    //     cssnext({ warnForDuplicates: false }),
+    //     cssnano()
+    //   ],
+    //   inject: false,
+    //   // sourceMap: true,
+    //   extract: true, // 输出路径，将css抽离成单独的文件
+    //   minimize: true, // 生产环境开启压缩
+    //   extensions: ['.css', '.scss'],
+    //   // 在打包过程中需要配合 node-sass 使用
+    //   process: function(context) {
+    //     return new Promise((resolve, reject) => {
+    //       sass.render({
+    //         file: context
+    //       }, function(err, result) {
+    //         if (!err) {
+    //           resolve(result)
+    //         } else {
+    //           reject(err)
+    //         }
+    //       })
+    //     })
+    //   }
+    // }),
     replace({
       exclude,
       'process.env.NODE_ENV': JSON.stringify(env)

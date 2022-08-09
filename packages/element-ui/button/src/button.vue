@@ -1,6 +1,7 @@
 <template>
   <el-button
     v-bind="$attrs"
+    v-on="$listeners"
     :class="[
       ns.b()
     ]">
@@ -15,14 +16,7 @@ export default {
 
   data () {
     this.ns = useNamespace('button')
-    console.log(this.ns)
     return {}
-  },
-
-  methods: {
-    handleClick(evt) {
-      this.$emit('click', evt)
-    }
   }
 }
 </script>

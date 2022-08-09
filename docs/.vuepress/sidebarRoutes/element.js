@@ -37,6 +37,7 @@ module.exports = [
         title: 'Button 按钮',
         collapsable: false,
         path: '/packages/element/button',
+        icon: "button-component",
       },
       {
         title: 'Link 文字链接',
