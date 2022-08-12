@@ -7,7 +7,7 @@ const dartSass = require('sass')
 const autoprefixer = require('gulp-autoprefixer');
 const cssmin = require('gulp-cssmin');
 
-const distFolder = path.resolve(__dirname, 'styles/theme')
+const distFolder = path.resolve(__dirname, 'styles')
 
 function compileIndex() {
   const sass = gulpSass(dartSass)
@@ -34,17 +34,22 @@ const compileElement = function () {
 
 }
 
-// function copyfont() {
-//   return src('./src/fonts/**')
-//     .pipe(cssmin())
-//     .pipe(dest('./lib/fonts'));
-// }
-
 /**
  * copy from packages/theme-chalk/dist to dist/element-plus/theme-chalk
  */
 function copyThemeChalkBundle() {
-  return src(`${distFolder}/**`).pipe(dest('./lib/theme'))
+  return src(`${distFolder}/theme/**`).pipe(dest('./lib/theme'))
 }
 
-exports.build = series(compileIndex, compileElement, copyThemeChalkBundle);
+function copyfont() {
+  return src(`${distFolder}/src/fonts/**`)
+    .pipe(cssmin())
+    .pipe(dest('./lib/theme/fonts'));
+}
+
+exports.build = series(
+  compileIndex,
+  compileElement,
+  copyThemeChalkBundle,
+  copyfont
+  );
