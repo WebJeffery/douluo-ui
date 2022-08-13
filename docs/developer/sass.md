@@ -1,10 +1,5 @@
 # 组件库 Sass(Dart) 知识
 
----
-theme: channing-cyan
----
-
-
 ### 前言
 
 Sass 有三个版本 `Dart Sass`、`libsass` 和 `Ruby Sass`：

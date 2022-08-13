@@ -14,7 +14,8 @@ module.exports = [
     collapsable: false,
     children: [
       ['/developer/specify-build', '开发规范搭建'],
-      ['/developer/custom-theme', '自定义主题']
+      ['/developer/custom-theme', '自定义主题'],
+      ['/developer/sass', 'SCSS 开发指南'],
     ]
   }
 ]
