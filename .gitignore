@@ -4,6 +4,7 @@ node_modules
 .cache
 /lib
 /dist
+/styles/theme/**
 
 # local env files
 .env.local
@@ -23,3 +24,4 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+*.tgz

@@ -1,4 +1,3 @@
-const path = require('path')
 const webpack = require('webpack');
 const version = process.env.VERSION || require('../package.json').version;
 const { chainWebpackConfig } = require('./utils');

@@ -9,6 +9,8 @@ import { defineConfig, splitVendorChunkPlugin } from 'vite'
 // 支持 Vue2
 import Vue from '@vitejs/plugin-vue2'
 
+import { resolve } from 'path'
+
 export default defineConfig({
   plugins: [
     Vue(),
@@ -20,6 +22,12 @@ export default defineConfig({
     }),
     splitVendorChunkPlugin(),
   ],
+  resolve: {
+    alias: {
+      src: resolve(__dirname, '../src'),
+      packages: resolve('../packages')
+    }
+  },
   build: {
     rollupOptions: {
       output: {

@@ -7,7 +7,8 @@ const getThemeCluster = function (theme) {
     let green = parseInt(color.slice(2, 4), 16)
     let blue = parseInt(color.slice(4, 6), 16)
 
-    if (tint === 0) { // when primary color is in its rgb space
+    if (tint === 0) {
+      // when primary color is in its rgb space
       return [red, green, blue].join(',')
     } else {
       red += Math.round(tint * (255 - red))
@@ -47,7 +48,7 @@ const getThemeCluster = function (theme) {
 }
 
 const getCSSString = function (url) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const xhr = new XMLHttpRequest()
     xhr.onreadystatechange = () => {
       if (xhr.readyState === 4 && xhr.status === 200) {
@@ -68,18 +69,12 @@ const updateStyle = function (style, oldCluster, newCluster) {
   return newStyle
 }
 
-function getThemeConfigFunc (defaultTheme = '#409EFF') {
+function themeConfigFunc(defaultTheme = '#409EFF') {
   return {
     defaultTheme,
     theme: '',
     updateElementUITheme: async function (options = {}) {
-      const {
-        version = '2.15.8',
-        themeColor,
-        appendDom,
-        insertAfter,
-        chalkStyle = 'chalk-style'
-      } = options
+      const { version = '2.15.8', themeColor, appendDom, insertAfter, cssUrl, chalkStyle = 'chalk-style' } = options
       if (typeof themeColor !== 'string') return
 
       const oldVal = chalk ? this.theme : this.defaultTheme
@@ -110,7 +105,7 @@ function getThemeConfigFunc (defaultTheme = '#409EFF') {
       }
 
       if (!chalk) {
-        const url = `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
+        const url = cssUrl || `https://unpkg.com/element-ui@${version}/lib/theme-chalk/index.css`
         await getCSSString(url)
       }
 
@@ -120,12 +115,11 @@ function getThemeConfigFunc (defaultTheme = '#409EFF') {
 
       this.theme = themeColor
 
-      const styles = [].slice.call(document.querySelectorAll('style'))
-        .filter(style => {
-          const text = style.innerText
-          return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
-        })
-      styles.forEach(style => {
+      const styles = [].slice.call(document.querySelectorAll('style')).filter((style) => {
+        const text = style.innerText
+        return new RegExp(oldVal, 'i').test(text) && !/Chalk Variables/.test(text)
+      })
+      styles.forEach((style) => {
         const { innerText } = style
         if (typeof innerText !== 'string') return
         style.innerText = updateStyle(innerText, originalCluster, themeCluster)
@@ -134,6 +128,4 @@ function getThemeConfigFunc (defaultTheme = '#409EFF') {
   }
 }
 
-export {
-  getThemeConfigFunc
-}
+export { themeConfigFunc }

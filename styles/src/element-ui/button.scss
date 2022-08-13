@@ -1,0 +1,19 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// 工具方法 clearfix vertical-center ellipsis
+@use '../mixins/utils' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(button) {
+  @include set-component-css-var('button', $button); // $button 变量定义在 /common/var
+}
+
+@include b(button) {
+
+}

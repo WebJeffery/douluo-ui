@@ -267,7 +267,7 @@ const updateStyle = function (style, oldCluster, newCluster) {
   return newStyle
 }
 
-function getThemeConfigFunc (defaultTheme = '#409EFF') {
+function themeConfigFunc (defaultTheme = '#409EFF') {
   return {
     defaultTheme,
     theme: '',
@@ -334,16 +334,16 @@ function getThemeConfigFunc (defaultTheme = '#409EFF') {
 }
 
 export {
-  getThemeConfigFunc
+  themeConfigFunc
 }
 ```
 
-2. 在入口文件引入组件，调用暴露 `getThemeConfigFunc` 方法，创建一个主题配置，然后传入主题颜色再调用 `updateElementUITheme` 方法更新主题
+2. 在入口文件引入组件，调用暴露 `themeConfigFunc` 方法，创建一个主题配置，然后传入主题颜色再调用 `updateElementUITheme` 方法更新主题
 
 
 ```js
 import DouluoUI from 'douluo-ui'
-const themeConfig = DouluoUI.getThemeConfigFunc()
+const themeConfig = DouluoUI.themeConfigFunc()
 themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
 ```
 
@@ -357,7 +357,7 @@ import DouluoUI from 'douluo-ui'
 
 const initApp = async function () {
 
-  const themeConfig = DouluoUI.getThemeConfigFunc()
+  const themeConfig = DouluoUI.themeConfigFunc()
   await themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
   new Vue({
     router,

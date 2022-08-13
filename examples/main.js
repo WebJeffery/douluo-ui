@@ -1,40 +1,34 @@
-import Vue from 'vue';
-import ElementUI from 'element-ui';
-import hljs from 'highlight.js';
-import 'highlight.js/styles/a11y-dark.css';
-// import 'element-ui/lib/theme-chalk/index.css';
-import App from './App.vue';
-import DouluoUI from '../src';
-import router from './router';
-import demoBlock from './components/demo-block.vue';
-import ShowMark from './components/ShowMark';
+// main.js
+import Vue from 'vue'
+import App from './src/App.vue'
+import router from './src/router'
 
-Vue.component('demo-block', demoBlock);
-Vue.component('ShowMark', ShowMark);
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
-router.afterEach(() => {
-  Vue.nextTick(() => {
-    const blocks = document.querySelectorAll('pre code:not(.hljs)');
-    Array.prototype.forEach.call(blocks, hljs.highlightBlock);
-  });
-});
+// 本地安装组件测试的包
+// import DouluoUI from 'douluo-ui'
+// import 'douluo-ui/lib/theme/index.css'
 
-Vue.use(DouluoUI);
+import DouluoUI from '../src/index'
+import '../styles/src/index.scss'
+// import '../../lib/theme/index.css'
 
-DouluoUI.useThemes('diamond');
+Vue.use(ElementUI)
+Vue.use(DouluoUI)
 
-Vue.use(ElementUI);
-Vue.config.productionTip = false;
+// const themeConfig = DouluoUI.themeConfigFunc()
+// themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
 
-
-const initApp = async function () {
-
-  const themeConfig = DouluoUI.getThemeConfigFunc()
+const creatApp = async () => {
+  const themeConfig = DouluoUI.themeConfigFunc()
   await themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
-  new Vue({
-    router,
-    render: (h) => h(App)
-  }).$mount('#app');
+
+    new Vue({
+      el: '#app',
+      router,
+      render: (h) => h(App)
+    }).$mount()
 }
 
-initApp()
+creatApp()
