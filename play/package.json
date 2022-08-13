@@ -15,7 +15,8 @@
     "vite": "^3.0.0"
   },
   "dependencies": {
-    "douluo-ui": "file:douluo-ui-1.0.5.tgz",
+    "@types/node": "^18.7.2",
+    "douluo-ui": "file:douluo-ui-1.0.6.tgz",
     "element-ui": "^2.15.9",
     "vue": "^2.7.8"
   }

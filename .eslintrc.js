@@ -37,9 +37,9 @@ module.exports = {
     ],
     "quotes": 'off',
     // 缩进代码
-    'vue/html-indent': 'error',
+    // 'vue/html-indent': 'error',
     // 强制每行的最大属性数，默认是 1
-    'vue/max-attributes-per-line': 'error',
+    // 'vue/max-attributes-per-line': 'error',
     'vue/multi-word-component-names': 'off',
     'vue/attributes-order': 'off',
     'vue/one-component-per-file': 'off',
