@@ -1,9 +1,21 @@
 
-export const defaultNamespace = 'dl'
+let componentNamespace = 'dl'
+// 组件前缀命名只能更新一次，防止重复执行修改组件注册出错
+let isUpdated = false
+// scss 命名不能通过 js 更改，在 SCSS 编译已经打包好了
+const cssNamespace = 'dl'
 const statePrefix = 'is-'
 
+export function createNamespace(name, { prefix }) {
+  if (!isUpdated) {
+    isUpdated = true
+    componentNamespace = prefix || componentNamespace // 更改前缀
+  }
+  return componentNamespace + name.charAt(0).toUpperCase() + name.substr(1)
+}
+
 /**
- *
+ * 生成 bem
  * @param {} namespace 命名空间
  * @param {*} block 块
  * @param {*} blockSuffix 块多个单词
@@ -26,7 +38,7 @@ const _bem = (namespace, block, blockSuffix, element, modifier) => {
 }
 
 export const useNamespace = (block) => {
-  const namespace = defaultNamespace
+  const namespace = cssNamespace
 
   const b = (blockSuffix = '') => _bem(namespace, block, blockSuffix, '', '')
 
@@ -79,7 +91,8 @@ export const useNamespace = (block) => {
     `--${namespace}-${block}-${name}`
 
   return {
-    namespace,
+    cssNamespace,
+    componentNamespace,
     b,
     e,
     m,
@@ -96,3 +109,7 @@ export const useNamespace = (block) => {
   }
 }
 
+export default {
+  cssNamespace,
+  componentNamespace
+}
