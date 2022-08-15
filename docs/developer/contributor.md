@@ -8,7 +8,7 @@
 |-- douluo-ui
     |-- .cz-config.js           # cz-customizable commit message 规范
     |-- .editorconfig           # EditorConfig 配置
-    |-- .eslintignore           # eslint 忽略检测目
+    |-- .eslintignore           # eslint 忽略检测文件
     |-- .eslintrc.js            # eslint 配置文件
     |-- .gitignore              # git 忽略提交
     |-- .ls-lint.yml            # ls-lint 文件命名规范 kebab-case 校验
@@ -25,7 +25,7 @@
     |-- jsconfig.json           # js 配置文件
     |-- package.json
     |-- prettier.config.js      # prettier 格式配置
-    |-- stylelint.config.js     # style 格式配置
+    |-- stylelint.config.js     # stylelint 格式配置
     |-- vite.config.js          # vite 配置
     |-- .husky                  # husky 配置
     |   |-- commit-msg          # commit 提交钩子
@@ -67,7 +67,7 @@
     |   |-- main.js              # vite 启动入口文件
     |   |-- assets
     |   |-- src
-    |-- lib
+    |-- lib                      # rollup 打包组件库静态资源
     |   |-- xxx.common.js        # rollup 打包 common 规范
     |   |-- xxx.common.min.js    
     |   |-- xxx.es.js            # es 打包规范
