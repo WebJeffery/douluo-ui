@@ -56,9 +56,8 @@ export default {
     }
   },
   data() {
-    return {
-      ns: useNamespace('date-picker')
-    }
+    this.ns = useNamespace('date-picker')
+    return {}
   }
 }
 </script>
