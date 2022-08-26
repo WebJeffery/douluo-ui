@@ -25,6 +25,11 @@ module.exports = [
         title: 'Button 按钮',
         collapsable: false,
         path: '/guide/button',
+      },
+      {
+        title: 'DatePicker 日期选择器',
+        collapsable: false,
+        path: '/guide/datePicker',
       }
     ]
   }
