@@ -5,8 +5,8 @@
 // @use 会自动加入命名空间，使用 as * 相当于解构直接使用
 @use '../mixins/function.scss' as *;
 
-// 定义6种类型 types
-$types: primary, success, warning, danger, error, info;
+// 定义类型 types
+$types: primary, primary-second, success, warning, danger, error, info;
 
 // Color 定义 map 类型结构
 $colors: () !default;
@@ -16,6 +16,9 @@ $colors: map.deep-merge(
     'black': #000000,
     'primary': (
       'base': #409eff,
+    ),
+    'primary-second': (
+      'base': #231909
     ),
     'success': (
       'base': #67c23a,
@@ -39,6 +42,7 @@ $colors: map.deep-merge(
 $color-white: map.get($colors, 'white') !default;
 $color-black: map.get($colors, 'black') !default;
 $color-primary: map.get($colors, 'primary', 'base') !default;
+$color-primary-second: map.get($colors, 'primary-second', 'base') !default;
 $color-success: map.get($colors, 'success', 'base') !default;
 $color-warning: map.get($colors, 'warning', 'base') !default;
 $color-danger: map.get($colors, 'danger', 'base') !default;
@@ -95,11 +99,11 @@ $color-info: map.get($colors, 'info', 'base') !default;
 $text-color: () !default;
 $text-color: map.merge(
   (
-    'primary': #303133,
-    'regular': #606266,
-    'secondary': #909399,
-    'placeholder': #a8abb2,
-    'disabled': #c0c4cc,
+    'primary': #333,
+    'regular': #666,
+    'secondary': #999,
+    'placeholder': #ccc,
+    'disabled': #f5f5f5,
   ),
   $text-color
 );
@@ -157,6 +161,16 @@ $border-radius: map.merge(
     'circle': 100%,
   ),
   $border-radius
+);
+
+$line-height: () !default;
+$line-height: map.merge(
+  (
+    'large': 24px,
+    'default': 18px,
+    'small': 14px,
+  ),
+  $line-height
 );
 
 // Box-shadow
@@ -232,9 +246,9 @@ $disabled: map.merge(
 $common-component-size: () !default;
 $common-component-size: map.merge(
   (
-    'large': 40px,
-    'default': 32px,
-    'small': 24px,
+    'large': 50px,
+    'default': 40px,
+    'small': 32px,
   ),
   $common-component-size
 );
@@ -572,9 +586,9 @@ $input-disabled: map.merge(
 $input-font-size: () !default;
 $input-font-size: map.merge(
   (
-    // 'large': 14px,
-    // 'default': 14px,
-    // 'small': 12px,
+    'large': 14px,
+    'default': 14px,
+    'small': 12px,
   ),
   $input-font-size
 );
@@ -625,28 +639,56 @@ $cascader: map.merge(
   $cascader
 );
 
-// Button
+// Button 变量
 // css3 var in packages/theme-chalk/src/button.scss
 $button: () !default;
 $button: map.merge(
   (
     'font-weight': getCssVar('font-weight-primary'),
+    'text-color': getCssVar('text-color', 'regular'),
     'border-color': getCssVar('border-color'),
     'bg-color': getCssVar('fill-color', 'blank'),
-    'text-color': getCssVar('text-color', 'regular'),
-    'disabled-text-color': getCssVar('disabled-text-color'),
-    'disabled-bg-color': getCssVar('fill-color', 'blank'),
-    'disabled-border-color': getCssVar('border-color-light'),
-    'divide-border-color': rgba($color-white, 0.5),
     'hover-text-color': getCssVar('color-primary'),
+    'hover-border-color': getCssVar('color-primary', 'light-7'),
     'hover-bg-color': getCssVar('color-primary', 'light-9'),
-    'hover-border-color': getCssVar('color-primary-light-7'),
+    'disabled-text-color': getCssVar('disabled-text-color'),
+    'disabled-border-color': getCssVar('border-color-light'),
+    'disabled-bg-color': getCssVar('fill-color', 'blank'),
     'active-text-color': getCssVar('button-hover-text-color'),
     'active-border-color': getCssVar('color-primary'),
     'active-bg-color': getCssVar('button', 'hover-bg-color'),
+    'divide-border-color': rgba($color-white, 0.5),
     'outline-color': getCssVar('color-primary', 'light-5'),
     'hover-link-text-color': getCssVar('color-info'),
-    'active-color': getCssVar('text-color', 'primary'),
+    // 'active-color': getCssVar('text-color', 'primary'),
+    // 重要按钮两种主题兼容
+    // 'font-color-primary': getCssVar('color-white'),
+    // 'bg-color-primary': getCssVar('color-primary'),
+    // 'hover-font-color-primary': getCssVar('color-white'),
+    // 'hover-bg-color-primary': getCssVar('color-primary', 'light-3'),
+    // 'disabled-font-color-primary': getCssVar('color-white'),
+    // 'disabled-bg-color-primary': getCssVar('color-primary', 'light-7'),
+    // 'active-font-color-primary': getCssVar('color-white'),
+    // 'active-bg-color-primary': getCssVar('color-primary'),
+    // 'hover-link-text-color-primary': getCssVar('color-info'),
+    // 重要-朴素按钮两种主题兼容
+    'font-color-primary-plain': getCssVar('color-primary'),
+    'bg-color-primary-plain': getCssVar('color-primary', 'light-7'),
+    'hover-font-color-primary-plain': getCssVar('color-primary'),
+    'hover-bg-color-primary-plain': getCssVar('color-primary', 'light-8'),
+    'disabled-font-color-primary-plain': getCssVar('color-primary'),
+    'disabled-bg-color-primary-plain': getCssVar('color-primary', 'light-8'),
+    'active-font-color-primary-plain': getCssVar('color-primary'),
+    'active-bg-color-primary-plain': getCssVar('color-primary', 'light-5'),
+    // 重要-幽灵按钮两种主题兼容
+    'font-color-primary-ghost': getCssVar('color-primary'),
+    'border-color-primary-ghost': getCssVar('color-primary'),
+    'hover-font-color-primary-ghost': getCssVar('color-primary'),
+    'hover-border-color-primary-ghost': getCssVar('color-primary'),
+    'disabled-font-color-primary-ghost': getCssVar('color-primary', 'light-7'),
+    'disabled-border-color-primary-ghost': getCssVar('color-primary', 'light-7'),
+    'active-hover-font-color-primary-ghost': getCssVar('color-primary'),
+    'active-hover-border-color-primary-ghost': getCssVar('color-primary'),
   ),
   $button
 );
@@ -680,9 +722,9 @@ $button-text-color: () !default;
 $button-font-size: () !default;
 $button-font-size: map.merge(
   (
-    // 'large': getCssVar('font-size', 'base'),
-    // 'default': getCssVar('font-size', 'base'),
-    // 'small': 12px,
+    'large': getCssVar('font-size', 'base'),
+    'default': getCssVar('font-size', 'base'),
+    'small': 12px,
   ),
   $button-font-size
 );
@@ -690,9 +732,9 @@ $button-font-size: map.merge(
 $button-border-radius: () !default;
 $button-border-radius: map.merge(
   (
-    // 'large': getCssVar('border-radius', 'base'),
-    // 'default': getCssVar('border-radius', 'base'),
-    // 'small': calc(#{getCssVar('border-radius', 'base')} - 1px),
+    'large': getCssVar('border-radius', 'base'),
+    'default': getCssVar('border-radius', 'base'),
+    'small': calc(#{getCssVar('border-radius', 'base')} - 1px),
   ),
   $button-border-radius
 );
@@ -700,8 +742,8 @@ $button-border-radius: map.merge(
 $button-padding-vertical: () !default;
 $button-padding-vertical: map.merge(
   (
-    'large': 13px,
-    'default': 9px,
+    'large': 14px,
+    'default': 10px,
     'small': 6px,
   ),
   $button-padding-vertical
@@ -710,8 +752,8 @@ $button-padding-vertical: map.merge(
 $button-padding-horizontal: () !default;
 $button-padding-horizontal: map.merge(
   (
-    'large': 20px,
-    'default': 16px,
+    'large': 29px,
+    'default': 17px,
     'small': 12px,
   ),
   $button-padding-horizontal
