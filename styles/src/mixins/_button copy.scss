@@ -1,0 +1,258 @@
+@use 'var' as *;
+@use 'function' as *;
+
+@mixin button-plain($type) {
+  $button-color-types: (
+    '': (
+      'text-color': (
+        'color',
+        $type,
+      ),
+      'bg-color': (
+        'color',
+        $type,
+      )
+    ),
+    'hover': (
+      'text-color-' + $type: (
+        'color',
+        $type,
+      ),
+      'bg-color-' + $type: (
+        'color',
+        $type + '-light-7',
+      )
+    ),
+  );
+
+  $button-color-primary: (
+    '': (
+      'text-color': (
+        'color',
+        'primary-second',
+      ),
+      'bg-color': (
+        'color',
+        'primary',
+      )
+    ),
+    'hover': (
+      'text-color': (
+        'color',
+        'primary-second',
+      ),
+      'bg-color': (
+        'color',
+        'primary',
+      )
+    )
+  );
+
+  @if $type == 'primary' {
+    @each $type, $typeMap in $button-color-primary {
+      @each $typeColor, $list in $typeMap {
+        @include css-var-from-global(('button', 'primary', $type, $typeColor), $list);
+      }
+    }
+  } @else {
+    @each $type, $typeMap in $button-color-types {
+      @each $typeColor, $list in $typeMap {
+        @include css-var-from-global(('button', $type, $typeColor), $list);
+      }
+    }
+  }
+}
+
+@mixin button-variant($type) {
+  $button-color-types: (
+    '': (
+      'text-color': (
+        'color',
+        'white',
+      ),
+      'bg-color': (
+        'color',
+        $type,
+      ),
+      'border-color': (
+        'color',
+        $type,
+      ),
+      'outline-color': (
+        'color',
+        $type,
+        'light-5',
+      ),
+      'active-color': (
+        'color',
+        $type,
+        'dark-2',
+      ),
+    ),
+    'hover': (
+      'text-color': (
+        'color',
+        'white',
+      ),
+      'link-text-color': (
+        'color',
+        $type,
+        'light-5',
+      ),
+      'bg-color': (
+        'color',
+        $type,
+        'light-3',
+      ),
+      'border-color': (
+        'color',
+        $type,
+        'light-3',
+      ),
+    ),
+    'active': (
+      'bg-color': (
+        'color',
+        $type,
+        'dark-2',
+      ),
+      'border-color': (
+        'color',
+        $type,
+        'dark-2',
+      ),
+    ),
+    'disabled': (
+      'text-color': (
+        'color',
+        'white',
+      ),
+      'bg-color': (
+        'color',
+        $type,
+        'light-5',
+      ),
+      'border-color': (
+        'color',
+        $type,
+        'light-5',
+      )
+    )
+  );
+
+  $button-color-primary: (
+    '': (
+      'text-color': (
+        'color',
+        'primary',
+      ),
+      'bg-color': (
+        'color',
+        'primary-second',
+      ),
+      'border-color': (
+        'color',
+        'primary-second',
+      ),
+      'outline-color': (
+        'color',
+        'primary',
+        'light-5',
+      ),
+      'active-color': (
+        'color',
+        'primary',
+        'dark-2',
+      ),
+    ),
+    'second': (
+      'text-color': (
+        'color',
+        'primary',
+      ),
+    ),
+    'hover': (
+      'text-color': (
+        'color',
+        'primary',
+      ),
+      'link-text-color': (
+        'color',
+        'primary-second',
+        'light-5',
+      ),
+      'bg-color': (
+        'color',
+        'primary-second',
+        'light-3',
+      ),
+      'border-color': (
+        'color',
+        'primary-second',
+        'light-3',
+      ),
+    ),
+    'active': (
+      'bg-color': (
+        'color',
+        'primary',
+        'dark-2',
+      ),
+      'border-color': (
+        'color',
+        'primary',
+        'dark-2',
+      ),
+    ),
+    'disabled': (
+      'text-color': (
+        'color',
+        'white',
+      ),
+      'bg-color': (
+        'color',
+        'primary',
+        'light-5',
+      ),
+      'border-color': (
+        'color',
+        'primary',
+        'light-5',
+      )
+    )
+  );
+
+  @if $type == 'primary' {
+    @each $type, $typeMap in $button-color-primary {
+      @each $typeColor, $list in $typeMap {
+        @include css-var-from-global(('button', 'primary', $type, $typeColor), $list);
+      }
+    }
+  } @else {
+    @each $type, $typeMap in $button-color-types {
+      @each $typeColor, $list in $typeMap {
+        @include css-var-from-global(('button', $type, $typeColor), $list);
+      }
+    }
+  }
+
+  // &.is-text,
+  // &.is-link,
+  &.is-plain {
+    border: none;
+
+    &:hover,
+    &:focus {
+      color: getCssVar('button', 'hover', 'text-color', $type);
+      background-color: getCssVar('button', 'hover', 'bg-color', $type);
+      outline: none;
+    }
+
+    @include button-plain($type);
+  }
+
+  &.is-ghost {
+
+  }
+
+}
