@@ -29,7 +29,7 @@ export default {
   .app-main {
     width: 100%;
     padding: 20px;
-    margin-left: 120px;
+    margin-left: 150px;
   }
 }
 </style>
