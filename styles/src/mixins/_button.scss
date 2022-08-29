@@ -31,6 +31,11 @@
         'color',
         $type,
       ),
+      'bg-color': (
+        'color',
+        $type,
+        'light-7',
+      ),
     ),
   );
 
@@ -68,21 +73,7 @@
         'bg-color',
         $type,
       ),
-    ),
-    'disabled': (
-      'font-color': (
-        'button',
-        'disabled',
-        'color',
-        $type,
-      ),
-      'bg-color': (
-        'button',
-        'disabled',
-        'bg-color',
-        $type
-      ),
-    ),
+    )
   );
 
   @if $type == 'primary' {
@@ -91,22 +82,100 @@
         @include css-var-from-global(('button', $key, $typeColor), list.append($list, $modify));
       }
     }
+
+    &.is-disabled {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: getCssVar('button', 'disabled', 'font-color', $type, $modify);
+        background-color: getCssVar('button', 'disabled', 'bg-color', $type, $modify);
+        border-color: transparent
+      }
+    }
   } @else {
     @each $key, $typeMap in $button-color-types {
       @each $typeColor, $list in $typeMap {
         @include css-var-from-global(('button', $key, $typeColor), $list);
       }
     }
+
+    &.is-disabled {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: getCssVar('color', $type, 'light-5');
+        background-color: getCssVar('color', $type, 'light-9');
+        border-color: transparent
+      }
+    }
+  }
+}
+
+@mixin button-ghost($type) {
+  $button-color-types: (
+    '': (
+      'text-color': (
+        'color',
+        $type,
+      ),
+      'border-color': (
+        'color',
+        $type,
+      ),
+    ),
+    'hover': (
+      'text-color': (
+        'color',
+        $type,
+        'light-3'
+      ),
+      'border-color': (
+        'color',
+        $type,
+        'light-3'
+      ),
+    ),
+    'active': (
+      'text-color': (
+        'color',
+        $type,
+      ),
+      'border-color': (
+        'color',
+        $type,
+      ),
+    ),
+  );
+
+  @each $key, $typeMap in $button-color-types {
+    @each $typeColor, $list in $typeMap {
+      @include css-var-from-global(('button', $key, $typeColor), $list);
+    }
   }
 
-  &.is-disabled {
-    &,
-    &:hover,
-    &:focus,
-    &:active {
-      color: getCssVar('color', $type, 'light-5');
-      background-color: getCssVar('color', $type, 'light-9');
-      border-color: getCssVar('color', $type, 'light-8');
+  @if $type == 'primary' {
+    &.is-disabled {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: getCssVar('button', 'disabled', 'font-color', $type, 'ghost');
+        border-color: getCssVar('button', 'disabled', 'border-color', $type, 'ghost');
+        background-color: transparent;
+      }
+    }
+  } @else {
+    &.is-disabled {
+      &,
+      &:hover,
+      &:focus,
+      &:active {
+        color: getCssVar('color', $type, 'light-5');
+        border-color: getCssVar('border-color', $type, 'light-5');
+        background-color: transparent;
+      }
     }
   }
 }
@@ -161,6 +230,11 @@
         'color',
         'white',
       ),
+      'border-color': (
+        'color',
+        $type,
+        'light-5',
+      ),
       'bg-color': (
         'color',
         $type,
@@ -205,10 +279,16 @@
       ),
     ),
     'disabled': (
-      'font-color': (
+      'text-color': (
         'button',
         'disabled',
-        'color',
+        'font-color',
+        $type,
+      ),
+      'border-color': (
+        'button',
+        'disabled',
+        'border-color',
         $type,
       ),
       'bg-color': (
@@ -219,6 +299,11 @@
       ),
     ),
   );
+
+  // 设置边框透明
+  @include set-css-var-value(('button', 'border-color'), 'transparent');
+  @include set-css-var-value(('button', 'hover', 'border-color'), 'transparent');
+  @include set-css-var-value(('button', 'active', 'border-color'), 'transparent');
 
   @if $type == 'primary' {
     @each $key, $typeMap in $button-color-types-primary {
@@ -242,8 +327,10 @@
   }
 
   &.is-ghost {
-    border-color: getCssVar('border-color', $type);
-    @include button-plain($type, 'ghost');
+    @include css-var-from-global(('button', 'bg-color'), ('color', 'white'));
+    @include css-var-from-global(('button', 'hover', 'bg-color'), ('color', 'white'));
+    @include css-var-from-global(('button', 'active', 'bg-color'), ('color', 'white'));
+    @include button-ghost($type);
   }
 }
 

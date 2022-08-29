@@ -60,18 +60,6 @@
   // color-scheme
   // Background --el-bg-color-#{$type}
   @include set-component-css-var('bg-color', $bg-color);
-  // 设置不同背景
-  @each $type in (primary, success, warning, danger, error, info) {
-    @include set-css-var-value('bg-color-#{$type}', map.get($colors, $type, 'base'));
-  }
-  // 设置文本字体颜色
-  @each $type in (primary, success, warning, danger, error, info) {
-    @include set-css-var-value('font-color-#{$type}', $color-white);
-  }
-  // 设置边框颜色
-  @each $type in (primary, success, warning, danger, error, info) {
-    @include set-css-var-value('border-color-#{$type}', map.get($colors, $type, 'base'));
-  }
   // --el-text-color-#{$type}
   @include set-component-css-var('text-color', $text-color);
   // --el-border-color-#{$type}
@@ -89,10 +77,6 @@
   @include set-component-css-var('overlay-color', $overlay-color);
   @include set-component-css-var('mask-color', $mask-color);
 
-  // button
-  @include set-css-var-value('button-font-color-primary', $color-white);
-  @include set-css-var-value('button-bg-color-primary', $color-primary);
-
   // Border
   @include set-css-var-value('border-width', $border-width);
   @include set-css-var-value('border-style', $border-style);
@@ -105,4 +89,32 @@
 
   // Svg
   @include css-var-from-global('svg-monochrome-grey', 'border-color');
+
+  // primary button
+  @include set-css-var-value('button-font-color-primary', $color-white);
+  @include set-css-var-value('button-bg-color-primary', map.get($colors, 'primary', 'base'));
+  @include set-css-var-value('button-hover-font-color-primary', $color-white);
+  @include set-css-var-value('button-hover-bg-color-primary', map.get($colors, 'primary', 'light-3'));
+  @include set-css-var-value('button-active-font-color-primary', $color-white);
+  // @include set-css-var-value('button-active-border-color-primary', map.get($colors, 'primary', 'dark-2'));
+  @include set-css-var-value('button-active-bg-color-primary', map.get($colors, 'primary', 'dark-2'));
+  @include set-css-var-value('button-disabled-font-color-primary', $color-white);
+  @include set-css-var-value('button-disabled-border-color-primary', map.get($colors, 'primary', 'light-5'));
+  @include set-css-var-value('button-disabled-bg-color-primary', map.get($colors, 'primary', 'light-5'));
+
+    // plain button
+    @include set-css-var-value('button-font-color-primary-plain', map.get($colors, 'primary', 'base'));
+    // @include set-css-var-value('button-border-color-primary-plain', map.get($colors, 'primary', 'light-5'));
+    @include set-css-var-value('button-bg-color-primary-plain', map.get($colors, 'primary', 'light-7'));
+    @include set-css-var-value('button-hover-font-color-primary-plain', map.get($colors, 'primary', 'base'));
+    // @include set-css-var-value('button-hover-border-color-primary-plain', map.get($colors, 'primary', 'light-3'));
+    @include set-css-var-value('button-hover-bg-color-primary-plain', map.get($colors, 'primary', 'light-8'));
+    @include set-css-var-value('button-active-font-color-primary-plain', map.get($colors, 'primary', 'base'));
+    // @include set-css-var-value('button-active-border-color-primary-plain', map.get($colors, 'primary', 'dark-2'));
+    @include set-css-var-value('button-active-bg-color-primary-plain', map.get($colors, 'primary', 'light-7'));
+    @include set-css-var-value('button-disabled-font-color-primary-plain', map.get($colors, 'primary', 'light-5'));
+    @include set-css-var-value('button-disabled-bg-color-primary-plain', map.get($colors, 'primary', 'light-9'));
+    // ghost
+    @include set-css-var-value('button-disabled-font-color-primary-ghost', map.get($colors, 'primary', 'light-5'));
+    @include set-css-var-value('button-disabled-border-color-primary-ghost', map.get($colors, 'primary', 'light-5'));
 }
