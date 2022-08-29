@@ -3,7 +3,7 @@ let componentNamespace = 'dl'
 // 组件前缀命名只能更新一次，防止重复执行修改组件注册出错
 let isUpdated = false
 // scss 命名不能通过 js 更改，在 SCSS 编译已经打包好了
-const cssNamespace = 'dl'
+export const cssNamespace = 'dl'
 const statePrefix = 'is-'
 
 export function createNamespace(name, { prefix }) {
@@ -110,6 +110,5 @@ export const useNamespace = (block) => {
 }
 
 export default {
-  cssNamespace,
   componentNamespace
 }
