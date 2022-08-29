@@ -1065,6 +1065,17 @@ $datepicker: map.merge(
   $datepicker
 );
 
+$timepicker: () !default;
+$timepicker: map.merge(
+  (
+    'width': 230px,
+    'icon-size': 16px,
+    'border-color': getCssVar('color-primary'),
+    'icon-color': getCssVar('color-primary'),
+  ),
+  $timepicker
+);
+
 $date-editor: () !default;
 $date-editor: map.merge(
   (

@@ -1,0 +1,34 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// 工具方法 clearfix vertical-center ellipsis
+@use '../mixins/utils' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(time-picker) {
+  @include set-component-css-var('time-picker', $timepicker);
+}
+
+@include b(time-picker) {
+  width: var(--dl-time-picker-width) !important;
+  border-color: var(--dl-time-picker-border-color) !important;
+  input {
+    border-color: var(--dl-time-picker-border-color) !important;
+    text-align: center;
+    color: #333;
+    &::-webkit-input-placeholder {
+      text-align: center;
+      color: #999;
+    }
+  }
+  .el-input__icon {
+    font-size: var(--dl-time-picker-icon-size) !important;
+    color: var(--dl-time-picker-icon-color) !important;
+  }
+}
+
