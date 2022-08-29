@@ -30,6 +30,11 @@ module.exports = [
         title: 'DatePicker 日期选择器',
         collapsable: false,
         path: '/guide/datePicker',
+      },
+      {
+        title: 'TimePicker 时间选择器',
+        collapsable: false,
+        path: '/guide/timePicker',
       }
     ]
   }

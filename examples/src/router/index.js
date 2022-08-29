@@ -27,6 +27,11 @@ export const routeComponents = [
     title: 'DatePicker 组件',
     path: '/DatePicker',
     component: () => import('@/views/datePicker/index.vue')
+  },
+  {
+    title: 'TimePicker 组件',
+    path: '/TimePicker',
+    component: () => import('@/views/timePicker/index.vue')
   }
 ]
 
