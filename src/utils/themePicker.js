@@ -74,7 +74,7 @@ function themeConfigFunc(defaultTheme = '#409EFF') {
     defaultTheme,
     theme: '',
     updateElementUITheme: async function (options = {}) {
-      const { version = '2.15.8', themeColor, appendDom, insertAfter, cssUrl, chalkStyle = 'chalk-style' } = options
+      const { version = '2.15.8', themeColor, appendDom, insertBefore, cssUrl, chalkStyle = 'chalk-style' } = options
       if (typeof themeColor !== 'string') return
 
       const oldVal = chalk ? this.theme : this.defaultTheme
@@ -91,7 +91,7 @@ function themeConfigFunc(defaultTheme = '#409EFF') {
             styleTag = document.createElement('style')
             styleTag.setAttribute('id', id)
             if (appendDom) {
-              if (insertAfter) {
+              if (insertBefore) {
                 appendDom.parentNode.insertBefore(styleTag, appendDom.nextSibling)
               } else {
                 appendDom.appendChild(styleTag)
@@ -128,4 +128,6 @@ function themeConfigFunc(defaultTheme = '#409EFF') {
   }
 }
 
-export { themeConfigFunc }
+export {
+  themeConfigFunc
+}

@@ -1,5 +1,6 @@
 import { createNamespace } from './utils/use-namespace'
 import { themeConfigFunc } from './utils/themePicker'
+import { updateTheme } from './utils/update-theme'
 import components from './ui/index'
 
 const install = (Vue, options = {}) => {
@@ -21,5 +22,6 @@ if (typeof window !== 'undefined' && window.Vue) {
 export default {
   install,
   themeConfigFunc,
+  updateTheme,
   ...components
 }

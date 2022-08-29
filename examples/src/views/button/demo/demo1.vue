@@ -65,6 +65,34 @@
       <dl-button type="danger" plain disabled>危险按钮</dl-button>
     </el-row>
 
+    <el-row>
+      <dl-button ghost disabled>幽灵按钮</dl-button>
+      <dl-button type="primary" ghost disabled>主要按钮</dl-button>
+      <dl-button type="success" ghost disabled>成功按钮</dl-button>
+      <dl-button type="info" ghost disabled>信息按钮</dl-button>
+      <dl-button type="warning" ghost disabled>警告按钮</dl-button>
+      <dl-button type="danger" ghost disabled>危险按钮</dl-button>
+    </el-row>
+
+    <el-row>
+      <dl-button link disabled>幽灵按钮</dl-button>
+      <dl-button type="primary" link disabled>主要按钮</dl-button>
+      <dl-button type="success" link disabled>成功按钮</dl-button>
+      <dl-button type="info" link disabled>信息按钮</dl-button>
+      <dl-button type="warning" link disabled>警告按钮</dl-button>
+      <dl-button type="danger" link disabled>危险按钮</dl-button>
+    </el-row>
+
+    <h2>链接按钮</h2>
+    <el-row>
+      <dl-button link>链接按钮</dl-button>
+      <dl-button type="primary" link>主要按钮</dl-button>
+      <dl-button type="success" link>成功按钮</dl-button>
+      <dl-button type="info" link>信息按钮</dl-button>
+      <dl-button type="warning" link>警告按钮</dl-button>
+      <dl-button type="danger" link>危险按钮</dl-button>
+    </el-row>
+
     <h2>文字按钮</h2>
     <dl-button type="text">文字按钮</dl-button>
     <dl-button type="text" disabled>文字按钮</dl-button>
