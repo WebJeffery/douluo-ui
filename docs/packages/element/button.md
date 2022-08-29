@@ -34,6 +34,15 @@ icon: button-component
 </el-row>
 
 <el-row>
+  <dl-button>幽灵按钮</dl-button>
+  <dl-button type="primary" ghost>主要按钮</dl-button>
+  <dl-button type="success" ghost>成功按钮</dl-button>
+  <dl-button type="info" ghost>信息按钮</dl-button>
+  <dl-button type="warning" ghost>警告按钮</dl-button>
+  <dl-button type="danger" ghost>危险按钮</dl-button>
+</el-row>
+
+<el-row>
   <dl-button round>圆角按钮</dl-button>
   <dl-button type="primary" round>主要按钮</dl-button>
   <dl-button type="success" round>成功按钮</dl-button>
@@ -76,6 +85,40 @@ icon: button-component
   <dl-button type="info" plain disabled>信息按钮</dl-button>
   <dl-button type="warning" plain disabled>警告按钮</dl-button>
   <dl-button type="danger" plain disabled>危险按钮</dl-button>
+</el-row>
+
+<el-row>
+  <dl-button plain disabled>幽灵按钮</dl-button>
+  <dl-button type="primary" ghost disabled>主要按钮</dl-button>
+  <dl-button type="success" ghost disabled>成功按钮</dl-button>
+  <dl-button type="info" ghost disabled>信息按钮</dl-button>
+  <dl-button type="warning" ghost disabled>警告按钮</dl-button>
+  <dl-button type="danger" ghost disabled>危险按钮</dl-button>
+</el-row>
+
+<el-row>
+  <dl-button link disabled>幽灵按钮</dl-button>
+  <dl-button type="primary" link disabled>主要按钮</dl-button>
+  <dl-button type="success" link disabled>成功按钮</dl-button>
+  <dl-button type="info" link disabled>信息按钮</dl-button>
+  <dl-button type="warning" link disabled>警告按钮</dl-button>
+  <dl-button type="danger" link disabled>危险按钮</dl-button>
+</el-row>
+```
+:::
+
+
+### 链接按钮
+
+::: demo
+```html
+<el-row>
+  <dl-button link>链接按钮</dl-button>
+  <dl-button type="primary" link>主要按钮</dl-button>
+  <dl-button type="success" link>成功按钮</dl-button>
+  <dl-button type="info" link>信息按钮</dl-button>
+  <dl-button type="warning" link>警告按钮</dl-button>
+  <dl-button type="danger" link>危险按钮</dl-button>
 </el-row>
 ```
 :::
@@ -162,11 +205,13 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
 | size     | 尺寸   | string  |   medium / small / mini            |    —     |
-| type     | 类型   | string    |   primary / success / warning / danger / info / text |     —    |
+| type     | 类型   | string    |   primary / success / warning / danger / info  |     —    |
 | plain     | 是否朴素按钮   | boolean    | — | false   |
 | round     | 是否圆角按钮   | boolean    | — | false   |
 | circle     | 是否圆形按钮   | boolean    | — | false   |
 | loading     | 是否加载中状态   | boolean    | — | false   |
+| link     | 链接按钮   | boolean    | — | false   |
+| text     | 文本按钮   | boolean    | — | false   |
 | disabled  | 是否禁用状态    | boolean   | —   | false   |
 | icon  | 图标类名 | string   |  —  |  —  |
 | autofocus  | 是否默认聚焦 | boolean   |  —  |  false  |

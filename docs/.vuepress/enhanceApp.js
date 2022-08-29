@@ -12,8 +12,10 @@ export default async ({ Vue, options, router, siteData, isServer }) => {
     for (const [name, component] of Object.entries(pageComponents)) {
       Vue.component(name, component)
     }
-    const themeConfig = themeConfigFunc()
-    await themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
+    await DouluoUI.updateTheme({
+      primary: '#FFAA00',
+      primarySecond: '#231909'
+    })
     Vue.use(DouluoUI);
     Vue.use(ElementUI);
   }
