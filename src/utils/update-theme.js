@@ -20,7 +20,7 @@ export const updateTheme = async function (options) {
     primary,
     primarySecond,
     opacity = 0.7,
-    // disOpacity = 0.5,
+    disOpacity = 0.5,
     button = {
       disabledFontColorPrimary: '#fff',
       disabledBgColorPrimary: '#ccc',
@@ -36,7 +36,19 @@ export const updateTheme = async function (options) {
   const themeConfig = themeConfigFunc()
   await themeConfig.updateElementUITheme({ themeColor: primary })
 
+  // const primaryOpc = colorPalette(primary, opacity)
+  const primarySecOpc = colorPalette(primarySecond, opacity)
+  // const primaryDis = colorPalette(primary, disOpacity)
+  // const primarySecDis = colorPalette(primarySecond, disOpacity)
+  const primaryLightColors = []
+
   el.style.setProperty(`--${cssNamespace}-color-primary`, primary)
+  for (let i = 1; i <= 9; i++) {
+    const color = colorPalette(primary, 0.1 * (10-i))
+    primaryLightColors.push(color)
+    el.style.setProperty(`--${cssNamespace}-color-primary-light-${i}`, color)
+  }
+
   // disabled primary
   el.style.setProperty(`--${cssNamespace}-button-disabled-font-color-primary`, button.disabledFontColorPrimary)
   el.style.setProperty(`--${cssNamespace}-button-disabled-bg-color-primary`, button.disabledBgColorPrimary)
@@ -50,18 +62,19 @@ export const updateTheme = async function (options) {
 
   // 两种主题
   if (primarySecond) {
-    // const primaryOpc = colorPalette(primary, opacity)
-    const primarySecOpc = colorPalette(primarySecond, opacity)
-    // const primaryDis = colorPalette(primary, disOpacity)
-    // const primarySecDis = colorPalette(primarySecond, disOpacity)
-
-
-
+    // primary
     el.style.setProperty(`--${cssNamespace}-button-font-color-primary`, primary)
     el.style.setProperty(`--${cssNamespace}-button-bg-color-primary`, primarySecond)
     el.style.setProperty(`--${cssNamespace}-button-hover-font-color-primary`, primary)
     el.style.setProperty(`--${cssNamespace}-button-hover-bg-color-primary`, primarySecOpc)
     el.style.setProperty(`--${cssNamespace}-button-active-font-color-primary`, primary)
     el.style.setProperty(`--${cssNamespace}-button-active-bg-color-primary`, primarySecond)
+    // plain
+    el.style.setProperty(`--${cssNamespace}-button-font-color-primary-plain`, primarySecond)
+    el.style.setProperty(`--${cssNamespace}-button-bg-color-primary-plain`, primaryLightColors[7])
+    el.style.setProperty(`--${cssNamespace}-button-hover-font-color-primary-plain`, primarySecond)
+    el.style.setProperty(`--${cssNamespace}-button-hover-bg-color-primary-plain`, primaryLightColors[8])
+    el.style.setProperty(`--${cssNamespace}-button-active-font-color-primary-plain`, primarySecond)
+    el.style.setProperty(`--${cssNamespace}-button-active-bg-color-primary-plain`, primaryLightColors[7])
   }
 }

@@ -1,5 +1,13 @@
 # 更新日志
 
+## [1.1.0](https://github.com/JefferyXZF/douluo-ui/compare/v1.1.5...v1.2.0) (2022-08-29)
+
+
+#### ✨ Features | 新功能
+
+* 新增 Button 按钮组件 ([#5](https://github.com/JefferyXZF/douluo-ui/pull/5))
+* 新增 DatePicker 日期组件 ([#4](https://github.com/JefferyXZF/douluo-ui/issues/4))
+
 
 ## [1.0.2](https://github.com/JefferyXZF/douluo-ui/pull/2)(2022-08-14)
 

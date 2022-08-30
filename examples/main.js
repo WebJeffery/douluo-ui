@@ -18,10 +18,10 @@ Vue.use(ElementUI)
 Vue.use(DouluoUI)
 
 const creatApp = async () => {
-  // await DouluoUI.updateTheme({
-  //   primary: '#FFAA00',
-  //   primarySecond: '#231909'
-  // })
+  await DouluoUI.updateTheme({
+    primary: '#FFAA00',
+    primarySecond: '#231909'
+  })
 
     new Vue({
       el: '#app',
