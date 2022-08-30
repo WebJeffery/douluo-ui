@@ -1,6 +1,6 @@
 {
   "name": "douluo-ui",
-  "version": "1.0.2",
+  "version": "1.2.0",
   "main": "lib/index.cjs.min.js",
   "module": "lib/index.es.min.js",
   "description": "douluo-ui Vue2组件库",
@@ -18,6 +18,7 @@
     "lib"
   ],
   "scripts": {
+    "bootstrap": "yarn || npm install",
     "dev": "vite",
     "docs:dev": "vuepress dev docs",
     "docs:build": "vuepress build docs",
@@ -82,12 +83,6 @@
     "husky": "^7.0.4",
     "is-ci": "^3.0.1",
     "lint-staged": "^13.0.3",
-    "postcss": "^8.4.14",
-    "postcss-css-variables": "^0.18.0",
-    "postcss-cssnext": "^3.1.1",
-    "postcss-html": "^1.5.0",
-    "postcss-nested": "^5.0.6",
-    "postcss-simple-vars": "^6.0.3",
     "prettier": "^2.6.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.77.2",

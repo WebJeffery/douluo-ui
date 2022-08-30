@@ -17,12 +17,11 @@ import '../styles/src/index.scss'
 Vue.use(ElementUI)
 Vue.use(DouluoUI)
 
-// const themeConfig = DouluoUI.themeConfigFunc()
-// themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
-
 const creatApp = async () => {
-  const themeConfig = DouluoUI.themeConfigFunc()
-  await themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
+  await DouluoUI.updateTheme({
+    primary: '#FFAA00',
+    primarySecond: '#231909'
+  })
 
     new Vue({
       el: '#app',

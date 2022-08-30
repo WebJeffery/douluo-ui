@@ -53,12 +53,19 @@
   }
 }
 
-// BEM
-@mixin b($block) {
+// BEM $element-ui 解决和element-ui样式层级问题
+@mixin b($block, $element-ui: false) {
   $B: $namespace + '-' + $block !global;
+  $ELB: $el-namespace + '-' + $block !global;
 
-  .#{$B} {
-    @content;
+  @if ($element-ui) {
+    .#{$ELB}.#{$B} {
+      @content;
+    }
+  } @else {
+    .#{$B} {
+      @content;
+    }
   }
 }
 

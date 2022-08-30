@@ -28,6 +28,7 @@ module.exports = config({
   },
   themeConfig: {
     iconPrefix: 'icon-',
+    repo: 'https://github.com/JefferyXZF/douluo-ui',
     // 配置顶部导航栏
     nav: [
       {
@@ -49,7 +50,7 @@ module.exports = config({
       {
         text: '业务组件',
         link: '/packages/business/rich-text'
-      },
+      }
     ],
     locales: {
       '/': {
