@@ -34,7 +34,7 @@ module.exports = [
       {
         title: 'TimePicker 时间选择器',
         collapsable: false,
-        path: '/guide/timePicker',
+        path: '/guide/time-picker',
       }
     ]
   }

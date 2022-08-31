@@ -1,0 +1,79 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// 工具方法 clearfix vertical-center ellipsis
+@use '../mixins/utils' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+@include b(date-editor) {
+  @include set-component-css-var('date-editor', $date-editor);
+}
+
+@include b(date-editor, true) {
+  .el-input__icon {
+    font-size: getCssVar('date-editor', 'icon-size');
+  }
+  &:not(.is-disabled):hover {
+    border-color: getCssVar('date-editor', 'border-color');
+    .el-icon-time {
+      color: getCssVar('date-editor', 'icon-color');
+    }
+  }
+
+  &.el-input {
+    width: getCssVar('date-editor', 'width');
+  }
+  &.el-range-editor {
+    width: getCssVar('date-editor', 'range-width');
+  }
+  input {
+    width: getCssVar('date-editor', 'width');
+    text-align: center;
+    color: getCssVar('date-editor', 'text-color');
+    &:not(:disabled):hover {
+      border-color: getCssVar('date-editor', 'border-color');
+    }
+    &:disabled {
+      color: getCssVar('date-editor', 'disabled-color');
+    }
+    &::-webkit-input-placeholder {
+      text-align: center;
+      color: getCssVar('date-editor', 'placeholder-color');
+    }
+  }
+}
+
+.el-picker-panel {
+  .el-picker-panel__content {
+    .time-select-item:hover {
+      color: getCssVar('color-primary');
+      background-color: getCssVar( 'color-primary-light-9');
+      font-weight: getCssVar('font-weight-primary');
+    }
+  }
+}
+
+.el-time-panel, .el-picker-panel {
+  .el-time-panel__content {
+    .el-time-spinner__wrapper {
+      .el-time-spinner__item {
+        color: getCssVar('text-color-regular');
+        &.active {
+          color: getCssVar('color-primary');
+          background-color: getCssVar('color-primary-light-9');
+        }
+      }
+    }
+    &::before, &::after {
+      border-top: transparent;
+      border-bottom: transparent;
+    }
+  }
+}
+
+
+
