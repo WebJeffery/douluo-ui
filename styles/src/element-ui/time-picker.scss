@@ -30,7 +30,7 @@
   &.el-range-editor {
     width: getCssVar('date-editor', 'range-width');
   }
-  input {
+  .el-input__inner, .el-range-input {
     width: getCssVar('date-editor', 'width');
     text-align: center;
     color: getCssVar('date-editor', 'text-color');
