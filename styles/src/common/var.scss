@@ -1,12 +1,12 @@
 /* 样式变量文件 */
-// sass 内置模块 math 函数模块，map 映射操作模块
+// sass 内置模块 math 函数模块，map 映射模块
 @use 'sass:math';
 @use 'sass:map';
-// @use 会自动加入命名空间，使用 as * 相当于解构直接使用
+// @use 自带命名空间，使用 as * 相当于解构直接使用
 @use '../mixins/function.scss' as *;
 
 // 定义类型 types
-$types: primary, primary-second, success, warning, danger, error, info;
+$types: primary, success, warning, danger, error, info;
 
 // Color 定义 map 类型结构
 $colors: () !default;
@@ -17,20 +17,17 @@ $colors: map.deep-merge(
     'primary': (
       'base': #409eff,
     ),
-    'primary-second': (
-      'base': #231909
-    ),
     'success': (
-      'base': #67c23a,
+      'base': #3CC58C,
     ),
     'warning': (
-      'base': #e6a23c,
+      'base': #FF9900,
     ),
     'danger': (
-      'base': #f56c6c,
+      'base': #FF4B38,
     ),
     'error': (
-      'base': #f56c6c,
+      'base': #FF4B38,
     ),
     'info': (
       'base': #909399,
@@ -42,7 +39,6 @@ $colors: map.deep-merge(
 $color-white: map.get($colors, 'white') !default;
 $color-black: map.get($colors, 'black') !default;
 $color-primary: map.get($colors, 'primary', 'base') !default;
-$color-primary-second: map.get($colors, 'primary-second', 'base') !default;
 $color-success: map.get($colors, 'success', 'base') !default;
 $color-warning: map.get($colors, 'warning', 'base') !default;
 $color-danger: map.get($colors, 'danger', 'base') !default;
@@ -73,7 +69,7 @@ $color-info: map.get($colors, 'info', 'base') !default;
 }
 
 // $colors.primary.light-i
-// --el-color-primary-light-i
+// --dl-color-primary-light-i
 // 10% 53a8ff
 // 20% 66b1ff
 // 30% 79bbff
@@ -90,7 +86,7 @@ $color-info: map.get($colors, 'info', 'base') !default;
   }
 }
 
-// --el-color-primary-dark-2
+// --dl-color-primary-dark-2
 @each $type in $types {
   @include set-color-mix-level($type, 2, 'dark', $color-black);
 }
@@ -102,8 +98,8 @@ $text-color: map.merge(
     'primary': #333,
     'regular': #666,
     'secondary': #999,
-    'placeholder': #ccc,
-    'disabled': #f5f5f5,
+    'placeholder': #999,
+    'disabled': #cccc,
   ),
   $text-color
 );
@@ -112,12 +108,13 @@ $text-color: map.merge(
 $border-color: () !default;
 $border-color: map.merge(
   (
-    '': #dcdfe6,
-    'light': #e4e7ed,
-    'lighter': #ebeef5,
-    'extra-light': #f2f6fc,
-    'dark': #d4d7de,
-    'darker': #cdd0d6,
+    '': #ccc,
+    'light': #f5f5f5,
+    'dark': #eee,
+    // 'lighter': #ebeef5,
+    // 'extra-light': #f2f6fc,
+    // 'dark': #d4d7de,
+    // 'darker': #cdd0d6,
   ),
   $border-color
 );
@@ -125,10 +122,10 @@ $border-color: map.merge(
 $fill-color: () !default;
 $fill-color: map.merge(
   (
-    '': #f0f2f5,
-    'light': #f5f7fa,
-    'lighter': #fafafa,
-    'extra-light': #fafcff,
+    '': #ccc,
+    'light': #f5f5f5,
+    'bg': #f5f5f5,
+    'extra-light': #eee,
     'dark': #ebedf0,
     'darker': #e6e8eb,
     'blank': #ffffff,
@@ -221,6 +218,7 @@ $font-size: map.merge(
   $font-size
 );
 
+
 // zIndex
 $z-index: () !default;
 $z-index: map.merge(
@@ -236,9 +234,9 @@ $z-index: map.merge(
 $disabled: () !default;
 $disabled: map.merge(
   (
-    'bg-color': getCssVar('fill-color', 'light'),
-    'text-color': getCssVar('text-color', 'placeholder'),
-    'border-color': getCssVar('border-color', 'light'),
+    'bg-color': getCssVar('fill-color', 'bg'),
+    'text-color': getCssVar('text-color', 'disabled'),
+    'border-color': getCssVar('border-color'),
   ),
   $disabled
 );
@@ -339,16 +337,16 @@ $checkbox-bordered-padding-right: map.merge(
 $radio: () !default;
 $radio: map.merge(
   (
-    // 'font-size': getCssVar('font-size-base'),
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'font-weight': getCssVar('font-weight-primary'),
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('text-color-regular'),
+    'font-weight': getCssVar('font-weight-primary'),
     // 'input-height': 14px,
     // 'input-width': 14px,
-    // 'input-border-radius': getCssVar('border-radius-circle'),
-    // 'input-bg-color': getCssVar('fill-color', 'blank'),
-    // 'input-border': getCssVar('border'),
-    // 'input-border-color': getCssVar('border-color'),
-    // 'input-border-color-hover': getCssVar('color-primary'),
+    'input-border-radius': getCssVar('border-radius-circle'),
+    'input-bg-color': getCssVar('fill-color', 'blank'),
+    'input-border': getCssVar('border'),
+    'input-border-color': getCssVar('border-color'),
+    'input-border-color-hover': getCssVar('color-primary'),
   ),
   $radio
 );
@@ -359,10 +357,11 @@ $radio-height: map.merge($common-component-size, $radio-height);
 $radio-button: () !default;
 $radio-button: map.merge(
   (
-    // 'checked-bg-color': getCssVar('color-primary'),
-    // 'checked-text-color': getCssVar('color-white'),
-    // 'checked-border-color': getCssVar('color-primary'),
-    // 'disabled-checked-fill': getCssVar('border-color-extra-light'),
+    'min-width': 100px,
+    'checked-text-color': getCssVar('button-font-color-primary'),
+    'checked-bg-color': getCssVar('button-bg-color-primary'),
+    'checked-border-color': getCssVar('button-bg-color-primary'),
+    'disabled-checked-fill': map.get($disabled, 'border-color'),
   ),
   $radio-button
 );
@@ -370,12 +369,12 @@ $radio-button: map.merge(
 $radio-disabled: () !default;
 $radio-disabled: map.merge(
   (
-    // 'input-border-color': getCssVar('disabled-border-color'),
-    // 'input-fill': getCssVar('disabled-bg-color'),
-    // 'icon-color': getCssVar('disabled-bg-color'),
-    // 'checked-input-border-color': getCssVar('disabled-border-color'),
-    // 'checked-input-fill': getCssVar('disabled-bg-color'),
-    // 'checked-icon-color': getCssVar('text-color-placeholder'),
+    'input-border-color': getCssVar('disabled-border-color'),
+    'input-fill': getCssVar('disabled-bg-color'),
+    'icon-color': getCssVar('disabled-bg-color'),
+    'checked-input-border-color': getCssVar('disabled-border-color'),
+    'checked-input-fill': getCssVar('disabled-bg-color'),
+    'checked-icon-color': getCssVar('text-color-disabled'),
   ),
   $radio-disabled
 );
@@ -383,9 +382,9 @@ $radio-disabled: map.merge(
 $radio-checked: () !default;
 $radio-checked: map.merge(
   (
-    // 'text-color': getCssVar('color-primary'),
-    // 'input-border-color': getCssVar('color-primary'),
-    // 'icon-color': getCssVar('color-primary'),
+    'text-color': getCssVar('color-primary'),
+    'input-border-color': getCssVar('color-primary'),
+    'icon-color': getCssVar('color-primary'),
   ),
   $radio-checked
 );
@@ -640,10 +639,12 @@ $cascader: map.merge(
 );
 
 // Button 变量
-// css3 var in packages/theme-chalk/src/button.scss
+// css var in styles/src/element-ui /button.scss
 $button: () !default;
 $button: map.merge(
   (
+    'min-width': 120px,
+    'min-height': 40px,
     'font-weight': getCssVar('font-weight-primary'),
     'text-color': getCssVar('text-color', 'regular'),
     'border-color': getCssVar('border-color'),
@@ -657,7 +658,6 @@ $button: map.merge(
     'active-text-color': getCssVar('button-hover-text-color'),
     'active-border-color': getCssVar('color-primary'),
     'active-bg-color': getCssVar('button', 'hover-bg-color'),
-    'divide-border-color': rgba($color-white, 0.5),
     'outline-color': getCssVar('color-primary', 'light-5'),
     'hover-link-text-color': getCssVar('color-info'),
     'active-color': getCssVar('text-color', 'primary'),
@@ -715,8 +715,8 @@ $button-padding-vertical: () !default;
 $button-padding-vertical: map.merge(
   (
     'large': 14px,
-    'default': 10px,
-    'small': 6px,
+    'default': 11px,
+    'small': 5px,
   ),
   $button-padding-vertical
 );
@@ -724,9 +724,9 @@ $button-padding-vertical: map.merge(
 $button-padding-horizontal: () !default;
 $button-padding-horizontal: map.merge(
   (
-    'large': 29px,
-    'default': 17px,
-    'small': 12px,
+    'large': 24px,
+    'default': 18px,
+    'small': 11px,
   ),
   $button-padding-horizontal
 );

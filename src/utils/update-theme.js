@@ -15,6 +15,7 @@ import { cssNamespace } from './use-namespace'
   return `${color}${hex}`
 }
 
+
 export const updateTheme = async function (options) {
   const {
     primary,
@@ -71,10 +72,10 @@ export const updateTheme = async function (options) {
     el.style.setProperty(`--${cssNamespace}-button-active-bg-color-primary`, primarySecond)
     // plain
     el.style.setProperty(`--${cssNamespace}-button-font-color-primary-plain`, primarySecond)
-    el.style.setProperty(`--${cssNamespace}-button-bg-color-primary-plain`, primaryLightColors[7])
+    el.style.setProperty(`--${cssNamespace}-button-bg-color-primary-plain`, primaryLightColors[6])
     el.style.setProperty(`--${cssNamespace}-button-hover-font-color-primary-plain`, primarySecond)
-    el.style.setProperty(`--${cssNamespace}-button-hover-bg-color-primary-plain`, primaryLightColors[8])
+    el.style.setProperty(`--${cssNamespace}-button-hover-bg-color-primary-plain`, primaryLightColors[7])
     el.style.setProperty(`--${cssNamespace}-button-active-font-color-primary-plain`, primarySecond)
-    el.style.setProperty(`--${cssNamespace}-button-active-bg-color-primary-plain`, primaryLightColors[7])
+    el.style.setProperty(`--${cssNamespace}-button-active-bg-color-primary-plain`, primaryLightColors[6])
   }
 }

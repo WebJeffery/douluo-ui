@@ -9,6 +9,11 @@
         'color',
         $type,
       ),
+      'border-color': (
+        'color',
+        $type,
+        'light-7',
+      ),
       'bg-color': (
         'color',
         $type,
@@ -20,6 +25,11 @@
         'color',
         $type,
       ),
+      'border-color': (
+        'color',
+        $type,
+        'light-8',
+      ),
       'bg-color': (
         'color',
         $type,
@@ -30,6 +40,11 @@
       'text-color': (
         'color',
         $type,
+      ),
+      'border-color': (
+        'color',
+        $type,
+        'light-7',
       ),
       'bg-color': (
         'color',
@@ -46,6 +61,11 @@
         'font-color',
         $type,
       ),
+      'border-color': (
+        'button',
+        'bg-color',
+        $type,
+      ),
       'bg-color': (
         'button',
         'bg-color',
@@ -59,6 +79,12 @@
         'font-color',
         $type,
       ),
+      'border-color': (
+        'button',
+        'hover',
+        'bg-color',
+        $type
+      ),
       'bg-color': (
         'button',
         'hover',
@@ -67,6 +93,12 @@
       ),
     ),
     'active': (
+      'border-color': (
+        'button',
+        'active',
+        'bg-color',
+        $type,
+      ),
       'bg-color': (
         'button',
         'active',
@@ -187,6 +219,10 @@
         'color',
         'white',
       ),
+      'border-color': (
+        'color',
+        $type,
+      ),
       'bg-color': (
         'color',
         $type,
@@ -212,6 +248,11 @@
         $type,
         'light-5',
       ),
+      'border-color': (
+        'color',
+        $type,
+        'light-3',
+      ),
       'bg-color': (
         'color',
         $type,
@@ -219,6 +260,11 @@
       ),
     ),
     'active': (
+      'border-color': (
+        'color',
+        $type,
+        'dark-2',
+      ),
       'bg-color': (
         'color',
         $type,
@@ -250,6 +296,11 @@
         'font-color',
         $type,
       ),
+      'border-color': (
+        'button',
+        'bg-color',
+        $type,
+      ),
       'bg-color': (
         'button',
         'bg-color',
@@ -263,6 +314,12 @@
         'font-color',
         $type,
       ),
+      'border-color': (
+        'button',
+        'hover',
+        'bg-color',
+        $type
+      ),
       'bg-color': (
         'button',
         'hover',
@@ -271,6 +328,12 @@
       ),
     ),
     'active': (
+      'border-color': (
+        'button',
+        'active',
+        'bg-color',
+        $type,
+      ),
       'bg-color': (
         'button',
         'active',
@@ -300,12 +363,9 @@
     ),
   );
 
-  // 设置边框透明
-  @include set-css-var-value(('button', 'border-color'), 'transparent');
-  @include set-css-var-value(('button', 'hover', 'border-color'), 'transparent');
-  @include set-css-var-value(('button', 'active', 'border-color'), 'transparent');
-
   @if $type == 'primary' {
+    // 解决 border 和 background 设置相同透明度颜色，border 会叠加
+    background-clip: padding-box;
     @each $key, $typeMap in $button-color-types-primary {
       @each $typeColor, $list in $typeMap {
         @include css-var-from-global(('button', $key, $typeColor), $list);
@@ -318,7 +378,6 @@
       }
     }
   }
-
 
   &.is-plain,
   &.is-text,
