@@ -56,7 +56,7 @@ export default {
     }
   },
   data() {
-    this.ns = useNamespace('time-picker')
+    this.ns = useNamespace('date-editor')
     return {}
   }
 }

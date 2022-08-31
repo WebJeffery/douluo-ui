@@ -1,4 +1,4 @@
-import TimePicker from './src/timePicker.vue'
+import TimePicker from './src/time-picker.vue'
 import { createNamespace } from '../../../src/utils/use-namespace'
 
 TimePicker.install = (Vue, options = {}) => {
