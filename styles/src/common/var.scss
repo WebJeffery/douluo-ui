@@ -1067,12 +1067,23 @@ $datepicker: map.merge(
 );
 
 $date-editor: () !default;
+$date-editor-width: 230px !default;
+$date-editor-range-width: 480px !default;
+$date-editor-icon-size: 16px !default;
 $date-editor: map.merge(
   (
-    'width': 220px,
+    'width': $date-editor-width,
+    'icon-size': $date-editor-icon-size,
     'monthrange-width': 300px,
     'daterange-width': 350px,
     'datetimerange-width': 400px,
+    'border-color': getCssVar('color-primary'),
+    'icon-color': getCssVar('color-primary'),
+    'placeholder-color': getCssVar('text-color-secondary'),
+    'text-color': getCssVar('text-color-primary'),
+    'range-width': $date-editor-range-width,
+    'hover-bg-color': getCssVar('color-primary'),
+    'disabled-color': getCssVar('text-color-secondary'),
   ),
   $date-editor
 );

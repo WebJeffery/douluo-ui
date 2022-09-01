@@ -14,6 +14,8 @@ declare module '@vue/runtime-core' {
     ElMenuItem: typeof import('element-ui/lib/menu-item')['default']
     ElRow: typeof import('element-ui/lib/row')['default']
     ElScrollbar: typeof import('element-ui/lib/scrollbar')['default']
+    ElTimePicker: typeof import('element-ui/lib/time-picker')['default']
+    ElTimeSelect: typeof import('element-ui/lib/time-select')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
   }
