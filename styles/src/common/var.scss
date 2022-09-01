@@ -279,25 +279,25 @@ $mask-color: map.merge(
 $checkbox: () !default;
 $checkbox: map.merge(
   (
-    // 'font-size': 14px,
-    // 'font-weight': getCssVar('font-weight-primary'),
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'input-height': 14px,
-    // 'input-width': 14px,
-    // 'border-radius': getCssVar('border-radius-small'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'input-border': getCssVar('border'),
-    // 'disabled-border-color': getCssVar('border-color'),
-    // 'disabled-input-fill': getCssVar('fill-color', 'light'),
-    // 'disabled-icon-color': getCssVar('text-color-placeholder'),
-    // 'disabled-checked-input-fill': getCssVar('border-color-extra-light'),
-    // 'disabled-checked-input-border-color': getCssVar('border-color'),
-    // 'disabled-checked-icon-color': getCssVar('text-color-placeholder'),
-    // 'checked-text-color': getCssVar('color-primary'),
-    // 'checked-input-border-color': getCssVar('color-primary'),
-    // 'checked-bg-color': getCssVar('color-primary'),
-    // 'checked-icon-color': getCssVar('color', 'white'),
-    // 'input-border-color-hover': getCssVar('color-primary'),
+    'font-size': 14px,
+    'font-weight': getCssVar('font-weight-primary'),
+    'text-color': getCssVar('text-color-regular'),
+    'input-height': 14px,
+    'input-width': 14px,
+    'border-radius': getCssVar('border-radius-small'),
+    'bg-color': getCssVar('fill-color', 'blank'),
+    'input-border': getCssVar('border'),
+    'disabled-border-color': getCssVar('border-color'),
+    'disabled-input-fill': getCssVar('fill-color', 'light'),
+    'disabled-icon-color': getCssVar('text-color-placeholder'),
+    'disabled-checked-input-fill': getCssVar('border-color-extra-light'),
+    'disabled-checked-input-border-color': getCssVar('border-color'),
+    'disabled-checked-icon-color': getCssVar('text-color-placeholder'),
+    'checked-text-color': getCssVar('color-primary'),
+    'checked-input-border-color': getCssVar('color-primary'),
+    'checked-bg-color': getCssVar('color-primary'),
+    'checked-icon-color': getCssVar('color', 'white'),
+    'input-border-color-hover': getCssVar('color-primary'),
   ),
   $checkbox
 );
@@ -305,9 +305,9 @@ $checkbox: map.merge(
 $checkbox-button: () !default;
 $checkbox-button: map.merge(
   (
-    // 'checked-bg-color': getCssVar('color-primary'),
-    // 'checked-text-color': getCssVar('color-white'),
-    // 'checked-border-color': getCssVar('color-primary'),
+    'checked-bg-color': getCssVar('color-primary'),
+    'checked-text-color': getCssVar('color-white'),
+    'checked-border-color': getCssVar('color-primary'),
   ),
   $checkbox-button
 );
@@ -645,6 +645,7 @@ $button: map.merge(
   (
     'min-width': 120px,
     'min-height': 40px,
+    'line-height': map.get($line-height, 'default'),
     'font-weight': getCssVar('font-weight-primary'),
     'text-color': getCssVar('text-color', 'regular'),
     'border-color': getCssVar('border-color'),

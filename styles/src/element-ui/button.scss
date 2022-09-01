@@ -25,13 +25,13 @@ $button-icon-span-gap: map.merge(
 }
 
 @include b(button) {
-  box-sizing: border-box;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
   min-width: getCssVar('button', 'min-width');
   min-height: getCssVar('button', 'min-height');
-  line-height: map.get($line-height, 'default');
+  line-height: getCssVar('button', 'line-height');
   font-weight: getCssVar('button', 'font-weight');
   color: getCssVar('button', 'text-color');
   background-color: getCssVar('button', 'bg-color');
@@ -94,29 +94,27 @@ $button-icon-span-gap: map.merge(
   }
 
   @include when(plain) {
+    background-clip: padding-box;
     @include css-var-from-global(
       ('button', 'hover', 'text-color'),
       ('color', 'primary')
     );
     @include css-var-from-global(
-      ('button', 'border-color'),
-      ('fill-color', 'blank')
-    );
-
-
-    @include css-var-from-global(
       ('button', 'hover', 'bg-color'),
       ('color-primary', 'light-7')
     );
     @include css-var-from-global(
-      ('button', 'hover', 'border-color'),
+      ('button', 'border-color'),
+      ('fill-color', 'blank')
+    );
+    @include css-var-from-global(
+      ('button', 'active', 'border-color'),
       ('color-primary', 'light-7')
     );
 
   }
 
   @include when(ghost) {
-
     @include css-var-from-global(
       ('button', 'hover', 'text-color'),
       ('color', 'primary')
@@ -170,7 +168,7 @@ $button-icon-span-gap: map.merge(
   @include when(circle) {
     border-radius: 50%;
     min-width: 0;
-    padding: map.get($button-padding-vertical, 'default');
+    padding: map.get($button-padding-vertical, 'default') + $button-border-width;
   }
 
   @include when(text) {

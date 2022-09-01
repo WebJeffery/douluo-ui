@@ -37,7 +37,7 @@ module.exports = [
         title: 'Button 按钮',
         collapsable: false,
         path: '/packages/element/button',
-        icon: "button-component",
+        icon: "new",
       },
       {
         title: 'Link 文字链接',
@@ -54,6 +54,7 @@ module.exports = [
         title: 'Radio 单选框',
         collapsable: false,
         path: '/packages/element/radio',
+        icon: "new",
       },
       {
         title: 'Checkbox 多选框',

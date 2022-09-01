@@ -1,7 +1,7 @@
 ---
 title: Button 按钮
 pageClass: demo-button
-icon: button-component
+icon: new
 ---
 
 # Button 按钮
