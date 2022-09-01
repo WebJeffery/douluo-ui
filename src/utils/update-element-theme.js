@@ -89,7 +89,6 @@ export const updateElementTheme = async function (options = {}) {
 
   const themeCluster = getThemeCluster(primaryColor.replace('#', ''))
   const originalCluster = getThemeCluster((oldTheme || defaultTheme).replace('#', ''))
-  console.log(themeCluster, originalCluster)
 
   const chalkHandler = (id) => {
     const newStyle = updateStyle(chalk, originalCluster, themeCluster)

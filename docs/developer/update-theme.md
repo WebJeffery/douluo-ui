@@ -37,7 +37,7 @@ pageClass: demo-theme
         if (color === '#FFAA00') {
           await window.$updateTheme({
             primaryColor: color,
-            primarySecond: window.primarySecond || '#231909',
+            primarySecondColor: window.primarySecond || '#231909',
             oldTheme: window.oldTheme
           })
         } else {

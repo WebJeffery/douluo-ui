@@ -4,21 +4,6 @@ import {
 } from './update-element-theme'
 import { cssNamespace } from './use-namespace'
 
-// /**
-//  * @description 8位颜色Hex码 定义颜色透明度
-//  * @param {string} color
-//  * @param {number} alpha 0 - 1 透明度
-//  */
-//  export function colorPalette(color, alpha) {
-//   alpha = Math.round(alpha * 100) / 100
-//   alpha = Math.round(alpha * 255)
-
-//   let hex = (alpha + 0x10000).toString(16).substr(-2).toLocaleLowerCase()
-
-//   return `${color}${hex}`
-// }
-
-
 export const updateUITheme = async function (options) {
   const {
     oldTheme = '#409EFF',
