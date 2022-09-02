@@ -1,8 +1,8 @@
 ---
+title: DatePicker 日期选择器
 pageClass: demo-date-picker
+icon: new
 ---
-
-# DatePicker 日期选择器
 
 用于选择或输入日期
 

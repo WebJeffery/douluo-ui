@@ -1,6 +1,6 @@
 import { createNamespace } from './utils/use-namespace'
-import { themeConfigFunc } from './utils/themePicker'
-import { updateTheme } from './utils/update-theme'
+import { updateElementTheme } from './utils/update-element-theme'
+import { updateUITheme } from './utils/update-ui-theme'
 import components from './ui/index'
 
 const install = (Vue, options = {}) => {
@@ -21,7 +21,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 // Vue.use 和按需加载都可以
 export default {
   install,
-  themeConfigFunc,
-  updateTheme,
+  updateElementTheme,
+  updateUITheme,
   ...components
 }

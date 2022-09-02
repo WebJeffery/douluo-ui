@@ -48,7 +48,7 @@
       &-piece {
         background: $scrollbar-track-background;
         width: 6px;
-      } 
+      }
     }
   }
 }
@@ -68,7 +68,7 @@
     }
   }
 }
-
+/*  */
 @mixin e($element) {
   $E: $element !global;
   $selector: &;

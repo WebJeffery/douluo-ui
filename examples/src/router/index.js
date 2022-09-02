@@ -29,10 +29,10 @@ export const routeComponents = [
     component: () => import('@/views/datePicker/index.vue')
   },
   {
-    title: 'TimePicker 组件',
-    path: '/TimePicker',
-    component: () => import('@/views/timePicker/index.vue')
-  }
+    title: 'Radio 组件',
+    path: '/radio',
+    component: () => import('@/views/radio/index.vue')
+  },
 ]
 
 const createRouter = () =>

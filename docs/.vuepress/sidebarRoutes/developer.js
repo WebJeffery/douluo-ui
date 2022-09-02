@@ -6,7 +6,8 @@ module.exports = [
       ['/developer/changelog', '更新日志'],
       ['/developer/installation', '安装'],
       ['/developer/quickstart', '快速开始'],
-      ['/developer/contributor', '代码贡献']
+      ['/developer/contributor', '代码贡献'],
+      ['/developer/update-theme', '更改主题'],
     ]
   },
   {
