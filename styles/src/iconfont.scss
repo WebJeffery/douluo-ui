@@ -23,6 +23,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.dl-icon-error:before {
+  content: "\e601";
+}
+
 .dl-icon-help:before {
   content: "\e662";
 }
@@ -66,4 +70,3 @@
 .dl-icon-paiban-review-icon:before {
   content: "\e674";
 }
-

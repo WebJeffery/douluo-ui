@@ -509,18 +509,56 @@ $messagebox: map.merge(
 // Message
 // css3 var in packages/theme-chalk/src/message.scss
 $message: () !default;
-$message: map.merge(
+$message-min-width: 400px !default;
+$message-text-height: 18px !default;
+$message-bg-color: () !default;
+$message-bg-color: map.deep-merge(
   (
-    // 'min-width': 380px,
-    // 'bg-color': getCssVar('color', 'info', 'light-9'),
-    // 'border-color': getCssVar('border-color-lighter'),
-    // 'padding': 15px 15px 15px 20px,
-    // 'close-size': 16px,
-    // 'close-icon-color': getCssVar('text-color-placeholder'),
-    // 'close-hover-color': getCssVar('text-color-secondary'),
+    'success':  #EBF9F3,
+    'info':#FFF3E1,
+    'warning': #FFF3E1,
+    'error': #FFEBE9,
   ),
-  $message
+  $message-bg-color
 );
+$message-border-color: () !default;
+$message-border-color: map.deep-merge(
+  (
+    'success': #93DFBF,
+    'info':#FFC670,
+    'warning': #FFC670,
+    'error': #FF9B90,
+  ),
+  $message-border-color
+);
+$message-text-color: () !default;
+$message-text-color: map.deep-merge(
+  (
+    'success': #3CC58C,
+    'info': #333333,
+    'warning': #FFAA00,
+    'error': #FF4B38,
+  ),
+  $message-text-color
+);
+$message-icon-size: 16px !default;
+$message-close-icon-size: 20px !default;
+@each $type in (success, warning, error, info) {
+  $message: map.merge(
+    (
+      'min-width': $message-min-width,
+      'text-height': $message-text-height,
+      'icon-size': $message-icon-size,
+      'close-icon-size': $message-close-icon-size,
+      #{'bg-' + $type + '-color'}: map.get($message-bg-color, $type),
+      #{'border-' + $type + '-color'}: map.get($message-border-color, $type),
+      #{'text-' + $type + '-color'}: map.get($message-text-color, $type),
+      #{'close-icon-' + $type + '-color'}: map.get($message-text-color, $type),
+
+    ),
+    $message
+  );
+}
 
 // Notification
 // css3 var in packages/theme-chalk/src/notification.scss

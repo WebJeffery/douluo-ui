@@ -1,0 +1,39 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// 工具方法 clearfix vertical-center ellipsis
+@use '../mixins/utils' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+@include b(message) {
+  @include set-component-css-var('message', $message);
+}
+
+@include b(message, true) {
+  @each $type in (success, warning, error, info) {
+    @include m($type) {
+      .el-message__icon {
+        font-size: getCssVar('message', 'icon-size');
+        color: getCssVar('message', 'text', $type, 'color');
+      }
+      .el-message__content {
+        height: getCssVar('message', 'text-height');
+        line-height: getCssVar('message', 'text-height');
+        color: getCssVar('message', 'text', $type, 'color');
+      }
+      .el-message__closeBtn {
+        font-size: getCssVar('message', 'close-icon-size');
+        color: getCssVar('message', 'close-icon', $type, 'color');
+      }
+      background-color: getCssVar('message', 'bg', $type, 'color');
+      border-color: getCssVar('message', 'border', $type, 'color');
+    }
+  }
+}
+
+
+
