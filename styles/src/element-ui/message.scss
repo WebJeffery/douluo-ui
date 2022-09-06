@@ -18,7 +18,7 @@
     @include m($type) {
       .el-message__icon {
         font-size: getCssVar('message', 'icon-size');
-        color: getCssVar('message', 'text', $type, 'color');
+        color: getCssVar('message', 'icon', $type, 'color');
       }
       .el-message__content {
         height: getCssVar('message', 'text-height');

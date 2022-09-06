@@ -541,6 +541,16 @@ $message-text-color: map.deep-merge(
   ),
   $message-text-color
 );
+$message-icon-color: () !default;
+$message-icon-color: map.deep-merge(
+  (
+    'success': #3CC58C,
+    'info': #FFAA00,
+    'warning': #FFAA00,
+    'error': #FF4B38,
+  ),
+  $message-icon-color
+);
 $message-icon-size: 16px !default;
 $message-close-icon-size: 20px !default;
 @each $type in (success, warning, error, info) {
@@ -553,8 +563,8 @@ $message-close-icon-size: 20px !default;
       #{'bg-' + $type + '-color'}: map.get($message-bg-color, $type),
       #{'border-' + $type + '-color'}: map.get($message-border-color, $type),
       #{'text-' + $type + '-color'}: map.get($message-text-color, $type),
+      #{'icon-' + $type + '-color'}: map.get($message-icon-color, $type),
       #{'close-icon-' + $type + '-color'}: map.get($message-text-color, $type),
-
     ),
     $message
   );
