@@ -20,7 +20,7 @@
 
     <h2>按钮样式</h2>
     <div>
-      <dl-radio-group v-model="button1">
+      <dl-radio-group v-model="button1" disabled>
         <dl-radio-button label="上海" />
         <dl-radio-button label="北京" />
         <dl-radio-button label="广州" />
@@ -36,15 +36,15 @@
       </dl-radio-group>
     </div>
     <div style="margin-top: 20px">
-      <dl-radio-group v-model="button3" size="small">
+      <dl-radio-group v-model="button3" size="small" disabled>
         <dl-radio-button label="上海" />
-        <dl-radio-button label="北京" disabled />
+        <dl-radio-button label="北京" />
         <dl-radio-button label="广州" />
         <dl-radio-button label="深圳" />
       </dl-radio-group>
     </div>
     <div style="margin-top: 20px">
-      <dl-radio-group v-model="button4" disabled size="mini">
+      <dl-radio-group v-model="button4" size="mini">
         <dl-radio-button label="上海" />
         <dl-radio-button label="北京" />
         <dl-radio-button label="广州" />
@@ -97,8 +97,8 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .mt20 {
-  margin-left: 20px;
+  margin-top: 20px;
 }
 </style>

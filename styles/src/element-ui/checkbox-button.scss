@@ -1,0 +1,70 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+@use '../mixins/button' as *;
+
+@include b(checkbox-button) {
+  @include set-component-css-var('checkbox-button', $checkbox-button);
+}
+
+@include b(checkbox-button, true) {
+  .#{$el-namespace}-checkbox-button__inner {
+    min-width: getCssVar('checkbox-button', 'min-width');
+
+    @include button-size(
+        map.get($button-padding-vertical, default),
+        map.get($button-padding-horizontal, default),
+        map.get($button-font-size, 'default'),
+        0
+      );
+  }
+
+  &.el-checkbox-button--small,
+  &.el-checkbox-button--mini {
+    .#{$el-namespace}-checkbox-button__inner {
+      min-width: 0;
+
+      @include button-size(
+        map.get($button-padding-vertical, small),
+        map.get($button-padding-horizontal, small),
+        map.get($button-font-size, 'default'),
+        0
+      );
+    }
+  }
+
+  .#{$el-namespace}-checkbox-button__original {
+    &:checked {
+      & + .#{$el-namespace}-checkbox-button__inner {
+        color: getCssVar('checkbox-button', 'checked-text-color');
+        background-color: getCssVar('checkbox-button', 'checked-bg-color');
+        border-color: getCssVar('checkbox-button', 'checked-border-color');
+        box-shadow: -1px 0 0 0 getCssVar('checkbox-button', 'checked-border-color');
+      }
+    }
+
+    &:disabled {
+      & + .#{$el-namespace}-checkbox-button__inner {
+        color: getCssVar('checkbox-button', 'disabled-text-color');
+        cursor: not-allowed;
+        background-image: none;
+        background-color: getCssVar('color-white');
+        border-color: getCssVar('checkbox-button', 'disabled-border-color');
+        box-shadow: none;
+      }
+
+      &:checked + .#{$el-namespace}-checkbox-button__inner {
+        color: getCssVar('checkbox-button', 'checked-disabled-text-color');
+        background-color: getCssVar('checkbox-button', 'checked-disabled-bg-color');
+        border-color: getCssVar('checkbox-button', 'checked-disabled-border-color');
+      }
+    }
+  }
+}

@@ -143,8 +143,8 @@ icon: new
 ```html
 <template>
   <div>
-    <dl-radio v-model="radio1" label="1" border>备选项1</dl-radio>
-    <dl-radio v-model="radio1" label="2" border>备选项2</dl-radio>
+    <dl-radio v-model="radio1" label="1" border disabled>备选项1</dl-radio>
+    <dl-radio v-model="radio1" label="2" border disabled>备选项2</dl-radio>
   </div>
   <div style="margin-top: 20px">
     <dl-radio v-model="radio2" label="1" border size="medium">备选项1</dl-radio>
@@ -153,7 +153,7 @@ icon: new
   <div style="margin-top: 20px">
     <dl-radio-group v-model="radio3" size="small">
       <dl-radio label="1" border>备选项1</dl-radio>
-      <dl-radio label="2" border disabled>备选项2</dl-radio>
+      <dl-radio label="2" border>备选项2</dl-radio>
     </dl-radio-group>
   </div>
   <div style="margin-top: 20px">

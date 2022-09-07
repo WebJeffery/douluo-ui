@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: "douluo-icons";
-  src: url('./fonts/iconfont.woff?t=1660287069498') format('woff'),
-       url('./fonts/iconfont.ttf?t=1660287069498') format('truetype');
+  src: url('./fonts/iconfont.woff?t=1662431203509') format('woff'),
+       url('./fonts/iconfont.ttf?t=1662431203509') format('truetype');
 }
 
 [class^="dl-icon-"], [class*=" dl-icon-"] {
@@ -23,31 +23,52 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+.dl-icon-lock:before {
+  content: "\e604";
+}
+
+.dl-icon-check:before {
+  content: "\e663";
+}
+
+.dl-icon-info:before {
+  content: "\e606";
+}
+
+.dl-icon-success:before {
+  content: "\e603";
+}
+
+.dl-icon-warning:before {
+  content: "\e602";
+}
+
+.dl-icon-error:before {
+  content: "\e601";
+}
+
 .dl-icon-help:before {
   content: "\e662";
 }
 
-.dl-icon-shuaxin:before {
+.dl-icon-reflesh:before {
   content: "\e628";
 }
 
-.dl-icon-shezhi:before {
+.dl-icon-setting:before {
   content: "\e639";
 }
 
-.dl-icon-a-bianzu23:before {
-  content: "\e651";
-}
-
-.dl-icon-a-xingzhuangjiehe22:before {
+.dl-icon-pass:before {
   content: "\e65a";
 }
 
-.dl-icon-shanchu:before {
+.dl-icon-delete:before {
   content: "\e605";
 }
 
-.dl-icon-shoucang-xuanze:before {
+.dl-icon-star:before {
   content: "\e617";
 }
 
@@ -55,15 +76,14 @@
   content: "\e61a";
 }
 
-.dl-icon-a-you1:before {
+.dl-icon-right:before {
   content: "\e621";
 }
 
-.dl-icon-zuo:before {
+.dl-icon-left:before {
   content: "\e622";
 }
 
-.dl-icon-paiban-review-icon:before {
+.dl-icon-review:before {
   content: "\e674";
 }
-

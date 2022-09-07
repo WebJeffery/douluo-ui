@@ -4,6 +4,9 @@ import TimePicker from 'packages/element-ui/time-picker'
 import Radio from 'packages/element-ui/radio'
 import RadioButton from 'packages/element-ui/radio-button'
 import RadioGroup from 'packages/element-ui/radio-group'
+import Checkbox from 'packages/element-ui/checkbox'
+import CheckboxButton from 'packages/element-ui/checkbox-button'
+import CheckboxGroup from 'packages/element-ui/checkbox-group'
 
 export default [
   Button,
@@ -11,5 +14,8 @@ export default [
   TimePicker,
   Radio,
   RadioButton,
-  RadioGroup
+  RadioGroup,
+  Checkbox,
+  CheckboxButton,
+  CheckboxGroup,
 ]

@@ -1,4 +1,9 @@
-# Checkbox 多选框
+---
+title: Checkbox 多选框
+pageClass: demo-checkbox
+icon: new
+---
+
 一组备选项中进行多选
 
 ### 基础用法
@@ -17,6 +22,25 @@
     data() {
       return {
         checked: true
+      };
+    }
+  };
+</script>
+```
+:::
+
+### 锁定状态
+
+锁定状态不可点击
+
+:::demo 设置 lock 锁定不可点击
+```html
+<dl-checkbox v-model="checked1" lock>备选项</dl-checkbox>
+<script>
+  export default {
+    data() {
+      return {
+        checked1: false,
       };
     }
   };
@@ -56,13 +80,13 @@
 
 ```html
 <template>
-  <el-checkbox-group v-model="checkList">
+  <dl-checkbox-group v-model="checkList">
     <dl-checkbox label="复选框 A"></dl-checkbox>
     <dl-checkbox label="复选框 B"></dl-checkbox>
     <dl-checkbox label="复选框 C"></dl-checkbox>
     <dl-checkbox label="禁用" disabled></dl-checkbox>
     <dl-checkbox label="选中且禁用" disabled></dl-checkbox>
-  </el-checkbox-group>
+  </dl-checkbox-group>
 </template>
 
 <script>
@@ -87,9 +111,9 @@
 <template>
   <dl-checkbox :indeterminate="isIndeterminate" v-model="checkAll" @change="handleCheckAllChange">全选</dl-checkbox>
   <div style="margin: 15px 0;"></div>
-  <el-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
+  <dl-checkbox-group v-model="checkedCities" @change="handleCheckedCitiesChange">
     <dl-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</dl-checkbox>
-  </el-checkbox-group>
+  </dl-checkbox-group>
 </template>
 <script>
   const cityOptions = ['上海', '北京', '广州', '深圳'];
@@ -126,12 +150,12 @@
 
 ```html
 <template>
-  <el-checkbox-group 
+  <dl-checkbox-group 
     v-model="checkedCities"
     :min="1"
     :max="2">
     <dl-checkbox v-for="city in cities" :label="city" :key="city">{{city}}</dl-checkbox>
-  </el-checkbox-group>
+  </dl-checkbox-group>
 </template>
 <script>
   const cityOptions = ['上海', '北京', '广州', '深圳'];
@@ -152,28 +176,28 @@
 
 按钮样式的多选组合。
 
-:::demo 只需要把`el-checkbox`元素替换为`el-checkbox-button`元素即可。此外，Element 还提供了`size`属性。
+:::demo 只需要把`dl-checkbox`元素替换为`dl-checkbox-button`元素即可。此外，Element 还提供了`size`属性。
 ```html
 <template>
   <div>
-    <el-checkbox-group v-model="checkboxGroup1">
-      <el-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-button>
-    </el-checkbox-group>
+    <dl-checkbox-group v-model="checkboxGroup1" disabled>
+      <dl-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</dl-checkbox-button>
+    </dl-checkbox-group>
   </div>
   <div style="margin-top: 20px">
-    <el-checkbox-group v-model="checkboxGroup2" size="medium">
-      <el-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-button>
-    </el-checkbox-group>
+    <dl-checkbox-group v-model="checkboxGroup2" size="medium">
+      <dl-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</dl-checkbox-button>
+    </dl-checkbox-group>
   </div>
   <div style="margin-top: 20px">
-    <el-checkbox-group v-model="checkboxGroup3" size="small">
-      <el-checkbox-button v-for="city in cities" :label="city" :disabled="city === '北京'" :key="city">{{city}}</el-checkbox-button>
-    </el-checkbox-group>
+    <dl-checkbox-group v-model="checkboxGroup3" size="small">
+      <dl-checkbox-button v-for="city in cities" :label="city" :disabled="city === '北京'" :key="city">{{city}}</dl-checkbox-button>
+    </dl-checkbox-group>
   </div>
   <div style="margin-top: 20px">
-    <el-checkbox-group v-model="checkboxGroup4" size="mini" disabled>
-      <el-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</el-checkbox-button>
-    </el-checkbox-group>
+    <dl-checkbox-group v-model="checkboxGroup4" size="mini" disabled>
+      <dl-checkbox-button v-for="city in cities" :label="city" :key="city">{{city}}</dl-checkbox-button>
+    </dl-checkbox-group>
   </div>
 </template>
 <script>
@@ -199,7 +223,7 @@
 ```html
 <template>
   <div>
-    <dl-checkbox v-model="checked1" label="备选项1" border></dl-checkbox>
+    <dl-checkbox v-model="checked1" label="备选项1" border disabled></dl-checkbox>
     <dl-checkbox v-model="checked2" label="备选项2" border></dl-checkbox>
   </div>
   <div style="margin-top: 20px">
@@ -207,16 +231,16 @@
     <dl-checkbox v-model="checked4" label="备选项2" border size="medium"></dl-checkbox>
   </div>
   <div style="margin-top: 20px">
-    <el-checkbox-group v-model="checkboxGroup1" size="small">
-      <dl-checkbox label="备选项1" border></dl-checkbox>
-      <dl-checkbox label="备选项2" border disabled></dl-checkbox>
-    </el-checkbox-group>
-  </div>
-  <div style="margin-top: 20px">
-    <el-checkbox-group v-model="checkboxGroup2" size="mini" disabled>
+    <dl-checkbox-group v-model="checkboxGroup1" size="small">
       <dl-checkbox label="备选项1" border></dl-checkbox>
       <dl-checkbox label="备选项2" border></dl-checkbox>
-    </el-checkbox-group>
+    </dl-checkbox-group>
+  </div>
+  <div style="margin-top: 20px">
+    <dl-checkbox-group v-model="checkboxGroup2" size="mini" disabled>
+      <dl-checkbox label="备选项1" border></dl-checkbox>
+      <dl-checkbox label="备选项2" border></dl-checkbox>
+    </dl-checkbox-group>
   </div>
 </template>
 
@@ -229,7 +253,7 @@
         checked3: false,
         checked4: true,
         checkboxGroup1: [],
-        checkboxGroup2: []
+        checkboxGroup2: ['备选项1']
       };
     }
   }
