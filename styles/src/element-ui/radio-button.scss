@@ -17,6 +17,8 @@
 @include b(radio-button, true) {
   .#{$el-namespace}-radio-button__inner {
     min-width: getCssVar('radio-button', 'min-width');
+    border-color: getCssVar('radio-button', 'border-color');
+    color: getCssVar('radio-button', 'text-color');
 
     @include button-size(
         map.get($button-padding-vertical, default),
@@ -24,6 +26,12 @@
         map.get($button-font-size, 'default'),
         0
       );
+  }
+
+  &:first-child {
+    .#{$el-namespace}-radio-button__inner {
+      border-left-color: getCssVar('radio-button', 'border-color');
+    }
   }
 
   &.el-radio-button--small,
@@ -43,23 +51,27 @@
   .#{$el-namespace}-radio-button__orig-radio {
     &:checked {
       & + .#{$el-namespace}-radio-button__inner {
-        color: getCssVarWithDefault(
-          ('radio-button', 'checked-text-color'),
-          map.get($radio-button, 'checked-text-color')
-        );
-        background-color: getCssVarWithDefault(
-          'radio-button-checked-bg-color',
-          map.get($radio-button, 'checked-bg-color')
-        );
-        border-color: getCssVarWithDefault(
-          'radio-button-checked-border-color',
-          map.get($radio-button, 'checked-border-color')
-        );
-        box-shadow: -1px 0 0 0
-          getCssVarWithDefault(
-            'radio-button-checked-border-color',
-            map.get($radio-button, 'checked-border-color')
-          );
+        color: getCssVar('radio-button', 'checked-text-color');
+        background-color: getCssVar('radio-button', 'checked-bg-color');
+        border-color: getCssVar('radio-button', 'checked-border-color');
+        box-shadow: -1px 0 0 0 getCssVar('radio-button', 'checked-border-color');
+      }
+    }
+
+    &:disabled {
+      & + .#{$el-namespace}-radio-button__inner {
+        color: getCssVar('radio-button', 'disabled-text-color');
+        cursor: not-allowed;
+        background-image: none;
+        background-color: getCssVar('color-white');
+        border-color: getCssVar('radio-button', 'disabled-border-color');
+        box-shadow: none;
+      }
+
+      &:checked + .#{$el-namespace}-radio-button__inner {
+        color: getCssVar('radio-button', 'checked-disabled-text-color');
+        background-color: getCssVar('radio-button', 'checked-disabled-bg-color');
+        border-color: getCssVar('radio-button', 'checked-disabled-border-color');
       }
     }
   }

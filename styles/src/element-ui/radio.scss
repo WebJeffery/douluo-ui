@@ -17,8 +17,20 @@
 @include b(radio, true) {
   font-size: getCssVar('font-size', 'base');
   color: getCssVar('radio-text-color');
-  font-weight: getCssVar('radio-font-weight');
+  font-weight: getCssVar('font-weight');
   // height: map.get($radio-height, 'large');
+
+  &:hover {
+    color: getCssVar('color-primary');
+
+    .#{$el-namespace}-radio__inner {
+      border-color: getCssVar('radio-input-border-color-hover');;
+    }
+  }
+
+  .#{$el-namespace}-radio__inner {
+    border-color: getCssVar('radio-input-border-color');
+  }
 
   &.#{$el-namespace}-radio--medium {
     height: map.get($radio-height, 'default');
@@ -64,18 +76,14 @@
   @include when(bordered) {
     border-color: getCssVar('radio-input-border-color');
 
+    &:hover {
+      border-color: getCssVar('radio-input-border-color-hover');
+    }
+
     &.is-disabled {
       cursor: not-allowed;
       border-color: getCssVar('radio-input-border-color');
       background-color: getCssVar('disabled', 'bg-color');;
-    }
-  }
-
-  .#{$el-namespace}-radio__inner {
-    border-color: getCssVar('radio-input-border-color');
-
-    &:hover {
-      border-color: getCssVar('radio-input-border-color-hover');;
     }
   }
 }

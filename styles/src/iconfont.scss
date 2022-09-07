@@ -2,8 +2,8 @@
 
 @font-face {
   font-family: "douluo-icons";
-  src: url('./fonts/iconfont.woff?t=1660287069498') format('woff'),
-       url('./fonts/iconfont.ttf?t=1660287069498') format('truetype');
+  src: url('./fonts/iconfont.woff?t=1662431203509') format('woff'),
+       url('./fonts/iconfont.ttf?t=1662431203509') format('truetype');
 }
 
 [class^="dl-icon-"], [class*=" dl-icon-"] {
@@ -23,13 +23,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.dl-icon-warning:before {
-  content: "\e606";
-}
-
-.dl-icon-info:before {
-  content: "\e675";
-}
 
 .dl-icon-lock:before {
   content: "\e604";
@@ -39,8 +32,16 @@
   content: "\e663";
 }
 
+.dl-icon-info:before {
+  content: "\e606";
+}
+
 .dl-icon-success:before {
   content: "\e603";
+}
+
+.dl-icon-warning:before {
+  content: "\e602";
 }
 
 .dl-icon-error:before {

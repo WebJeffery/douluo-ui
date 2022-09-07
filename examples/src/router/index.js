@@ -37,6 +37,11 @@ export const routeComponents = [
     title: 'Radio 组件',
     path: '/radio',
     component: () => import('@/views/radio/index.vue')
+  },
+  {
+    title: 'Checkbox 组件',
+    path: '/checkbox',
+    component: () => import('@/views/checkbox/index.vue')
   }
 ]
 
