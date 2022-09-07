@@ -18,16 +18,26 @@ Vue.use(ElementUI)
 Vue.use(DouluoUI)
 
 const creatApp = async () => {
-  await DouluoUI.updateTheme({
-    primary: '#FFAA00',
-    primarySecond: '#231909'
-  })
+  try {
+    await DouluoUI.updateUITheme({
+      primaryColor: '#FFAA00',
+      primarySecondColor: '#231909'
+    })
 
     new Vue({
       el: '#app',
       router,
       render: (h) => h(App)
     }).$mount()
+  } catch (error) {
+    new Vue({
+      el: '#app',
+      router,
+      render: (h) => h(App)
+    }).$mount()
+    console.error('主题更新失败')
+  }
+
 }
 
 creatApp()

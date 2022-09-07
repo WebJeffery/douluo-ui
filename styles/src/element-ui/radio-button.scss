@@ -1,0 +1,66 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+@use '../mixins/button' as *;
+
+@include b(radio-button) {
+  @include set-component-css-var('radio-button', $radio-button);
+}
+
+@include b(radio-button, true) {
+  .#{$el-namespace}-radio-button__inner {
+    min-width: getCssVar('radio-button', 'min-width');
+
+    @include button-size(
+        map.get($button-padding-vertical, default),
+        map.get($button-padding-horizontal, default),
+        map.get($button-font-size, 'default'),
+        0
+      );
+  }
+
+  &.el-radio-button--small,
+  &.el-radio-button--mini {
+    .#{$el-namespace}-radio-button__inner {
+      min-width: 0;
+
+      @include button-size(
+        map.get($button-padding-vertical, small),
+        map.get($button-padding-horizontal, small),
+        map.get($button-font-size, 'default'),
+        0
+      );
+    }
+  }
+
+  .#{$el-namespace}-radio-button__orig-radio {
+    &:checked {
+      & + .#{$el-namespace}-radio-button__inner {
+        color: getCssVarWithDefault(
+          ('radio-button', 'checked-text-color'),
+          map.get($radio-button, 'checked-text-color')
+        );
+        background-color: getCssVarWithDefault(
+          'radio-button-checked-bg-color',
+          map.get($radio-button, 'checked-bg-color')
+        );
+        border-color: getCssVarWithDefault(
+          'radio-button-checked-border-color',
+          map.get($radio-button, 'checked-border-color')
+        );
+        box-shadow: -1px 0 0 0
+          getCssVarWithDefault(
+            'radio-button-checked-border-color',
+            map.get($radio-button, 'checked-border-color')
+          );
+      }
+    }
+  }
+}

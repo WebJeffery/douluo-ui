@@ -120,16 +120,14 @@
 
     <h2>不同尺寸</h2>
     <el-row>
+      <dl-button size="large">大等按钮</dl-button>
       <dl-button>默认按钮</dl-button>
-      <dl-button size="medium">中等按钮</dl-button>
       <dl-button size="small">小型按钮</dl-button>
-      <dl-button size="mini">超小按钮</dl-button>
     </el-row>
     <el-row>
+      <dl-button size="large" round>大等按钮</dl-button>
       <dl-button round>默认按钮</dl-button>
-      <dl-button size="medium" round>中等按钮</dl-button>
       <dl-button size="small" round>小型按钮</dl-button>
-      <dl-button size="mini" round>超小按钮</dl-button>
     </el-row>
   </div>
 </template>

@@ -21,6 +21,7 @@
     <i class="el-icon-loading" v-if="loading"></i>
     <i :class="icon" v-if="icon && !loading"></i>
     <span v-if="$slots.default"><slot></slot></span>
+    <span v-if="$slots.icon"><slot name="icon"></slot></span>
   </button>
 </template>
 <script>
@@ -28,13 +29,17 @@ import { useNamespace } from 'src/utils/use-namespace'
 
 export default {
   name: 'Button',
+  inheritAttrs: false,
 
   props: {
       type: {
         type: String,
         default: 'default'
       },
-      size: String,
+      size: {
+        type: String,
+        default: ''
+      },
       icon: {
         type: String,
         default: ''

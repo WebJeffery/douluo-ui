@@ -1,7 +1,7 @@
 ---
 title: Button 按钮
 pageClass: demo-button
-icon: button-component
+icon: new
 ---
 
 # Button 按钮
@@ -204,7 +204,7 @@ Button 组件提供除了默认值以外的三种尺寸，可以在不同场景�
 ### Attributes
 | 参数      | 说明    | 类型      | 可选值       | 默认值   |
 |---------- |-------- |---------- |-------------  |-------- |
-| size     | 尺寸   | string  |   medium / small / mini            |    —     |
+| size     | 尺寸   | string  |   large / default / small            |    default    |
 | type     | 类型   | string    |   primary / success / warning / danger / info  |     —    |
 | plain     | 是否朴素按钮   | boolean    | — | false   |
 | round     | 是否圆角按钮   | boolean    | — | false   |

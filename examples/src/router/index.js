@@ -32,6 +32,11 @@ export const routeComponents = [
     title: 'Message 组件',
     path: '/message',
     component: () => import('@/views/message/index.vue')
+  },
+  {
+    title: 'Radio 组件',
+    path: '/radio',
+    component: () => import('@/views/radio/index.vue')
   }
 ]
 
