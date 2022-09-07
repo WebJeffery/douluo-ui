@@ -23,7 +23,7 @@
   @include set-component-css-var('font-size', $font-size);
   @include set-component-css-var('font-family', $font-family);
 
-  @include set-css-var-value('font-weight-primary', 500);
+  @include set-component-css-var('font-weight', $font-weight);
   @include set-css-var-value('font-line-height-primary', 24px);
 
   // z-index --el-index-#{$type}

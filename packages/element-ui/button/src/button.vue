@@ -18,10 +18,15 @@
     :autofocus="autofocus"
     :type="nativeType"
   >
-    <i class="el-icon-loading" v-if="loading"></i>
-    <i :class="icon" v-if="icon && !loading"></i>
+    <template v-if="loading">
+      <slot v-if="$slots.loading" name="loading"></slot>
+      <i v-else class="el-icon-loading"></i>
+    </template>
+    <template v-else-if="icon || $slots.icon">
+      <span v-if="$slots.icon"><slot name="icon"></slot></span>
+      <i v-else :class="icon"></i>
+    </template>
     <span v-if="$slots.default"><slot></slot></span>
-    <span v-if="$slots.icon"><slot name="icon"></slot></span>
   </button>
 </template>
 <script>

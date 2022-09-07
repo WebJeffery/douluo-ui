@@ -1,0 +1,204 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(checkbox) {
+  @include set-component-css-var('checkbox', $checkbox);
+}
+
+@include b(checkbox) {
+  display: inline-flex;
+  align-items: center;
+  color: getCssVar('checkbox-text-color');
+  font-size: getCssVar('checkbox-font-size');;
+
+  & .is-lock {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: getCssVar('checkbox-input-width');
+    height: getCssVar('checkbox-input-height');
+    font-size: getCssVar('font-size-extra-small');
+    border-radius: getCssVar('border-radius-small');
+    color: getCssVar('color-white');
+    background-color: getCssVar('color-primary');
+    margin-right: 10px;
+
+    .#{$namespace}-icon-lock {
+      transform: scale(.8);
+    }
+  }
+}
+
+@include b(checkbox, true) {
+  font-weight: getCssVar('checkbox-font-weight');
+  color: getCssVar('checkbox-text-color');
+  position: relative;
+
+  &:hover {
+    color: getCssVar('checkbox-hover-color');
+    .#{$el-namespace}-checkbox__inner {
+      border-color: getCssVar('checkbox-input-border-color-hover');
+    }
+  }
+  .#{$el-namespace}-checkbox__inner {
+    border-color: getCssVar('checkbox-input-border-color');
+  }
+
+  .#{$el-namespace}-checkbox__input {
+
+    @include when(disabled) {
+      .#{$el-namespace}-checkbox__inner {
+        border-color: getCssVar('checkbox-disabled-border-color');
+        background-color: getCssVar('checkbox-disabled-bg-color');
+        cursor: not-allowed;
+
+        &::after {
+          cursor: not-allowed;
+          border-color: getCssVar('checkbox-disabled-icon-color');
+        }
+
+        & + .#{$el-namespace}-checkbox__label {
+          cursor: not-allowed;
+        }
+      }
+
+      &.is-checked {
+        .#{$el-namespace}-checkbox__inner {
+          background-color: getCssVar('checkbox-disabled-checked-bg-color');
+          border-color: getCssVar('checkbox-disabled-checked-border-color');
+
+          &::after {
+            border-color: getCssVar('checkbox-disabled-checked-icon-color');
+          }
+        }
+      }
+
+      &.is-indeterminate {
+        .#{$el-namespace}-checkbox__inner {
+          background-color: getCssVar('checkbox-disabled-checked-bg-color');
+          border-color: getCssVar('checkbox-disabled-checked-border-color');
+
+          &::before {
+            background-color: getCssVar('checkbox-disabled-checked-bg-color');
+            border-color: getCssVar('checkbox-disabled-checked-border-color');
+          }
+        }
+      }
+
+      & + span.#{$el-namespace}-checkbox__label {
+        color: getCssVar('disabled-text-color');
+        cursor: not-allowed;
+      }
+    }
+
+    @include when(checked) {
+      .#{$el-namespace}-checkbox__inner {
+        background-color: getCssVar('checkbox-checked-bg-color');
+        border-color: getCssVar('checkbox-checked-border-color');
+
+        &::after {
+          transform: rotate(45deg) scaleY(1);
+        }
+      }
+
+      & + .#{$el-namespace}-checkbox__label {
+        color: getCssVar('checkbox-checked-text-color');
+      }
+    }
+    @include when(focus) {
+      // Visually distinguish when focus
+      &:not(.is-checked) {
+        .#{$el-namespace}-checkbox__original:not(:focus-visible) {
+          border-color: getCssVar('checkbox-input-border-color-hover');
+        }
+      }
+    }
+    @include when(indeterminate) {
+      .#{$el-namespace}-checkbox__inner {
+        background-color: getCssVar('checkbox-checked-bg-color');
+        border-color: getCssVar('checkbox-checked-border-color');
+
+        &::before {
+          content: '';
+          position: absolute;
+          display: block;
+          background-color: getCssVar('checkbox-checked-icon-color');
+          height: 2px;
+          transform: scale(0.5);
+          left: 0;
+          right: 0;
+          top: 5px;
+        }
+
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .dl-check-status {
+    display: none;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    color: getCssVar('color-white');
+    border: 10px solid transparent;
+    border-right-color: getCssVar('color-primary');
+    border-bottom-color: getCssVar('color-primary');
+  }
+
+  @include when(bordered) {
+    border-color: getCssVar('checkbox-input-border-color');
+
+    .#{$el-namespace}-checkbox__input {
+      display: none;
+    }
+
+    &:hover {
+      border-color: getCssVar('checkbox-input-border-color-hover');
+    }
+
+    @include when(checked) {
+      .dl-check-status {
+        display: inline-flex;
+      }
+      .dl-icon-check {
+        transform: scale(0.8);
+        position: absolute;
+        left: -3px;
+        top: -3px;
+      }
+    }
+
+    &.is-disabled {
+      cursor: not-allowed;
+      border-color: getCssVar('checkbox-input-border-color');
+      background-color: getCssVar('disabled', 'bg-color');
+
+      @include when(checked) {
+        .dl-check-status {
+          border-right-color: getCssVar('disabled-border-color');
+          border-bottom-color: getCssVar('disabled-border-color');
+        }
+      }
+    }
+  }
+
+  &.el-checkbox--small.is-bordered.is-checked,
+  &.el-checkbox--mini.is-bordered.is-checked {
+    .dl-icon-check {
+      left: -2px;
+      top: -2px;
+    }
+  }
+}
