@@ -1,0 +1,51 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// 工具方法 clearfix vertical-center ellipsis
+@use '../mixins/utils' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+@include b(message) {
+  @include set-component-css-var('message', $message);
+}
+
+@include b(message__closeBtn) {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+@include b(message, true) {
+  max-height: getCssVar('message', 'max-height');
+  padding-top: getCssVar('message', 'padding-vertical');
+  padding-bottom: getCssVar('message', 'padding-vertical');
+  @each $type in (success, warning, error, info) {
+    @include m($type) {
+      .#{$namespace}-message__icon {
+        margin-right: getCssVar('message', 'icon-margin-right');
+        font-size: getCssVar('message', 'icon-size');
+        color: getCssVar('message', 'icon', $type, 'color');
+      }
+      .#{$namespace}-message__content {
+        height: getCssVar('message', 'text-height');
+        font-size: getCssVar('message', 'text-size');
+        color: getCssVar('message', 'text', $type, 'color');
+      }
+      .#{$namespace}-message__closeBtn {
+        font-size: getCssVar('message', 'close-icon-size');
+        color: getCssVar('message', 'close-icon', $type, 'color');
+      }
+      background-color: getCssVar('message', 'bg', $type, 'color');
+      border-color: getCssVar('message', 'border', $type, 'color');
+    }
+  }
+}
+
+

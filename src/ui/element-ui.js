@@ -7,6 +7,7 @@ import RadioGroup from 'packages/element-ui/radio-group'
 import Checkbox from 'packages/element-ui/checkbox'
 import CheckboxButton from 'packages/element-ui/checkbox-button'
 import CheckboxGroup from 'packages/element-ui/checkbox-group'
+import Message from 'packages/element-ui/message'
 
 export default [
   Button,
@@ -18,4 +19,5 @@ export default [
   Checkbox,
   CheckboxButton,
   CheckboxGroup,
+  Message
 ]

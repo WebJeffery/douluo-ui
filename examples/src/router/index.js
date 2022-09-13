@@ -29,6 +29,11 @@ export const routeComponents = [
     component: () => import('@/views/datePicker/index.vue')
   },
   {
+    title: 'Message 组件',
+    path: '/message',
+    component: () => import('@/views/message/index.vue')
+  },
+  {
     title: 'Radio 组件',
     path: '/radio',
     component: () => import('@/views/radio/index.vue')
@@ -37,7 +42,7 @@ export const routeComponents = [
     title: 'Checkbox 组件',
     path: '/checkbox',
     component: () => import('@/views/checkbox/index.vue')
-  },
+  }
 ]
 
 const createRouter = () =>

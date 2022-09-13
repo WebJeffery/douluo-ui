@@ -8,11 +8,15 @@ export {}
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     ElButton: typeof import('element-ui/lib/button')['default']
-    ElButtonGroup: typeof import('element-ui/lib/button-group')['default']
+    ElCheckbox: typeof import('element-ui/lib/checkbox')['default']
+    ElCheckboxButton: typeof import('element-ui/lib/checkbox-button')['default']
+    ElCheckboxGroup: typeof import('element-ui/lib/checkbox-group')['default']
     ElDatePicker: typeof import('element-ui/lib/date-picker')['default']
     ElMenu: typeof import('element-ui/lib/menu')['default']
     ElMenuItem: typeof import('element-ui/lib/menu-item')['default']
-    ElRow: typeof import('element-ui/lib/row')['default']
+    ElRadio: typeof import('element-ui/lib/radio')['default']
+    ElRadioButton: typeof import('element-ui/lib/radio-button')['default']
+    ElRadioGroup: typeof import('element-ui/lib/radio-group')['default']
     ElScrollbar: typeof import('element-ui/lib/scrollbar')['default']
     ElTimePicker: typeof import('element-ui/lib/time-picker')['default']
     ElTimeSelect: typeof import('element-ui/lib/time-select')['default']

@@ -9,7 +9,7 @@ const install = (Vue, options = {}) => {
   install.installed = true
 
   components.forEach((component) => {
-    Vue.component(createNamespace(component.name, { prefix: options.prefix }), component)
+    Vue.use(component)
   })
 }
 

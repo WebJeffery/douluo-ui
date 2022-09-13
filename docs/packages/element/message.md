@@ -1,3 +1,9 @@
+---
+title: Message 消息提示
+pageClass: demo-message
+icon: new
+---
+
 # Message 消息提示
 
 常用于主动操作后的反馈提示。与 Notification 的区别是后者更多用于系统级通知的被动提醒。
@@ -6,7 +12,7 @@
 
 从顶部出现，3 秒后自动消失。
 
-:::demo Message 在配置上与 Notification 非常类似，所以部分 options 在此不做详尽解释，文末有 options 列表，可以结合 Notification 的文档理解它们。Element 注册了一个`$message`方法用于调用，Message 可以接收一个字符串或一个 VNode 作为参数，它会被显示为正文内容。
+:::demo Message 在配置上与 Notification 非常类似，所以部分 options 在此不做详尽解释，文末有 options 列表，可以结合 Notification 的文档理解它们。Element 注册了一个`$dlMessage`方法用于调用，Message 可以接收一个字符串或一个 VNode 作为参数，它会被显示为正文内容。
 
 ```html
 <template>
@@ -18,12 +24,12 @@
   export default {
     methods: {
       open() {
-        this.$message('这是一条消息提示');
+        this.$dlMessage('这是一条消息提示');
       },
 
       openVn() {
         const h = this.$createElement;
-        this.$message({
+        this.$dlMessage({
           message: h('p', null, [
             h('span', null, '内容可以是 '),
             h('i', { style: 'color: teal' }, 'VNode')
@@ -53,24 +59,24 @@
   export default {
     methods: {
       open1() {
-        this.$message('这是一条消息提示');
+        this.$dlMessage('这是一条消息提示');
       },
       open2() {
-        this.$message({
+        this.$dlMessage({
           message: '恭喜你，这是一条成功消息',
           type: 'success'
         });
       },
 
       open3() {
-        this.$message({
+        this.$dlMessage({
           message: '警告哦，这是一条警告消息',
           type: 'warning'
         });
       },
 
       open4() {
-        this.$message.error('错了哦，这是一条错误消息');
+        this.$dlMessage.error('错了哦，这是一条错误消息');
       }
     }
   }
@@ -95,14 +101,14 @@
   export default {
     methods: {
       open1() {
-        this.$message({
+        this.$dlMessage({
           showClose: true,
           message: '这是一条消息提示'
         });
       },
 
       open2() {
-        this.$message({
+        this.$dlMessage({
           showClose: true,
           message: '恭喜你，这是一条成功消息',
           type: 'success'
@@ -110,7 +116,7 @@
       },
 
       open3() {
-        this.$message({
+        this.$dlMessage({
           showClose: true,
           message: '警告哦，这是一条警告消息',
           type: 'warning'
@@ -118,7 +124,7 @@
       },
 
       open4() {
-        this.$message({
+        this.$dlMessage({
           showClose: true,
           message: '错了哦，这是一条错误消息',
           type: 'error'
@@ -144,7 +150,7 @@
   export default {
     methods: {
       openCenter() {
-        this.$message({
+        this.$dlMessage({
           message: '居中的文字',
           center: true
         });
@@ -169,7 +175,7 @@
   export default {
     methods: {
       openHTML() {
-        this.$message({
+        this.$dlMessage({
           dangerouslyUseHTMLString: true,
           message: '<strong>这是 <i>HTML</i> 片段</strong>'
         });
@@ -186,7 +192,7 @@
 
 ### 全局方法
 
-Element 为 Vue.prototype 添加了全局方法 $message。因此在 vue instance 中可以采用本页面中的方式调用 `Message`。
+Element 为 Vue.prototype 添加了全局方法 $dlMessage。因此在 vue instance 中可以采用本页面中的方式调用 `Message`。
 
 ### 单独引用
 
@@ -213,7 +219,7 @@ import { Message } from 'element-ui';
 | offset | Message 距离窗口顶部的偏移量 | number | — | 20 |
 
 ### 方法
-调用 `Message` 或 `this.$message` 会返回当前 Message 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。
+调用 `Message` 或 `this.$dlMessage` 会返回当前 Message 的实例。如果需要手动关闭实例，可以调用它的 `close` 方法。
 | 方法名 | 说明 |
 | ---- | ---- |
 | close | 关闭当前的 Message |
