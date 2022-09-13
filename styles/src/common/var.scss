@@ -533,56 +533,64 @@ $messagebox: map.merge(
 // css3 var in packages/theme-chalk/src/message.scss
 $message: () !default;
 $message-min-width: 400px !default;
-$message-text-height: 18px !default;
+$message-max-height: 50px !default;
+$message-text-height: 20px !default;
+$message-icon-size: 16px !default;
+$message-close-icon-size: 20px !default;
+$message-text-size: 14px !default;
+$message-icon-margin-right: 10px !default;
+$message-padding-vertical: 14px !default;
 $message-bg-color: () !default;
 $message-bg-color: map.deep-merge(
   (
-    'success':  #EBF9F3,
-    'info':#FFF3E1,
-    'warning': #FFF3E1,
-    'error': #FFEBE9,
+    'success': getCssVar('color-success', 'light-9'),
+    'info': getCssVar('color-warning', 'light-9'),
+    'warning': getCssVar('color-warning', 'light-9'),
+    'error': getCssVar('color-error', 'light-9'),
   ),
   $message-bg-color
 );
 $message-border-color: () !default;
 $message-border-color: map.deep-merge(
   (
-    'success': #93DFBF,
-    'info':#FFC670,
-    'warning': #FFC670,
-    'error': #FF9B90,
+    'success': getCssVar('color-success', 'light-5'),
+    'info': getCssVar('color-warning', 'light-5'),
+    'warning': getCssVar('color-warning', 'light-5'),
+    'error': getCssVar('color-error', 'light-5'),
   ),
   $message-border-color
 );
 $message-text-color: () !default;
 $message-text-color: map.deep-merge(
   (
-    'success': #3CC58C,
-    'info': #333333,
-    'warning': #FFAA00,
-    'error': #FF4B38,
+    'success': getCssVar('color-success'),
+    'info': getCssVar('text-color', 'primary'),
+    'warning': getCssVar('color-warning'),
+    'error': getCssVar('color-error'),
   ),
   $message-text-color
 );
 $message-icon-color: () !default;
 $message-icon-color: map.deep-merge(
   (
-    'success': #3CC58C,
-    'info': #FFAA00,
-    'warning': #FFAA00,
-    'error': #FF4B38,
+    'success': getCssVar('color-success'),
+    'info': getCssVar('color-warning'),
+    'warning': getCssVar('color-warning'),
+    'error': getCssVar('color-error'),
   ),
   $message-icon-color
 );
-$message-icon-size: 16px !default;
-$message-close-icon-size: 20px !default;
 @each $type in (success, warning, error, info) {
   $message: map.merge(
     (
       'min-width': $message-min-width,
+      'max-height': $message-max-height,
       'text-height': $message-text-height,
       'icon-size': $message-icon-size,
       'close-icon-size': $message-close-icon-size,
+      'text-size': $message-text-size,
+      'icon-margin-right': $message-icon-margin-right,
+      'padding-vertical': $message-padding-vertical,
       #{'bg-' + $type + '-color'}: map.get($message-bg-color, $type),
       #{'border-' + $type + '-color'}: map.get($message-border-color, $type),
       #{'text-' + $type + '-color'}: map.get($message-text-color, $type),

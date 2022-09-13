@@ -13,19 +13,32 @@
   @include set-component-css-var('message', $message);
 }
 
+@include b(message__closeBtn) {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
 @include b(message, true) {
+  max-height: getCssVar('message', 'max-height');
+  padding-top: getCssVar('message', 'padding-vertical');
+  padding-bottom: getCssVar('message', 'padding-vertical');
   @each $type in (success, warning, error, info) {
     @include m($type) {
-      .el-message__icon {
+      .#{$namespace}-message__icon {
+        margin-right: getCssVar('message', 'icon-margin-right');
         font-size: getCssVar('message', 'icon-size');
         color: getCssVar('message', 'icon', $type, 'color');
       }
-      .el-message__content {
+      .#{$namespace}-message__content {
         height: getCssVar('message', 'text-height');
-        line-height: getCssVar('message', 'text-height');
+        font-size: getCssVar('message', 'text-size');
         color: getCssVar('message', 'text', $type, 'color');
       }
-      .el-message__closeBtn {
+      .#{$namespace}-message__closeBtn {
         font-size: getCssVar('message', 'close-icon-size');
         color: getCssVar('message', 'close-icon', $type, 'color');
       }
@@ -34,6 +47,5 @@
     }
   }
 }
-
 
 

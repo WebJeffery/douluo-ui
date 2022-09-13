@@ -19,10 +19,10 @@
       <i :class="iconClass" v-if="iconClass"></i>
       <i :class="typeClass" v-else></i>
       <slot>
-        <p v-if="!dangerouslyUseHTMLString" class="el-message__content">{{ message }}</p>
-        <p v-else v-html="message" class="el-message__content"></p>
+        <span v-if="!dangerouslyUseHTMLString" :class="[ns.e('content')]">{{ message }}</span>
+        <span v-else v-html="message" :class="[ns.e('content')]"></span>
       </slot>
-      <i v-if="showClose" class="el-message__closeBtn el-icon-close" @click="close"></i>
+      <i v-if="showClose" :class="['el-icon-close', ns.e('closeBtn')]" @click="close"></i>
     </div>
   </transition>
 </template>
@@ -58,7 +58,7 @@ export default {
 
   computed: {
     typeClass() {
-      return this.type && !this.iconClass ? `el-message__icon dl-icon-${typeMap[this.type]}` : ''
+      return this.type && !this.iconClass ? `dl-message__icon dl-icon-${typeMap[this.type]}` : ''
     },
     positionStyle() {
       return {
