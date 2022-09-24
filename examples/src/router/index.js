@@ -38,6 +38,16 @@ export const routeComponents = [
     path: '/checkbox',
     component: () => import('@/views/checkbox/index.vue')
   },
+  {
+    title: 'Form 表单组件',
+    path: '/form',
+    component: () => import('@/views/form/index.vue')
+  },
+  {
+    title: 'Input 组件',
+    path: '/input',
+    component: () => import('@/views/input/index.vue')
+  },
 ]
 
 const createRouter = () =>

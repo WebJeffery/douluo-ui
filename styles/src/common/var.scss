@@ -578,19 +578,15 @@ $notification: map.merge(
 $input: () !default;
 $input: map.merge(
   (
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'border': getCssVar('border'),
-    // 'hover-border': getCssVar('border-color-hover'),
-    // 'focus-border': getCssVar('color-primary'),
-    // 'transparent-border': 0 0 0 1px transparent inset,
-    // 'border-color': getCssVar('border-color'),
-    // 'border-radius': getCssVar('border-radius-base'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'icon-color': getCssVar('text-color-placeholder'),
-    // 'placeholder-color': getCssVar('text-color-placeholder'),
-    // 'hover-border-color': getCssVar('border-color-hover'),
-    // 'clear-hover-color': getCssVar('text-color-secondary'),
-    // 'focus-border-color': getCssVar('color-primary'),
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('text-color-primary'),
+    'border-color': getCssVar('border-color'),
+    'placeholder-color': getCssVar('text-color-placeholder'),
+    'hover-border-color': getCssVar('color-primary'),
+    'focus-border-color': getCssVar('color-primary'),
+    'count-color': getCssVar('text-color-regular'),
+    'icon-color': getCssVar('border-color'),
+    'clear-hover-color': getCssVar('border-color'),
   ),
   $input
 );
@@ -598,10 +594,10 @@ $input: map.merge(
 $input-disabled: () !default;
 $input-disabled: map.merge(
   (
-    // 'fill': getCssVar('disabled-bg-color'),
-    // 'border': getCssVar('disabled-border-color'),
-    // 'text-color': getCssVar('disabled-text-color'),
-    // 'placeholder-color': getCssVar('text-color-placeholder'),
+    'text-color': getCssVar('disabled-text-color'),
+    'bg-color': getCssVar('disabled-bg-color'),
+    'border-color': getCssVar('disabled-border-color'),
+    'placeholder-color': getCssVar('text-color-placeholder'),
   ),
   $input-disabled
 );
@@ -625,9 +621,9 @@ $input-line-height: map.merge($common-component-size, $input-line-height);
 $input-number-width: () !default;
 $input-number-width: map.merge(
   (
-    // 'large': 180px,
-    // 'default': 150px,
-    // 'small': 120px,
+    'large': 180px,
+    'default': 150px,
+    'small': 120px,
   ),
   $input-number-width
 );
@@ -635,9 +631,9 @@ $input-number-width: map.merge(
 $input-padding-horizontal: () !default;
 $input-padding-horizontal: map.merge(
   (
-    // 'large': 16px,
-    // 'default': 12px,
-    // 'small': 8px,
+    'large': 16px,
+    'default': 12px,
+    'small': 8px,
   ),
   $input-padding-horizontal
 );
