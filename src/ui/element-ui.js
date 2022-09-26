@@ -10,6 +10,7 @@ import CheckboxGroup from 'packages/element-ui/checkbox-group'
 import Form from 'packages/element-ui/form'
 import FormItem from 'packages/element-ui/form-item'
 import Input from 'packages/element-ui/input'
+import Table from 'packages/element-ui/table'
 
 export default [
   Button,
@@ -23,5 +24,6 @@ export default [
   CheckboxGroup,
   Form,
   FormItem,
-  Input
+  Input,
+  Table
 ]

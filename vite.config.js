@@ -13,7 +13,9 @@ import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
-    Vue(),
+    Vue({
+      jsx: true
+    }),
     Components({
       resolvers: [ElementUiResolver()],
     }),

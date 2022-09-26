@@ -19,11 +19,6 @@ export const routeComponents = [
     component: () => import('@/views/button/index.vue')
   },
   {
-    title: 'table 组件',
-    path: '/table',
-    component: () => import('@/views/table/index.vue')
-  },
-  {
     title: 'DatePicker 组件',
     path: '/DatePicker',
     component: () => import('@/views/datePicker/index.vue')
@@ -47,6 +42,11 @@ export const routeComponents = [
     title: 'Input 组件',
     path: '/input',
     component: () => import('@/views/input/index.vue')
+  },
+  {
+    title: 'Table 组件',
+    path: '/table',
+    component: () => import('@/views/table/index.vue')
   },
 ]
 

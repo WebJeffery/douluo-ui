@@ -786,19 +786,19 @@ $dialog: map.merge(
 $table: () !default;
 $table: map.merge(
   (
-    // 'border-color': getCssVar('border-color-lighter'),
-    // 'border': 1px solid getCssVar('table-border-color'),
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'header-text-color': getCssVar('text-color-secondary'),
-    // 'row-hover-bg-color': getCssVar('fill-color', 'light'),
-    // 'current-row-bg-color': getCssVar('color-primary-light-9'),
-    // 'header-bg-color': getCssVar('bg-color'),
-    // 'fixed-box-shadow': getCssVar('box-shadow', 'light'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'tr-bg-color': getCssVar('fill-color', 'blank'),
-    // 'expanded-cell-bg-color': getCssVar('fill-color', 'blank'),
-    // 'fixed-left-column': inset 10px 0 10px -10px rgb(0 0 0 / 15%),
-    // 'fixed-right-column': inset -10px 0 10px -10px rgb(0 0 0 / 15%),
+    'border-color': getCssVar('border-color-lighter'),
+    'border': 1px solid getCssVar('table-border-color'),
+    'text-color': getCssVar('text-color-regular'),
+    'header-text-color': getCssVar('text-color-secondary'),
+    'row-hover-bg-color': getCssVar('fill-color', 'light'),
+    'current-row-bg-color': getCssVar('color-primary-light-9'),
+    'header-bg-color': getCssVar('bg-color'),
+    'fixed-box-shadow': getCssVar('box-shadow', 'light'),
+    'bg-color': getCssVar('fill-color', 'blank'),
+    'tr-bg-color': getCssVar('fill-color', 'blank'),
+    'expanded-cell-bg-color': getCssVar('fill-color', 'blank'),
+    'fixed-left-column': inset 10px 0 10px -10px rgb(0 0 0 / 15%),
+    'fixed-right-column': inset -10px 0 10px -10px rgb(0 0 0 / 15%),
   ),
   $table
 );
