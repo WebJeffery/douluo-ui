@@ -48,6 +48,16 @@ export const routeComponents = [
     path: '/table',
     component: () => import('@/views/table/index.vue')
   },
+  {
+    title: 'Empty 组件',
+    path: '/empty',
+    component: () => import('@/views/empty/index.vue')
+  },
+  {
+    title: 'Pagination 组件',
+    path: '/pagination',
+    component: () => import('@/views/pagination/index.vue')
+  },
 ]
 
 const createRouter = () =>

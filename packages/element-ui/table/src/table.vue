@@ -1,9 +1,10 @@
 <template>
-  <div :class="[ns.b()]">
+  <div :class="[ns.b(), ns.is('border', border),]">
     <el-table
       ref="elTable"
       v-bind="$attrs"
       v-on="$listeners"
+      :border="border"
       :data="data"
       :span-method="this.merge ? this.mergeMethod : this.spanMethod"
     >
@@ -12,6 +13,11 @@
         v-for="(item, index) in column"
         :key="index"
         :column="item" />
+      <template #empty>
+          <slot name="empty">
+              <dl-empty />
+          </slot>
+      </template>
     </el-table>
     <el-pagination
       v-if="pagination"
@@ -36,6 +42,10 @@ export default {
     column: Array,
     data: Array,
     spanMethod: Function,
+    border: {
+      type: Boolean,
+      default: false
+    },
     pagination: {
       type: Boolean,
       default: false

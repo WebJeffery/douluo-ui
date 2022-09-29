@@ -131,7 +131,7 @@
     font-size: getCssVar('input-font-size');
     color: getCssVar('input-text-color');
     border-color: getCssVar('input-border-color');
-    background-color: getCssVar('fill-color', 'blank');
+    background-color: getCssVar('bg-color', 'blank');
   }
 
   .el-input-group__append {

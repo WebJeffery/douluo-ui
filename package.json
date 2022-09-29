@@ -50,6 +50,7 @@
     "@rollup/plugin-image": "^2.1.1",
     "@vitejs/plugin-legacy": "^2.0.1",
     "@vitejs/plugin-vue2": "^1.1.2",
+    "@vitejs/plugin-vue2-jsx": "^1.0.3",
     "@vue/eslint-config-standard": "^8.0.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

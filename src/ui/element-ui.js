@@ -11,6 +11,8 @@ import Form from 'packages/element-ui/form'
 import FormItem from 'packages/element-ui/form-item'
 import Input from 'packages/element-ui/input'
 import Table from 'packages/element-ui/table'
+import Empty from 'packages/element-ui/empty'
+import Pagination from 'packages/element-ui/pagination'
 
 export default [
   Button,
@@ -25,5 +27,7 @@ export default [
   Form,
   FormItem,
   Input,
-  Table
+  Table,
+  Empty,
+  Pagination
 ]

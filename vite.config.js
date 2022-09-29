@@ -8,14 +8,14 @@ import legacy from '@vitejs/plugin-legacy'
 import { defineConfig, splitVendorChunkPlugin } from 'vite'
 // 支持 Vue2
 import Vue from '@vitejs/plugin-vue2'
+import vueJsx from '@vitejs/plugin-vue2-jsx'
 
 import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
-    Vue({
-      jsx: true
-    }),
+    Vue(),
+    vueJsx(),
     Components({
       resolvers: [ElementUiResolver()],
     }),

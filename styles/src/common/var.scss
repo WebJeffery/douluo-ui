@@ -137,6 +137,11 @@ $bg-color: map.merge(
     '': #ffffff,
     'page': #f2f3f5,
     'overlay': #ffffff,
+    'input': #ccc,
+    'light': #f5f5f5,
+    'extra-light': #eee,
+    'blank': #ffffff,
+    'table': '#f8f8f8'
   ),
   $bg-color
 );
@@ -241,7 +246,7 @@ $disabled: () !default;
 $disabled: map.merge(
   (
     'text-color': getCssVar('text-color', 'disabled'),
-    'bg-color': getCssVar('fill-color', 'light'),
+    'bg-color': getCssVar('bg-color', 'light'),
     'border-color': getCssVar('border-color-input'),
     'icon-color': getCssVar('border-color-input'),
   ),
@@ -358,7 +363,7 @@ $radio: map.merge(
     'text-color': getCssVar('text-color-regular'),
     'font-weight': getCssVar('font-weight'),
     'input-border-radius': getCssVar('border-radius-circle'),
-    'input-bg-color': getCssVar('fill-color', 'blank'),
+    'input-bg-color': getCssVar('bg-color', 'blank'),
     'input-border': getCssVar('border'),
     'input-border-color': getCssVar('border-color-input'),
     'input-border-color-hover': getCssVar('color-primary'),
@@ -455,7 +460,7 @@ $select-option: map.merge(
     // 'text-color': getCssVar('text-color-regular'),
     // 'disabled-color': getCssVar('text-color-placeholder'),
     // 'height': 34px,
-    // 'hover-background': getCssVar('fill-color', 'light'),
+    // 'hover-background': getCssVar('bg-color', 'light'),
     // 'selected-text-color': getCssVar('color-primary'),
   ),
   $select-option
@@ -650,10 +655,10 @@ $cascader: map.merge(
     // 'menu-radius': getCssVar('border-radius-base'),
     // 'menu-border': solid 1px getCssVar('border-color-light'),
     // 'menu-shadow': getCssVar('box-shadow-light'),
-    // 'node-background-hover': getCssVar('fill-color', 'light'),
+    // 'node-background-hover': getCssVar('bg-color', 'light'),
     // 'node-color-disabled': getCssVar('text-color-placeholder'),
     // 'color-empty': getCssVar('text-color-placeholder'),
-    // 'tag-background': getCssVar('fill-color'),
+    // 'tag-background': getCssVar('bg-color'),
   ),
   $cascader
 );
@@ -669,13 +674,13 @@ $button: map.merge(
     'font-weight': getCssVar('font-weight-primary'),
     'text-color': getCssVar('text-color', 'regular'),
     'border-color': getCssVar('border-color'),
-    'bg-color': getCssVar('fill-color', 'blank'),
+    'bg-color': getCssVar('bg-color', 'blank'),
     'hover-text-color': getCssVar('color-primary'),
     'hover-border-color': getCssVar('color-primary', 'light-7'),
     'hover-bg-color': getCssVar('color-primary', 'light-9'),
     'disabled-text-color': getCssVar('disabled-text-color'),
     'disabled-border-color': getCssVar('border-color-light'),
-    'disabled-bg-color': getCssVar('fill-color', 'blank'),
+    'disabled-bg-color': getCssVar('bg-color', 'blank'),
     'active-text-color': getCssVar('button-hover-text-color'),
     'active-border-color': getCssVar('color-primary'),
     'active-bg-color': getCssVar('button', 'hover-bg-color'),
@@ -786,17 +791,20 @@ $dialog: map.merge(
 $table: () !default;
 $table: map.merge(
   (
-    'border-color': getCssVar('border-color-lighter'),
-    'border': 1px solid getCssVar('table-border-color'),
+    'font-size': getCssVar('font-size-base'),
     'text-color': getCssVar('text-color-regular'),
-    'header-text-color': getCssVar('text-color-secondary'),
-    'row-hover-bg-color': getCssVar('fill-color', 'light'),
+    'header-text-color': getCssVar('text-color-primary'),
+    'border-color': getCssVar('border-color-extra-light'),
+    'border': 1px solid getCssVar('table-border-color'),
+    'border-radius': getCssVar('border-radius-base'),
+    'line-height': map.get($line-height, 'default'),
+    'row-hover-bg-color': getCssVar('bg-color', 'light'),
     'current-row-bg-color': getCssVar('color-primary-light-9'),
-    'header-bg-color': getCssVar('bg-color'),
+    'header-bg-color': getCssVar('bg-color-table'),
     'fixed-box-shadow': getCssVar('box-shadow', 'light'),
-    'bg-color': getCssVar('fill-color', 'blank'),
-    'tr-bg-color': getCssVar('fill-color', 'blank'),
-    'expanded-cell-bg-color': getCssVar('fill-color', 'blank'),
+    'bg-color': getCssVar('bg-color', 'blank'),
+    'tr-bg-color': getCssVar('bg-color', 'blank'),
+    'expanded-cell-bg-color': getCssVar('bg-color', 'blank'),
     'fixed-left-column': inset 10px 0 10px -10px rgb(0 0 0 / 15%),
     'fixed-right-column': inset -10px 0 10px -10px rgb(0 0 0 / 15%),
   ),
@@ -816,9 +824,9 @@ $table-font-size: map.merge(
 $table-padding: () !default;
 $table-padding: map.merge(
   (
-    'large': 12px 0,
-    'default': 8px 0,
-    'small': 4px 0,
+    'large': 24px 0,
+    'default': 20px 0,
+    'small': 12px 0,
   ),
   $table-padding
 );
@@ -838,19 +846,19 @@ $table-cell-padding: map.merge(
 $pagination: () !default;
 $pagination: map.merge(
   (
-    // 'font-size': 14px,
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'text-color': getCssVar('text-color-primary'),
-    // 'border-radius': 3px,
-    // 'button-color': getCssVar('text-color-primary'),
-    // 'button-width': 32px,
-    // 'button-height': 32px,
-    // 'button-disabled-color': getCssVar('text-color-placeholder'),
-    // 'button-disabled-bg-color': getCssVar('fill-color', 'blank'),
-    // 'button-bg-color': getCssVar('fill-color'),
-    // 'hover-color': getCssVar('color-primary'),
-    // 'height-extra-small': 24px,
-    // 'line-height-extra-small': getCssVar('pagination-height-extra-small'),
+    'font-size': getCssVar('text-color', 'base'),
+    'text-color': getCssVar('text-color-regular'),
+    'bg-color': getCssVar('bg-color', 'blank'),
+    'border-radius': 3px,
+    'button-color': getCssVar('text-color-primary'),
+    'button-width': 32px,
+    'button-height': 32px,
+    'button-disabled-color': getCssVar('text-color-placeholder'),
+    'button-disabled-bg-color': getCssVar('bg-color', 'blank'),
+    'button-bg-color': getCssVar('bg-color'),
+    'hover-color': getCssVar('color-primary'),
+    'height-extra-small': 24px,
+    'line-height-extra-small': getCssVar('pagination-height-extra-small'),
   ),
   $pagination
 );
@@ -897,8 +905,8 @@ $popper: map.merge(
 $skeleton: () !default;
 $skeleton: map.merge(
   (
-    'color': getCssVar('fill-color'),
-    'to-color': getCssVar('fill-color', 'darker'),
+    'color': getCssVar('bg-color'),
+    'to-color': getCssVar('bg-color', 'darker'),
   ),
   $skeleton
 );
@@ -950,7 +958,7 @@ $tag-icon-size: map.merge(
 $tree: () !default;
 $tree: map.merge(
   (
-    'node-hover-bg-color': getCssVar('fill-color', 'light'),
+    'node-hover-bg-color': getCssVar('bg-color', 'light'),
     'text-color': getCssVar('text-color-regular'),
     'expand-icon-color': getCssVar('text-color-placeholder'),
   ),
@@ -1001,7 +1009,7 @@ $card: map.merge(
     'border-color': getCssVar('border-color', 'light'),
     'border-radius': 4px,
     'padding': 20px,
-    'bg-color': getCssVar('fill-color', 'blank'),
+    'bg-color': getCssVar('bg-color', 'blank'),
   ),
   $card
 );
@@ -1032,7 +1040,7 @@ $menu: map.merge(
     // 'active-color': getCssVar('color-primary'),
     // 'text-color': getCssVar('text-color-primary'),
     // 'hover-text-color': getCssVar('color-primary'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
+    // 'bg-color': getCssVar('bg-color', 'blank'),
     // 'hover-bg-color': getCssVar('color-primary-light-9'),
     // 'item-height': 56px,
     // 'sub-item-height': calc(#{getCssVar('menu-item-height')} - 6px),
@@ -1060,8 +1068,8 @@ $rate: map.merge(
     // seems not be used, to be removed
     // 'icon-color': getCssVar('text-color-placeholder),
     'void-color': getCssVar('border-color', 'darker'),
-    'fill-color': #f7ba2a,
-    'disabled-void-color': getCssVar('fill-color'),
+    'bg-color': #f7ba2a,
+    'disabled-void-color': getCssVar('bg-color'),
     'text-color': getCssVar('text-color', 'primary'),
   ),
   $rate
@@ -1157,10 +1165,10 @@ $collapse: map.merge(
   (
     // 'border-color': getCssVar('border-color-lighter'),
     // 'header-height': 48px,
-    // 'header-bg-color': getCssVar('fill-color', 'blank'),
+    // 'header-bg-color': getCssVar('bg-color', 'blank'),
     // 'header-text-color': getCssVar('text-color-primary'),
     // 'header-font-size': 13px,
-    // 'content-bg-color': getCssVar('fill-color', 'blank'),
+    // 'content-bg-color': getCssVar('bg-color', 'blank'),
     // 'content-font-size': 13px,
     // 'content-text-color': getCssVar('text-color-primary'),
   ),
@@ -1176,7 +1184,7 @@ $transfer: map.merge(
     // 'border-radius': getCssVar('border-radius-base'),
     // 'panel-width': 200px,
     // 'panel-header-height': 40px,
-    // 'panel-header-bg-color': getCssVar('fill-color', 'light'),
+    // 'panel-header-bg-color': getCssVar('bg-color', 'light'),
     // 'panel-footer-height': 40px,
     // 'panel-body-height': 278px,
     // 'item-height': 30px,
@@ -1300,20 +1308,10 @@ $avatar-size: map.merge(
 $empty: () !default;
 $empty: map.merge(
   (
-    // 'padding': 40px 0,
-    // 'image-width': 160px,
-    // 'description-margin-top': 20px,
-    // 'bottom-margin-top': 20px,
-    // 'fill-color-0': getCssVar('color-white'),
-    // 'fill-color-1': #fcfcfd,
-    // 'fill-color-2': #f8f9fb,
-    // 'fill-color-3': #f7f8fc,
-    // 'fill-color-4': #eeeff3,
-    // 'fill-color-5': #edeef2,
-    // 'fill-color-6': #e9ebef,
-    // 'fill-color-7': #e5e7e9,
-    // 'fill-color-8': #e0e3e9,
-    // 'fill-color-9': #d5d7de,
+    'padding': 40px 0,
+    'image-width': 180px,
+    'description-margin-top': 20px,
+    'bottom-margin-top': 20px,
   ),
   $empty
 );
@@ -1324,7 +1322,7 @@ $descriptions: () !default;
 $descriptions: map.merge(
   (
     'table-border': 1px solid getCssVar('border-color-lighter'),
-    'item-bordered-label-background': getCssVar('fill-color', 'light'),
+    'item-bordered-label-background': getCssVar('bg-color', 'light'),
   ),
   $descriptions
 );

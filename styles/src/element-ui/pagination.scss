@@ -1,0 +1,24 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(pagination) {
+  @include set-component-css-var('pagination', $pagination);
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @include e(total) {
+    font-size: getCssVar('pagination-font-size');
+    color: getCssVar('pagination-text-color');
+  }
+}

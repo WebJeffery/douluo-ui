@@ -105,7 +105,7 @@ $button-icon-span-gap: map.merge(
     );
     @include css-var-from-global(
       ('button', 'border-color'),
-      ('fill-color', 'blank')
+      ('bg-color', 'blank')
     );
     @include css-var-from-global(
       ('button', 'active', 'border-color'),
@@ -184,7 +184,7 @@ $button-icon-span-gap: map.merge(
     &:not(.is-disabled) {
       &:hover,
       &:focus {
-        background-color: getCssVar('fill-color', 'light');
+        background-color: getCssVar('bg-color', 'light');
       }
 
       &:focus-visible {
@@ -193,19 +193,19 @@ $button-icon-span-gap: map.merge(
       }
 
       &:active {
-        background-color: getCssVar('fill-color');
+        background-color: getCssVar('bg-color');
       }
 
       @include when(has-bg) {
-        background-color: getCssVar('fill-color', 'light');
+        background-color: getCssVar('bg-color', 'light');
 
         &:hover,
         &:focus {
-          background-color: getCssVar('fill-color');
+          background-color: getCssVar('bg-color');
         }
 
         &:active {
-          background-color: getCssVar('fill-color', 'dark');
+          background-color: getCssVar('bg-color', 'dark');
         }
       }
     }

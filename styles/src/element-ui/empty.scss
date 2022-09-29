@@ -1,0 +1,51 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(empty) {
+  @include set-component-css-var('empty', $empty);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  box-sizing: border-box;
+  padding: getCssVar('empty-padding');
+
+  @include e(image) {
+    width: getCssVar('empty-image-width');
+
+    img {
+      user-select: none;
+      width: 100%;
+      height: 100%;
+      vertical-align: top;
+      object-fit: contain;
+    }
+  }
+
+  @include e(description) {
+    margin-top: getCssVar('empty-description-margin-top');
+
+    p {
+      margin: 0;
+      font-size: getCssVar('font-size', 'base');
+      color: getCssVar('text-color', 'secondary');
+      line-height: map.get($line-height, 'default'),
+    }
+  }
+
+  @include e(bottom) {
+    margin-top: getCssVar('empty-bottom-margin-top');
+  }
+}
+

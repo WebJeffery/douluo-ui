@@ -5,7 +5,7 @@
   </div>
 </template>
 
-<script>
+<script lang="jsx">
 export default {
   data() {
     return {
@@ -42,17 +42,14 @@ export default {
                   {
                     prop: 'province',
                     label: '省份',
-                    width: '120'
                   },
                   {
                     prop: 'city',
                     label: '市区',
-                    width: '120'
                   },
                   {
                     prop: 'address',
                     label: '地址',
-                    width: '300px',
                     renderHeader: (h, scope) => {
                       return (
                         <span>
