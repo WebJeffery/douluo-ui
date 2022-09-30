@@ -34,7 +34,7 @@
   }
 
   @include e(description) {
-    margin-top: getCssVar('empty-description-margin-top');
+    margin: getCssVar('empty-description-margin');
 
     p {
       margin: 0;

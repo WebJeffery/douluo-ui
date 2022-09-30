@@ -8,23 +8,26 @@
       :data="data"
       :span-method="this.merge ? this.mergeMethod : this.spanMethod"
     >
-      <dl-column
-        v-bind="$attrs"
-        v-for="(item, index) in column"
-        :key="index"
-        :column="item" />
+      <slot v-if="$slots.default"></slot>
+      <template v-if="column.length">
+        <dl-column
+          v-bind="$attrs"
+          v-for="(item, index) in column"
+          :key="index"
+          :align="align"
+          :column="item" />
+      </template>
       <template #empty>
           <slot name="empty">
               <dl-empty />
           </slot>
       </template>
     </el-table>
-    <el-pagination
+    <dl-pagination
       v-if="pagination"
+      :class="ns.e('pagination')"
       v-bind="$attrs"
       v-on="$listeners"
-      @current-change="paginationCurrentChange"
-      :style="{ 'margin-top': paginationTop, 'text-align': paginationAlign }"
     />
   </div>
 </template>
@@ -39,7 +42,10 @@ export default {
     DlColumn
   },
   props: {
-    column: Array,
+    column: {
+      type: Array,
+      default: () => []
+    },
     data: Array,
     spanMethod: Function,
     border: {
@@ -57,6 +63,10 @@ export default {
     paginationAlign: {
       type: String,
       default: 'right'
+    },
+    align: {
+      type: String,
+      default: 'center'
     },
     merge: Array
   },
@@ -110,9 +120,6 @@ export default {
     },
     sort(prop, order) {
       this.$refs.elTable.sort(prop, order)
-    },
-    paginationCurrentChange(val) {
-      this.$emit('p-current-change', val)
     },
     getMergeArr(tableData, merge) {
       if (!merge) return

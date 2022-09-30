@@ -76,6 +76,31 @@ module.exports = config({
   configureWebpack: {
     resolve: {
       alias: alias
+    },
+    module: {
+      rules: [
+        {
+          test: /.jsx?$/,
+          exclude: /node_modules/,
+          use: [
+            'cache-loader',
+            {
+              loader: 'babel-loader',
+              options: {
+                babelrc: false,
+                configFile: false,
+                presets: [
+                    '@babel/preset-env', // 可以识别es6语法
+                    '@vue/babel-preset-jsx' // 解析jsx语法
+                ]
+              }
+            }
+          ]
+        }
+      ]
     }
+  },
+  chainWebpack: (config, isServer) => {
+    // config 是 ChainableConfig 的一个实例
   }
 })

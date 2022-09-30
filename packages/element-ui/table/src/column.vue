@@ -2,12 +2,12 @@
   <el-table-column
     v-bind="$attrs"
     v-on="$listeners"
-    :prop="column.prop"
-    :label="column.label"
+    :prop="column.prop || prop"
+    :label="column.label || label"
     :type="column.type"
     :index="column.index"
     :column-key="column.columnKey"
-    :width="column.width"
+    :width="column.width || width"
     :min-width="column.minWidth"
     :fixed="column.fixed"
     :render-header="column.renderHeader"
@@ -18,8 +18,8 @@
     :resizable="column.resizable || true"
     :formatter="column.formatter"
     :show-overflow-tooltip="column.showOverflowTooltip || false"
-    :align="column.align || align || 'left'"
-    :header-align="column.headerAlign || headerAlign || column.align || align || 'left'"
+    :align="column.align || align || 'center'"
+    :header-align="column.headerAlign || headerAlign || column.align || align || 'center'"
     :class-name="column.className"
     :label-class-name="column.labelClassName"
     :selectable="column.selectable"
@@ -40,7 +40,7 @@
     </template>
 
     <template v-if="column.children">
-      <dl-column v-for="(col, index) in column.children" :key="index" :column="col" />
+      <dl-table-column v-for="(col, index) in column.children" :key="index" :column="col" />
     </template>
   </el-table-column>
 </template>
@@ -50,14 +50,20 @@ import RenderColumn from './render.vue'
 import forced from './forced.jsx'
 
 export default {
-  name: 'DlColumn',
+  name: 'TableColumn',
   components: {
     RenderColumn
   },
   props: {
-    column: Object,
+    column: {
+      type: Object,
+      default: () => ({})
+    },
     headerAlign: String,
-    align: String
+    align: String,
+    label: String,
+    prop: String,
+    width: [String, Number]
   },
   watch: {
     column: {

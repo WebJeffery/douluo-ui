@@ -1,14 +1,12 @@
 <template>
   <div :class="ns.b()">
-    <div :class="ns.e('total')">
-      <slot name="total" v-bind="{ total }"> 共 {{ total }} 条 </slot>
-    </div>
     <el-pagination
       v-bind="$attrs"
       :total="total"
       :current-page="page"
       :page-size="pageSize"
       :background="background"
+      :layout="layout"
       v-on="$listeners"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
@@ -39,6 +37,10 @@ export default {
         type: Boolean,
         default: true
     },
+    layout: {
+      type: String,
+      default: 'total, prev, pager, next'
+    }
 },
 
   data() {

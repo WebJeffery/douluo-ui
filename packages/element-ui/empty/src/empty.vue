@@ -7,7 +7,7 @@
     </div>
     <div :class="ns.e('description')">
       <slot v-if="$slots.description" name="description"></slot>
-      <p v-else>{{ emptyDescription }}</p>
+      <p v-else :class="ns.bm('description', 'text')">{{ emptyDescription }}</p>
     </div>
     <div v-if="$slots.default" :class="ns.e('bottom')">
       <slot></slot>

@@ -49,6 +49,7 @@
 
 
     .el-table__body {
+
       .el-table__cell {
         padding: 20px 0;
         border-color: getCssVar('table-border-color');
@@ -67,6 +68,10 @@
     width: 0;
   }
 
+  @include e(pagination) {
+    margin-top: getCssVar('table-pagination-margin-top');
+  }
+
   @include when(border) {
     .el-table {
       .el-table__header-wrapper {
@@ -82,6 +87,7 @@
       }
 
       .el-table__body-wrapper::before {
+        left: 0;
         top: 0;
         width: 100%;
         height: 1px;

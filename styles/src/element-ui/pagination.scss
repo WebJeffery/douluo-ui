@@ -17,8 +17,33 @@
   justify-content: flex-end;
   align-items: center;
 
-  @include e(total) {
-    font-size: getCssVar('pagination-font-size');
-    color: getCssVar('pagination-text-color');
+  .el-pagination {
+    padding: getCssVar('pagination-padding');
+
+    .el-pagination__total,
+    &.is-background .btn-prev,
+    .el-pager .number,
+    &.is-background .btn-quicknext,
+    &.is-background .btn-next,
+    .el-pagination__jump,
+    .el-pagination__editor,
+    .el-pagination__jump .el-input__inner {
+      font-size: getCssVar('pagination-font-size');;
+      color: getCssVar('pagination-text-color');
+      height: getCssVar('pagination-height');
+      line-height: getCssVar('pagination-line-height');
+      border-radius: getCssVar('pagination-border-radius');
+    }
+
+    .el-pagination__jump {
+      margin-left: 15px;
+    }
+
+    &.is-background .btn-prev,
+    &.is-background .btn-next {
+      &:disabled {
+        color: #ccc;
+      }
+    }
   }
 }

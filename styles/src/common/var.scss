@@ -798,15 +798,9 @@ $table: map.merge(
     'border': 1px solid getCssVar('table-border-color'),
     'border-radius': getCssVar('border-radius-base'),
     'line-height': map.get($line-height, 'default'),
-    'row-hover-bg-color': getCssVar('bg-color', 'light'),
-    'current-row-bg-color': getCssVar('color-primary-light-9'),
     'header-bg-color': getCssVar('bg-color-table'),
-    'fixed-box-shadow': getCssVar('box-shadow', 'light'),
     'bg-color': getCssVar('bg-color', 'blank'),
-    'tr-bg-color': getCssVar('bg-color', 'blank'),
-    'expanded-cell-bg-color': getCssVar('bg-color', 'blank'),
-    'fixed-left-column': inset 10px 0 10px -10px rgb(0 0 0 / 15%),
-    'fixed-right-column': inset -10px 0 10px -10px rgb(0 0 0 / 15%),
+    'pagination-margin-top': 30px
   ),
   $table
 );
@@ -846,13 +840,14 @@ $table-cell-padding: map.merge(
 $pagination: () !default;
 $pagination: map.merge(
   (
-    'font-size': getCssVar('text-color', 'base'),
+    'font-size': getCssVar('font-size', 'base'),
     'text-color': getCssVar('text-color-regular'),
+    'height': 30px,
+    'line-height': 30px,
+    'padding': 0 15px,
     'bg-color': getCssVar('bg-color', 'blank'),
-    'border-radius': 3px,
+    'border-radius': getCssVar('border-radius-base'),
     'button-color': getCssVar('text-color-primary'),
-    'button-width': 32px,
-    'button-height': 32px,
     'button-disabled-color': getCssVar('text-color-placeholder'),
     'button-disabled-bg-color': getCssVar('bg-color', 'blank'),
     'button-bg-color': getCssVar('bg-color'),
@@ -862,6 +857,8 @@ $pagination: map.merge(
   ),
   $pagination
 );
+
+
 
 // Popup
 // css3 var in packages/theme-chalk/src/popup.scss
@@ -1310,7 +1307,7 @@ $empty: map.merge(
   (
     'padding': 40px 0,
     'image-width': 180px,
-    'description-margin-top': 20px,
+    'description-margin': 20px 0,
     'bottom-margin-top': 20px,
   ),
   $empty

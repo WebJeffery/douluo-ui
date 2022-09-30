@@ -1,4 +1,8 @@
-# Empty 空状态
+---
+title: Empty 空状态
+pageClass: demo-empty
+icon: new
+---
 
 空状态时的占位提示。
 
@@ -7,7 +11,7 @@
 :::demo
 
 ```html
-<el-empty description="描述文字"></el-empty>
+<dl-empty description="描述文字"></dl-empty>
 ```
 :::
 
@@ -18,7 +22,7 @@
 :::demo
 
 ```html
-<el-empty image="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"></el-empty>
+<dl-empty image="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png"></dl-empty>
 ```
 :::
 
@@ -29,7 +33,7 @@
 :::demo
 
 ```html
-<el-empty :image-size="200"></el-empty>
+<dl-empty :image-size="200"></dl-empty>
 ```
 :::
 
@@ -39,9 +43,9 @@
 
 :::demo
 ```html
-<el-empty>
-  <el-button type="primary">按钮</el-button>
-</el-empty>
+<dl-empty>
+  <dl-button type="primary">按钮</dl-button>
+</dl-empty>
 ```
 :::
 
