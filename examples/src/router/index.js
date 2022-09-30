@@ -19,11 +19,6 @@ export const routeComponents = [
     component: () => import('@/views/button/index.vue')
   },
   {
-    title: 'table 组件',
-    path: '/table',
-    component: () => import('@/views/table/index.vue')
-  },
-  {
     title: 'DatePicker 组件',
     path: '/DatePicker',
     component: () => import('@/views/datePicker/index.vue')
@@ -37,6 +32,31 @@ export const routeComponents = [
     title: 'Checkbox 组件',
     path: '/checkbox',
     component: () => import('@/views/checkbox/index.vue')
+  },
+  {
+    title: 'Form 表单组件',
+    path: '/form',
+    component: () => import('@/views/form/index.vue')
+  },
+  {
+    title: 'Input 组件',
+    path: '/input',
+    component: () => import('@/views/input/index.vue')
+  },
+  {
+    title: 'Table 组件',
+    path: '/table',
+    component: () => import('@/views/table/index.vue')
+  },
+  {
+    title: 'Empty 组件',
+    path: '/empty',
+    component: () => import('@/views/empty/index.vue')
+  },
+  {
+    title: 'Pagination 组件',
+    path: '/pagination',
+    component: () => import('@/views/pagination/index.vue')
   },
 ]
 

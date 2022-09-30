@@ -1,0 +1,49 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(pagination) {
+  @include set-component-css-var('pagination', $pagination);
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  .el-pagination {
+    padding: getCssVar('pagination-padding');
+
+    .el-pagination__total,
+    &.is-background .btn-prev,
+    .el-pager .number,
+    &.is-background .btn-quicknext,
+    &.is-background .btn-next,
+    .el-pagination__jump,
+    .el-pagination__editor,
+    .el-pagination__jump .el-input__inner {
+      font-size: getCssVar('pagination-font-size');;
+      color: getCssVar('pagination-text-color');
+      height: getCssVar('pagination-height');
+      line-height: getCssVar('pagination-line-height');
+      border-radius: getCssVar('pagination-border-radius');
+    }
+
+    .el-pagination__jump {
+      margin-left: 15px;
+    }
+
+    &.is-background .btn-prev,
+    &.is-background .btn-next {
+      &:disabled {
+        color: #ccc;
+      }
+    }
+  }
+}

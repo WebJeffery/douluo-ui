@@ -44,12 +44,15 @@
     "vuepress-theme-hope": "^1.30.0"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.19.3",
     "@commitlint/cli": "^12.1.4",
     "@commitlint/config-conventional": "^12.1.4",
     "@ls-lint/ls-lint": "^1.11.2",
     "@rollup/plugin-image": "^2.1.1",
     "@vitejs/plugin-legacy": "^2.0.1",
     "@vitejs/plugin-vue2": "^1.1.2",
+    "@vitejs/plugin-vue2-jsx": "^1.0.3",
+    "@vue/babel-preset-jsx": "^1.4.0",
     "@vue/eslint-config-standard": "^8.0.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",

@@ -33,7 +33,7 @@ module.exports = {
       ]
       // [
       //   'feat',
-      //   'fix',
+      //   'fix',nvm 
       //   'perf',
       //   'style',
       //   'docs',
