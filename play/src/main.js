@@ -16,8 +16,10 @@ import 'douluo-ui/lib/theme/index.css'
 Vue.use(ElementUI)
 Vue.use(DouluoUI)
 
-const themeConfig = DouluoUI.themeConfigFunc()
-themeConfig.updateElementUITheme({ themeColor: '#632cd5' })
+DouluoUI.updateUITheme({
+  primaryColor: '#FFAA00',
+  primarySecondColor: '#231909'
+})
 
 new Vue({
   el: '#app',

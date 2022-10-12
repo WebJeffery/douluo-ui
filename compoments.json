@@ -1,4 +1,18 @@
 {
   "index": "./src/index.js",
-  "button": "./packages/element-ui/button/index.js"
+  "button": "./packages/element-ui/button/index.js",
+  "checkbox": "./packages/element-ui/checkbox/index.js",
+  "checkbox-button": "./packages/element-ui/checkbox-button/index.js",
+  "checkbox-group": "./packages/element-ui/checkbox-group/index.js",
+  "empty": "./packages/element-ui/empty/index.js",
+  "form": "./packages/element-ui/form/index.js",
+  "form-item": "./packages/element-ui/form-item/index.js",
+  "input": "./packages/element-ui/input/index.js",
+  "pagination": "./packages/element-ui/pagination/index.js",
+  "radio": "./packages/element-ui/radio/index.js",
+  "radio-button": "./packages/element-ui/radio-button/index.js",
+  "radio-group": "./packages/element-ui/radio-group/index.js",
+  "table": "./packages/element-ui/table/index.js",
+  "table-column": "./packages/element-ui/table-column/index.js",
+  "time-picker": "./packages/element-ui/time-picker/index.js"
 }

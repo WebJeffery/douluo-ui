@@ -18,7 +18,7 @@
 <script>
 
 import { useNamespace } from 'src/utils/use-namespace'
-import imageEmpty from 'src/images/empty.png'
+// import imageEmpty from 'src/images/empty.png'
 export default {
   name: 'Empty',
 
@@ -49,7 +49,7 @@ export default {
       }
     },
     imageEmpty () {
-      return this.image || imageEmpty
+      return this.image || 'src/images/empty.png'
     }
   }
 }

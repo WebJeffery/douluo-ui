@@ -34,7 +34,6 @@ import { useNamespace } from 'src/utils/use-namespace'
 
 export default {
   name: 'Button',
-  inheritAttrs: false,
 
   props: {
       type: {

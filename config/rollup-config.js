@@ -13,7 +13,7 @@ module.exports = {
   // 清空console
   clearConsole: true,
   rollupResolve: {
-    extensions: ['.js', '.vue', '.json']
+    extensions: ['.js', '.vue', '.json', '.jsx']
   },
   // 打包忽略
   externalMap: {

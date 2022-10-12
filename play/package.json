@@ -11,12 +11,13 @@
   "devDependencies": {
     "@vitejs/plugin-legacy": "^2.0.0",
     "@vitejs/plugin-vue2": "^1.1.2",
+    "@vitejs/plugin-vue2-jsx": "^1.0.3",
     "unplugin-vue-components": "^0.21.2",
     "vite": "^3.0.0"
   },
   "dependencies": {
     "@types/node": "^18.7.2",
-    "douluo-ui": "file:douluo-ui-1.0.2.tgz",
+    "douluo-ui": "file:douluo-ui-1.2.0.tgz",
     "element-ui": "^2.15.9",
     "vue": "^2.7.8"
   }

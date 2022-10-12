@@ -1,5 +1,5 @@
 import Button from 'packages/element-ui/button'
-import DatePicker from 'packages/element-ui/datePicker'
+import DatePicker from 'packages/element-ui/date-picker'
 import TimePicker from 'packages/element-ui/time-picker'
 import Radio from 'packages/element-ui/radio'
 import RadioButton from 'packages/element-ui/radio-button'

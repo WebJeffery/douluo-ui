@@ -29,6 +29,7 @@ function createPlugins({ min } = {}) {
       resolve: rollupResolve.extensions
     }),
     babel({
+      presets: ["@vue/babel-preset-jsx"],
       runtimeHelpers: true,
       // 只编译我们的源代码
       exclude

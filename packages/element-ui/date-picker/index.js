@@ -1,4 +1,4 @@
-import DatePicker from './src/datePicker.vue'
+import DatePicker from './src/date-picker.vue'
 import { createNamespace } from '../../../src/utils/use-namespace'
 
 DatePicker.install = (Vue, options = {}) => {
