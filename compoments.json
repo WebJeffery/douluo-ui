@@ -14,5 +14,7 @@
   "radio-group": "./packages/element-ui/radio-group/index.js",
   "table": "./packages/element-ui/table/index.js",
   "table-column": "./packages/element-ui/table-column/index.js",
-  "time-picker": "./packages/element-ui/time-picker/index.js"
+  "time-picker": "./packages/element-ui/time-picker/index.js",
+  "dialog": "./packages/element-ui/dialog/index.js",
+  "drawer": "./packages/element-ui/drawer/index.js"
 }

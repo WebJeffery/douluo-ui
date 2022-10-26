@@ -58,6 +58,31 @@ export const routeComponents = [
     path: '/pagination',
     component: () => import('@/views/pagination/index.vue')
   },
+  {
+    title: 'Dialog 组件',
+    path: '/dialog',
+    component: () => import('@/views/dialog/index.vue')
+  },
+  {
+    title: 'Drawder 组件',
+    path: '/drawer',
+    component: () => import('@/views/drawer/index.vue')
+  },
+  {
+    title: 'Popover 组件',
+    path: '/popover',
+    component: () => import('@/views/popover/index.vue')
+  },
+  {
+    title: 'Popconfirm 组件',
+    path: '/popconfirm',
+    component: () => import('@/views/popconfirm/index.vue')
+  },
+  {
+    title: 'Tooltip 组件',
+    path: '/tooltip',
+    component: () => import('@/views/tooltip/index.vue')
+  },
 ]
 
 const createRouter = () =>
