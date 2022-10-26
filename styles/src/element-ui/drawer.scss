@@ -1,0 +1,34 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(drawer) {
+  @include set-component-css-var('drawer', $drawer);
+}
+
+@include b(drawer) {
+
+  .el-drawer__header {
+    color: getCssVar('text-color', 'primary');
+  }
+  .el-drawer__body {
+    color: getCssVar('text-color', 'regular');
+    padding: getCssVar('drawer', 'body-padding');
+  }
+  .el-dialog__close {
+    color: getCssVar('text-color', 'secondary');
+
+    &:focus,
+    &:hover {
+      color: getCssVar('color', 'primary');
+    }
+  }
+}

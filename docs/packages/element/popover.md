@@ -1,4 +1,8 @@
-# Popover 弹出框
+---
+title: Popover 弹出框
+pageClass: demo-popover
+icon: new
+---
 
 ### 基础用法
 Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的，因此对于重复属性，请参考 Tooltip 的文档，在此文档中不做详尽解释。
@@ -6,43 +10,43 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 :::demo `trigger`属性用于设置何时触发 Popover，支持四种触发方式：`hover`，`click`，`focus` 和 `manual`。对于触发 Popover 的元素，有两种写法：使用 `slot="reference"` 的具名插槽，或使用自定义指令`v-popover`指向 Popover 的索引`ref`。
 ```html
 <template>
-  <el-popover
+  <dl-popover
     placement="top-start"
     title="标题"
     width="200"
     trigger="hover"
     content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
-    <el-button slot="reference">hover 激活</el-button>
-  </el-popover>
+    <dl-button slot="reference">hover 激活</dl-button>
+  </dl-popover>
 
-  <el-popover
+  <dl-popover
     placement="bottom"
     title="标题"
     width="200"
     trigger="click"
     content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
-    <el-button slot="reference">click 激活</el-button>
-  </el-popover>
+    <dl-button slot="reference">click 激活</dl-button>
+  </dl-popover>
 
-  <el-popover
+  <!-- <dl-popover
     ref="popover"
     placement="right"
     title="标题"
     width="200"
     trigger="focus"
     content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。">
-  </el-popover>
-  <el-button v-popover:popover>focus 激活</el-button>
+  </dl-popover>
+  <dl-button v-popover:popover>focus 激活</dl-button> -->
 
-  <el-popover
+  <dl-popover
     placement="bottom"
     title="标题"
     width="200"
     trigger="manual"
     content="这是一段内容,这是一段内容,这是一段内容,这是一段内容。"
     v-model="visible">
-    <el-button slot="reference" @click="visible = !visible">手动激活</el-button>
-  </el-popover>
+    <dl-button slot="reference" @click="visible = !visible">手动激活</dl-button>
+  </dl-popover>
 </template>
 
 <script>
@@ -63,17 +67,17 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 
 :::demo 利用分发取代`content`属性
 ```html
-<el-popover
+<dl-popover
   placement="right"
   width="400"
   trigger="click">
-  <el-table :data="gridData">
-    <el-table-column width="150" property="date" label="日期"></el-table-column>
-    <el-table-column width="100" property="name" label="姓名"></el-table-column>
-    <el-table-column width="300" property="address" label="地址"></el-table-column>
-  </el-table>
-  <el-button slot="reference">click 激活</el-button>
-</el-popover>
+  <dl-table :data="gridData">
+    <dl-table-column width="150" property="date" label="日期"></dl-table-column>
+    <dl-table-column width="100" property="name" label="姓名"></dl-table-column>
+    <dl-table-column width="300" property="address" label="地址"></dl-table-column>
+  </dl-table>
+  <dl-button slot="reference">click 激活</dl-button>
+</dl-popover>
 
 <script>
   export default {
@@ -109,17 +113,17 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 
 :::demo
 ```html
-<el-popover
+<dl-popover
   placement="top"
   width="160"
   v-model="visible">
   <p>这是一段内容这是一段内容确定删除吗？</p>
   <div style="text-align: right; margin: 0">
-    <el-button size="mini" type="text" @click="visible = false">取消</el-button>
-    <el-button type="primary" size="mini" @click="visible = false">确定</el-button>
+    <dl-button size="mini" type="text" @click="visible = false">取消</dl-button>
+    <dl-button type="primary" size="mini" @click="visible = false">确定</dl-button>
   </div>
-  <el-button slot="reference">删除</el-button>
-</el-popover>
+  <dl-button slot="reference">删除</dl-button>
+</dl-popover>
 
 <script>
   export default {
@@ -136,7 +140,7 @@ Popover 的属性与 Tooltip 很类似，它们都是基于`Vue-popper`开发的
 ### Attributes
 | 参数               | 说明                                                     | 类型              | 可选值      | 默认值 |
 |--------------------|----------------------------------------------------------|-------------------|-------------|--------|
-| trigger | 触发方式 | String  | click/focus/hover/manual |    click    |
+| trigger | 触发方式 | String  | click/hover/manual |    click    |
 |  title              | 标题 | String | — | — |
 |  content        |  显示的内容，也可以通过 `slot` 传入 DOM   | String            | — | — |
 |  width        |  宽度  | String, Number            | — | 最小宽度 150px |

@@ -14,6 +14,11 @@ import Table from 'packages/element-ui/table'
 import TableColumn from 'packages/element-ui/table-column'
 import Empty from 'packages/element-ui/empty'
 import Pagination from 'packages/element-ui/pagination'
+import Dialog from 'packages/element-ui/dialog'
+import Drawer from 'packages/element-ui/drawer'
+import Popover from 'packages/element-ui/popover'
+import Popconfirm from 'packages/element-ui/popconfirm'
+import Tooltip from 'packages/element-ui/tooltip'
 
 export default [
   Button,
@@ -31,5 +36,10 @@ export default [
   Table,
   TableColumn,
   Empty,
-  Pagination
+  Pagination,
+  Dialog,
+  Drawer,
+  Popover,
+  Popconfirm,
+  Tooltip,
 ]
