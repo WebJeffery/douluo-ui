@@ -19,6 +19,7 @@ import Drawer from 'packages/element-ui/drawer'
 import Popover from 'packages/element-ui/popover'
 import Popconfirm from 'packages/element-ui/popconfirm'
 import Tooltip from 'packages/element-ui/tooltip'
+import Select from 'packages/element-ui/select'
 
 export default [
   Button,
@@ -42,4 +43,5 @@ export default [
   Popover,
   Popconfirm,
   Tooltip,
+  Select
 ]
