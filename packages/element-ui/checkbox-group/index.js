@@ -1,5 +1,5 @@
 import CheckboxGroup from '../checkbox/src/checkbox-group.vue'
-import { createNamespace } from '../../../src/utils/use-namespace'
+import { createNamespace } from '../../../src/utils/use-namespace.js'
 
 CheckboxGroup.install = (Vue, options = {}) => {
   Vue.component(createNamespace('CheckboxGroup', { prefix: options.prefix }), CheckboxGroup)

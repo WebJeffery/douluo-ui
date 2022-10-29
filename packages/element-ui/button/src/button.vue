@@ -11,7 +11,7 @@
       ns.is('round', round),
       ns.is('circle', circle),
       ns.is('text', text),
-      ns.is('link', link),
+      ns.is('link', link)
     ]"
     @click="handleClick"
     :disabled="buttonDisabled || loading"
@@ -30,59 +30,59 @@
   </button>
 </template>
 <script>
-import { useNamespace } from 'src/utils/use-namespace'
+import { useNamespace } from 'src/utils/use-namespace.js'
 
 export default {
   name: 'Button',
 
   props: {
-      type: {
-        type: String,
-        default: 'default'
-      },
-      size: {
-        type: String,
-        default: ''
-      },
-      icon: {
-        type: String,
-        default: ''
-      },
-      nativeType: {
-        type: String,
-        default: 'button'
-      },
-      loading: Boolean,
-      disabled: Boolean,
-      plain: Boolean,
-      ghost: Boolean,
-      autofocus: Boolean,
-      round: Boolean,
-      circle: Boolean,
-      link: Boolean,
-      text: Boolean,
+    type: {
+      type: String,
+      default: 'default'
     },
+    size: {
+      type: String,
+      default: ''
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    nativeType: {
+      type: String,
+      default: 'button'
+    },
+    loading: Boolean,
+    disabled: Boolean,
+    plain: Boolean,
+    ghost: Boolean,
+    autofocus: Boolean,
+    round: Boolean,
+    circle: Boolean,
+    link: Boolean,
+    text: Boolean
+  },
 
-  data () {
+  data() {
     this.ns = useNamespace('button')
     return {}
   },
 
   computed: {
     _dlFormItemSize() {
-      return (this.dlFormItem || {}).dlFormItemSize;
+      return (this.dlFormItem || {}).dlFormItemSize
     },
     buttonSize() {
-      return this.size || this._dlFormItemSize || (this.$ELEMENT || {}).size;
+      return this.size || this._dlFormItemSize || (this.$ELEMENT || {}).size
     },
     buttonDisabled() {
-      return this.disabled || (this.dlForm || {}).disabled;
+      return this.disabled || (this.dlForm || {}).disabled
     }
   },
 
   methods: {
     handleClick(evt) {
-      this.$emit('click', evt);
+      this.$emit('click', evt)
     }
   }
 }

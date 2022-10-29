@@ -1,13 +1,10 @@
 <template>
   <el-input
-    :class="[
-      type === 'textarea' ? nsTextarea.b() : nsInput.b(),
-      nsInput.is('dashed', dashed)
-      ]"
+    :class="[type === 'textarea' ? nsTextarea.b() : nsInput.b(), nsInput.is('dashed', dashed)]"
     :type="type"
     v-bind="$attrs"
     v-on="$listeners"
-    >
+  >
     <template #append>
       <slot name="append"></slot>
     </template>
@@ -24,7 +21,7 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace'
+import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'Input',
   inheritAttrs: false,

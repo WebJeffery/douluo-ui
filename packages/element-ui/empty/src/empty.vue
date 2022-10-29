@@ -16,9 +16,8 @@
 </template>
 
 <script>
+import { useNamespace } from 'src/utils/use-namespace.js'
 
-import { useNamespace } from 'src/utils/use-namespace'
-// import imageEmpty from 'src/images/empty.png'
 export default {
   name: 'Empty',
 
@@ -48,8 +47,8 @@ export default {
         width: this.imageSize ? `${this.imageSize}px` : ''
       }
     },
-    imageEmpty () {
-      return this.image || 'src/images/empty.png'
+    imageEmpty() {
+      return this.image || '//static.91160.com/wechat/img/doctor/nodata-img.png'
     }
   }
 }

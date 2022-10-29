@@ -10,10 +10,10 @@
 @use '../mixins/var' as *;
 
 // 创建组件 css 变量
-@include b(tooltip) {
-  @include set-component-css-var('tooltip', $tooltip);
-}
+// @include b(tooltip) {
+//   @include set-component-css-var('tooltip', $tooltip);
+// }
 
-@include b(tooltip) {
+// @include b(tooltip) {
 
-}
+// }

@@ -15,6 +15,7 @@ import 'douluo-ui/lib/theme/index.css'
 
 Vue.use(ElementUI)
 Vue.use(DouluoUI)
+console.log(DouluoUI)
 
 DouluoUI.updateUITheme({
   primaryColor: '#FFAA00',

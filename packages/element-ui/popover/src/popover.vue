@@ -1,22 +1,17 @@
 <template>
-  <el-popover
-    :class="ns.b()"
-    v-bind="$attrs"
-    v-on="$listeners"
-    >
-      <slot></slot>
-      <template v-if="$slots.reference" slot="reference">
-        <slot name="reference"></slot>
-      </template>
-    </el-popover>
+  <el-popover :class="ns.b()" v-bind="$attrs" v-on="$listeners">
+    <slot></slot>
+    <template v-if="$slots.reference" slot="reference">
+      <slot name="reference"></slot>
+    </template>
+  </el-popover>
 </template>
 
 <script>
-
-import { useNamespace } from 'src/utils/use-namespace'
+import { useNamespace } from 'src/utils/use-namespace.js'
 
 export default {
-  name: 'popover',
+  name: 'Popover',
   inheritAttrs: false,
 
   data() {

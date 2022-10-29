@@ -127,12 +127,12 @@ module.exports = {
       // import忽略后缀名
       'error',
       'always',
-      {
-        // ts: 'never',
-        // tsx: 'never',
-        js: 'never'
-        // vue: 'never' // vue文件加后缀名才能跳转至定义处
-      }
+      // {
+      //   ts: 'never',
+      //   tsx: 'never',
+      //   js: 'never',
+      //   vue: 'never' // vue文件加后缀名才能跳转至定义处
+      // }
     ],
     // 	Stylistic Issues: 强制一行的最大长度
     'max-len': 'off',

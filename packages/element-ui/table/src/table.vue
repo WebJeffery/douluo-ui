@@ -1,5 +1,5 @@
 <template>
-  <div :class="[ns.b(), ns.is('border', border),]">
+  <div :class="[ns.b(), ns.is('border', border)]">
     <el-table
       ref="elTable"
       v-bind="$attrs"
@@ -10,31 +10,21 @@
     >
       <slot v-if="$slots.default"></slot>
       <template v-if="column.length">
-        <dl-column
-          v-bind="$attrs"
-          v-for="(item, index) in column"
-          :key="index"
-          :align="align"
-          :column="item" />
+        <dl-column v-bind="$attrs" v-for="(item, index) in column" :key="index" :align="align" :column="item" />
       </template>
       <template #empty>
-          <slot name="empty">
-              <dl-empty />
-          </slot>
+        <slot name="empty">
+          <dl-empty />
+        </slot>
       </template>
     </el-table>
-    <dl-pagination
-      v-if="pagination"
-      :class="ns.e('pagination')"
-      v-bind="$attrs"
-      v-on="$listeners"
-    />
+    <dl-pagination v-if="pagination" :class="ns.e('pagination')" v-bind="$attrs" v-on="$listeners" />
   </div>
 </template>
 
 <script>
-  import DlColumn from './column.vue'
-  import { useNamespace } from 'src/utils/use-namespace'
+import DlColumn from './column.vue'
+import { useNamespace } from 'src/utils/use-namespace.js'
 
 export default {
   name: 'Table',
