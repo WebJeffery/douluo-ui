@@ -83,6 +83,11 @@ export const routeComponents = [
     path: '/tooltip',
     component: () => import('@/views/tooltip/index.vue')
   },
+  {
+    title: 'Select 组件',
+    path: '/select',
+    component: () => import('@/views/select/index.vue')
+  },
 ]
 
 const createRouter = () =>

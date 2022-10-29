@@ -1,6 +1,6 @@
 {
   "name": "douluo-ui",
-  "version": "1.2.0",
+  "version": "1.0.3",
   "main": "lib/index.cjs.min.js",
   "module": "lib/index.es.min.js",
   "description": "douluo-ui Vue2组件库",

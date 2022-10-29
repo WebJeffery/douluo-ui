@@ -1,0 +1,99 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(select) {
+  @include set-component-css-var('select', $select);
+}
+
+@include b(select, true) {
+  .el-input {
+    min-width: 207px;
+  }
+
+  .el-input__inner {
+    padding-left: 10px;
+    border-color: getCssVar('select-border-color');
+    font-size: getCssVar('select-font-size');
+    color: getCssVar('select-input-color');
+
+    &::placeholder {
+      color: getCssVar('select-placeholder-color');
+    }
+
+    &:hover,
+    &:focus {
+      border-color: getCssVar('select-border-color-hover');
+    }
+  }
+
+  .el-input.is-disabled {
+    .el-input__inner {
+      color: getCssVar('select-disabled-text-color');
+      background-color: getCssVar('select-disabled-bg-color');
+    }
+  }
+
+  .el-input .el-select__caret {
+    color: getCssVar('select-border-color');
+  }
+
+  .el-select-dropdown__item.selected {
+    color: getCssVar('color-primary');
+  }
+
+}
+
+.dl-select-dropdown.el-select-dropdown {
+  box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.2);
+  border: none;
+
+  .el-select-dropdown__item {
+    color: getCssVar('text-color-regular');
+    height: 40px;
+    line-height: 40px;
+
+    &.selected {
+      color: getCssVar('color-primary');
+    }
+    &.is-disabled {
+      color: #ccc;
+      border-color: getCssVar('select-border-color');
+
+      &:hover {
+        background-color: getCssVar('color-white');
+        border-color: getCssVar('select-border-color');
+      }
+    }
+  }
+
+  .el-select-dropdown__list {
+    padding: 0;
+  }
+
+  &.el-popper {
+    .popper__arrow {
+      display: none;
+    }
+  }
+  &.el-popper[x-placement^=bottom] {
+    margin-top: 10px;
+  }
+
+  .el-select-dropdown__item.hover, .el-select-dropdown__item:hover {
+    background-color: getCssVar('color-primary-light-7');
+  }
+
+  .el-select-dropdown__empty {
+    color: getCssVar('color-primary');
+  }
+
+}

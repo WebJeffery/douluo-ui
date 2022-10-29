@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace'
+import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'DatePicker',
   inheritAttrs: false,

@@ -442,14 +442,18 @@ $radio-bordered-input-width: map.merge(
 $select: () !default;
 $select: map.merge(
   (
-    // 'border-color-hover': getCssVar('border-color-hover'),
-    // 'disabled-border': getCssVar('disabled-border-color'),
-    // 'font-size': getCssVar('font-size-base'),
+    'border-color': getCssVar('border-color-input'),
+    'border-color-hover': getCssVar('color-primary'),
+    'disabled-border': getCssVar('disabled-border-color'),
+    'font-size': getCssVar('font-size-base'),
     // 'close-hover-color': getCssVar('text-color-secondary'),
-    // 'input-color': getCssVar('text-color-placeholder'),
+    'input-color': getCssVar('text-color-primary'),
+    'placeholder-color': getCssVar('text-color-placeholder'),
+    'bg-color-hover': getCssVar('color-primary-light-3'),
     // 'multiple-input-color': getCssVar('text-color-regular'),
     // 'input-focus-border-color': getCssVar('color-primary'),
-    // 'input-font-size': 14px,
+    'disabled-text-color': getCssVar('text-color-disabled'),
+    'disabled-bg-color': getCssVar('bg-color-light'),
   ),
   $select
 );

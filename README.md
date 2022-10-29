@@ -247,7 +247,7 @@ yarn docs:dev
 
 ```js
 import Button from "./src/button.vue";
-import { createNamespace } from "/src/utils/use-namespace";
+import { createNamespace } from "/src/utils/use-namespace.js";
 
 Button.install = (Vue, options = {}) => {
   Vue.component(createNamespace("button", { prefix: options.prefix }), Button);
@@ -276,7 +276,7 @@ export default Button;
   </el-button>
 </template>
 <script>
-import { useNamespace } from 'src/utils/use-namespace'
+import { useNamespace } from 'src/utils/use-namespace.js'
 
 export default {
   name: 'Button',

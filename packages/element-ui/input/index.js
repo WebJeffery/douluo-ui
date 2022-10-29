@@ -1,5 +1,5 @@
 import Input from './src/input.vue'
-import { createNamespace } from '../../../src/utils/use-namespace'
+import { createNamespace } from '../../../src/utils/use-namespace.js'
 
 Input.install = (Vue, options = {}) => {
   Vue.component(createNamespace('Input', { prefix: options.prefix }), Input)

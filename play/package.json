@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "@types/node": "^18.7.2",
-    "douluo-ui": "file:douluo-ui-1.2.0.tgz",
+    "douluo-ui": "file:douluo-ui-1.0.3.tgz",
     "element-ui": "^2.15.9",
     "vue": "^2.7.8"
   }
