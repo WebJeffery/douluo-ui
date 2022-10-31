@@ -1,8 +1,8 @@
 import {
   updateElementTheme,
   tintColor
-} from './update-element-theme'
-import { cssNamespace } from './use-namespace'
+} from './update-element-theme.js'
+import { cssNamespace } from './use-namespace.js'
 
 export const updateUITheme = async function (options) {
   const {

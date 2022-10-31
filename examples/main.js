@@ -1,7 +1,7 @@
 // main.js
 import Vue from 'vue'
 import App from './src/App.vue'
-import router from './src/router'
+import router from './src/router/index.js'
 
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
@@ -10,9 +10,8 @@ import 'element-ui/lib/theme-chalk/index.css'
 // import DouluoUI from 'douluo-ui'
 // import 'douluo-ui/lib/theme/index.css'
 
-import DouluoUI from '../src/index'
+import DouluoUI from '../src/index.js'
 import '../styles/src/index.scss'
-// import '../../lib/theme/index.css'
 
 Vue.use(ElementUI)
 Vue.use(DouluoUI)

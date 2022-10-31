@@ -2,9 +2,9 @@
 	<div>
     <el-button>hello</el-button>
     <dl-button><i class="dl-icon-shezhi"></i>斗罗 ZUI</dl-button>
-    <d-button></d-button>
+    <!-- <d-button></d-button>
     <d-radio></d-radio>
-    <d-table></d-table>
+    <d-table></d-table> -->
   </div>
 </template>
 

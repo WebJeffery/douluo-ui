@@ -12,14 +12,14 @@ const replace = require('rollup-plugin-replace') // 帮助rollup识别一些特�
 const json = require('rollup-plugin-json')
 const filesize = require('rollup-plugin-filesize') // 显示打包出来的文件大小
 
-const { getAssetsPath, env, fsExistsSync, chalkConsole } = require('./utils')
-const rollupAlias = require('../config/alias')
+const { getAssetsPath, env, fsExistsSync, chalkConsole } = require('./utils.js')
+const rollupAlias = require('../config/alias.js')
 const {
   banner,
   styleOutputPath,
   externalMap,
   rollupResolve
-} = require('../config/rollup-config')
+} = require('../config/rollup-config.js')
 
 function createPlugins({ min } = {}) {
   const exclude = 'node_modules/**'

@@ -1,8 +1,8 @@
 {
   "name": "douluo-ui",
-  "version": "1.0.3",
-  "main": "lib/index.cjs.min.js",
-  "module": "lib/index.es.min.js",
+  "version": "1.0.4",
+  "main": "lib/index.js",
+  "module": "lib/index.js",
   "description": "douluo-ui Vue2组件库",
   "keywords": [
     "vue",
@@ -34,8 +34,7 @@
     "lint:eslint": "eslint --ext \\packages\\.js --ext \\examples\\.js --ext \\src\\.js --fix"
   },
   "dependencies": {
-    "async-validator": "^1.11.5",
-    "axios": "^0.26.0",
+    "async-validator": "^1.12.2",
     "core-js": "^3.6.5",
     "element-ui": "^2.15.9",
     "vue": "^2.6.11",
