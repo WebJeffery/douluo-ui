@@ -4,11 +4,10 @@
 @use '../common/var' as *;
 // mixin 函数，例如：b()，e()，m()
 @use '../mixins/mixins' as *;
-// 工具方法 clearfix vertical-center ellipsis
-@use '../mixins/utils' as *;
 // set-css-var-value set-component-css-var css 变量方法
 @use '../mixins/var' as *;
-@use '../mixins//button' as *;
+// button-variant button-size
+@use '../mixins/button' as *;
 
 
 $button-icon-span-gap: () !default;
@@ -17,6 +16,7 @@ $button-icon-span-gap: map.merge(
     'large': 8px,
     'default': 6px,
     'small': 4px,
+    'mini': 2px,
   ),
   $button-icon-span-gap
 );
@@ -29,12 +29,9 @@ $button-icon-span-gap: map.merge(
   display: inline-flex;
   justify-content: center;
   align-items: center;
-
-  line-height: map.get($line-height, 'default');
-  // min-height will expand when in flex
-  // height: map.get($input-height, 'default');
-  white-space: nowrap;
-  cursor: pointer;
+  box-sizing: border-box;
+  min-width: getCssVar('button', 'min-width');
+  line-height: getCssVar('button', 'line-height');
   font-weight: getCssVar('button', 'font-weight');
   color: getCssVar('button', 'text-color');
   background-color: getCssVar('button', 'bg-color');
@@ -42,19 +39,24 @@ $button-icon-span-gap: map.merge(
   border-color: getCssVar('button', 'border-color');
   text-align: center;
   vertical-align: middle;
-  box-sizing: border-box;
+  white-space: nowrap;
+  cursor: pointer;
   outline: none;
   transition: 0.1s;
   user-select: none;
   -webkit-appearance: none;
 
-  &:hover,
-  &:focus {
-    color: getCssVar('button', 'hover', 'text-color');
-    border-color: getCssVar('button', 'hover', 'border-color');
-    background-color: getCssVar('button', 'hover', 'bg-color');
-    outline: none;
-  }
+  // &:hover,
+  // &:focus {
+  //   color: getCssVar('button', 'hover', 'text-color');
+  //   border-color: getCssVar('button', 'hover', 'border-color');
+  //   background-color: getCssVar('button', 'hover', 'bg-color');
+  //   outline: none;
+
+  //   & [class*='#{$namespace}-icon'] {
+  //     color: getCssVar('button', 'hover', 'text-color');
+  //   }
+  // }
 
   &:active {
     color: getCssVar('button', 'active', 'text-color');
@@ -78,8 +80,8 @@ $button-icon-span-gap: map.merge(
   }
 
   @include button-size(
-    map.get($button-padding-vertical, 'default'),
-    map.get($button-padding-horizontal, 'default'),
+    map.get($button-padding-vertical, 'default') - $button-border-width,
+    map.get($button-padding-horizontal, 'default') - $button-border-width,
     map.get($button-font-size, 'default'),
     map.get($button-border-radius, 'default')
   );
@@ -96,23 +98,27 @@ $button-icon-span-gap: map.merge(
   }
 
   @include when(plain) {
-
+    background-clip: padding-box;
     @include css-var-from-global(
       ('button', 'hover', 'text-color'),
       ('color', 'primary')
     );
     @include css-var-from-global(
       ('button', 'hover', 'bg-color'),
-      ('fill-color', 'blank')
+      ('color-primary', 'light-7')
     );
-    // @include css-var-from-global(
-    //   ('button', 'hover', 'border-color'),
-    //   ('color', 'primary')
-    // );
+    @include css-var-from-global(
+      ('button', 'border-color'),
+      ('bg-color', 'blank')
+    );
+    @include css-var-from-global(
+      ('button', 'active', 'border-color'),
+      ('color-primary', 'light-7')
+    );
+
   }
 
   @include when(ghost) {
-
     @include css-var-from-global(
       ('button', 'hover', 'text-color'),
       ('color', 'primary')
@@ -165,7 +171,8 @@ $button-icon-span-gap: map.merge(
   }
   @include when(circle) {
     border-radius: 50%;
-    padding: map.get($button-padding-vertical, 'default');
+    min-width: 0;
+    padding: map.get($button-padding-vertical, 'default') + $button-border-width;
   }
 
   @include when(text) {
@@ -181,7 +188,7 @@ $button-icon-span-gap: map.merge(
     &:not(.is-disabled) {
       &:hover,
       &:focus {
-        background-color: getCssVar('fill-color', 'light');
+        background-color: getCssVar('bg-color', 'light');
       }
 
       &:focus-visible {
@@ -190,19 +197,19 @@ $button-icon-span-gap: map.merge(
       }
 
       &:active {
-        background-color: getCssVar('fill-color');
+        background-color: getCssVar('bg-color');
       }
 
       @include when(has-bg) {
-        background-color: getCssVar('fill-color', 'light');
+        background-color: getCssVar('bg-color', 'light');
 
         &:hover,
         &:focus {
-          background-color: getCssVar('fill-color');
+          background-color: getCssVar('bg-color');
         }
 
         &:active {
-          background-color: getCssVar('fill-color', 'dark');
+          background-color: getCssVar('bg-color', 'dark');
         }
       }
     }
@@ -216,6 +223,7 @@ $button-icon-span-gap: map.merge(
   }
 
   @include when(link) {
+    min-width: 0;
     border-color: transparent;
     color: getCssVar('button', 'text-color');
     background: transparent;
@@ -250,6 +258,7 @@ $button-icon-span-gap: map.merge(
   }
 
   @include m(text) {
+    min-width: 0;
     border-color: transparent;
     background: transparent;
     color: getCssVar('color', 'primary');
@@ -270,7 +279,7 @@ $button-icon-span-gap: map.merge(
       }
 
       &:active {
-        color: getCssVar('color', 'primary', 'dark-2');
+        color: getCssVar('color', 'primary');
         border-color: transparent;
         background-color: transparent;
       }
@@ -290,14 +299,26 @@ $button-icon-span-gap: map.merge(
     }
   }
 
-  @each $size in (large, small) {
-    @include m($size) {
-      @include set-css-var-value(
-        ('button', 'size'),
-        map.get($input-height, $size)
-      );
+  @include m(small) {
+    min-width: 0;
+    min-height: 0;
+  }
 
-      height: getCssVar('button', 'size');
+  @include m(mini) {
+    min-width: 0;
+    min-height: 0;
+    height: 24px;
+  }
+
+  @each $size in (large, small, mini) {
+    @include m($size) {
+
+      // @include set-css-var-value(
+      //   ('button', 'size'),
+      //   map.get($input-height, $size)
+      // );
+
+      // height: getCssVar('button', 'size');
 
       & [class*='#{$namespace}-icon'],
       & [class*='#{$el-namespace}-icon'] {

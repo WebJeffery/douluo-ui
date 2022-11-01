@@ -13,10 +13,10 @@
 husky 安装到开发依赖中
 
 ```shell
-yarn add husky -D
+yarn add husky -D # 安装husky
 ```
 
-安装完后，我们需要在当前项目中创建一个.husky 目录，并指定该目录为 git hooks 所在的目录。
+安装完后，在当前项目中创建一个 `.husky` 目录，该目录指定 git hooks 。
 
 使用以下命令快速创建 👇
 
@@ -25,7 +25,7 @@ yarn add husky -D
 npx --no-install husky install
 ```
 
-使用以下命令快速创建 `pre-commit` 👇
+新增 `pre-commit` 钩子👇
 
 ```shell
 npx --no-instal husky add .husky/pre-commit "npm run lint"

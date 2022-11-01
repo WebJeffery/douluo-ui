@@ -22,7 +22,7 @@
 // Scrollbar
 @mixin scroll-bar {
   $scrollbar-thumb-background: getCssVar('text-color', 'disabled');
-  $scrollbar-track-background: getCssVar('fill-color', 'blank');
+  $scrollbar-track-background: getCssVar('bg-color', 'blank');
 
   &::-webkit-scrollbar {
     z-index: 11;
@@ -68,7 +68,7 @@
     }
   }
 }
-
+/*  */
 @mixin e($element) {
   $E: $element !global;
   $selector: &;

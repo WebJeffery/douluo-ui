@@ -1,4 +1,8 @@
-# Pagination 分页
+---
+title: Pagination 分页
+pageClass: demo-pagination
+icon: new
+---
 
 当数据量过多时，使用分页分解数据。
 
@@ -8,17 +12,17 @@
 ```html
 <div class="block">
   <span class="demonstration">页数较少时的效果</span>
-  <el-pagination
+  <dl-pagination
     layout="prev, pager, next"
     :total="50">
-  </el-pagination>
+  </dl-pagination>
 </div>
 <div class="block">
   <span class="demonstration">大于 7 页时的效果</span>
-  <el-pagination
+  <dl-pagination
     layout="prev, pager, next"
     :total="1000">
-  </el-pagination>
+  </dl-pagination>
 </div>
 ```
 :::
@@ -27,12 +31,12 @@
 
 :::demo 默认情况下，当总页数超过 7 页时，Pagination 会折叠多余的页码按钮。通过`pager-count`属性可以设置最大页码按钮数。
 ```html
-<el-pagination
+<dl-pagination
   :page-size="20"
   :pager-count="11"
   layout="prev, pager, next"
   :total="1000">
-</el-pagination>
+</dl-pagination>
 ```
 :::
 
@@ -40,11 +44,11 @@
 
 :::demo 设置`background`属性可以为分页按钮添加背景色。
 ```html
-<el-pagination
+<dl-pagination
   background
   layout="prev, pager, next"
   :total="1000">
-</el-pagination>
+</dl-pagination>
 ```
 :::
 
@@ -54,11 +58,11 @@
 
 :::demo 只需要一个`small`属性，它接受一个`Boolean`，默认为`false`，设为`true`即可启用。
 ```html
-<el-pagination
+<dl-pagination
   small
   layout="prev, pager, next"
   :total="50">
-</el-pagination>
+</dl-pagination>
 ```
 :::
 
@@ -72,18 +76,18 @@
 <template>
   <div class="block">
     <span class="demonstration">显示总数</span>
-    <el-pagination
+    <dl-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage1"
       :page-size="100"
       layout="total, prev, pager, next"
       :total="1000">
-    </el-pagination>
+    </dl-pagination>
   </div>
   <div class="block">
     <span class="demonstration">调整每页显示条数</span>
-    <el-pagination
+    <dl-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage2"
@@ -91,22 +95,22 @@
       :page-size="100"
       layout="sizes, prev, pager, next"
       :total="1000">
-    </el-pagination>
+    </dl-pagination>
   </div>
   <div class="block">
     <span class="demonstration">直接前往</span>
-    <el-pagination
+    <dl-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page.sync="currentPage3"
       :page-size="100"
       layout="prev, pager, next, jumper"
       :total="1000">
-    </el-pagination>
+    </dl-pagination>
   </div>
   <div class="block">
     <span class="demonstration">完整功能</span>
-    <el-pagination
+    <dl-pagination
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       :current-page="currentPage4"
@@ -114,7 +118,7 @@
       :page-size="100"
       layout="total, sizes, prev, pager, next, jumper"
       :total="400">
-    </el-pagination>
+    </dl-pagination>
   </div>
 </template>
 <script>
@@ -149,11 +153,11 @@
 <div>
  <el-switch v-model="value">
  </el-switch>
- <el-pagination
+ <dl-pagination
   :hide-on-single-page="value"
   :total="5"
   layout="prev, pager, next">
-</el-pagination>
+</dl-pagination>
 </div>
 
 <script>

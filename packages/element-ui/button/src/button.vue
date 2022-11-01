@@ -1,79 +1,84 @@
 <template>
   <button
     :class="[
-      ns.b(),
-      ns.m(type),
-      ns.m(buttonSize),
-      ns.is('disabled', buttonDisabled),
-      ns.is('loading', loading),
-      ns.is('plain', plain),
-      ns.is('ghost', ghost),
-      ns.is('round', round),
-      ns.is('circle', circle),
-      ns.is('text', text),
-      ns.is('link', link),
+      bemNS.b(),
+      bemNS.m(type),
+      bemNS.m(buttonSize),
+      bemNS.is('disabled', buttonDisabled),
+      bemNS.is('loading', loading),
+      bemNS.is('plain', plain),
+      bemNS.is('ghost', ghost),
+      bemNS.is('round', round),
+      bemNS.is('circle', circle),
+      bemNS.is('text', text),
+      bemNS.is('link', link)
     ]"
     @click="handleClick"
     :disabled="buttonDisabled || loading"
     :autofocus="autofocus"
     :type="nativeType"
   >
-    <i class="el-icon-loading" v-if="loading"></i>
-    <i :class="icon" v-if="icon && !loading"></i>
+    <template v-if="loading">
+      <slot v-if="$slots.loading" name="loading"></slot>
+      <i v-else class="el-icon-loading"></i>
+    </template>
+    <template v-else-if="icon || $slots.icon">
+      <span v-if="$slots.icon"><slot name="icon"></slot></span>
+      <dl-icon v-else :name="icon" />
+    </template>
     <span v-if="$slots.default"><slot></slot></span>
   </button>
 </template>
 <script>
-import { useNamespace } from 'src/utils/use-namespace'
-
 export default {
   name: 'Button',
 
   props: {
-      type: {
-        type: String,
-        default: 'default'
-      },
-      size: String,
-      icon: {
-        type: String,
-        default: ''
-      },
-      nativeType: {
-        type: String,
-        default: 'button'
-      },
-      loading: Boolean,
-      disabled: Boolean,
-      plain: Boolean,
-      ghost: Boolean,
-      autofocus: Boolean,
-      round: Boolean,
-      circle: Boolean,
-      link: Boolean,
-      text: Boolean,
+    type: {
+      type: String,
+      default: 'default'
     },
-
-  data () {
-    this.ns = useNamespace('button')
-    return {}
+    size: {
+      type: String,
+      default: ''
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    nativeType: {
+      type: String,
+      default: 'button'
+    },
+    loading: Boolean,
+    disabled: Boolean,
+    plain: Boolean,
+    ghost: Boolean,
+    autofocus: Boolean,
+    round: Boolean,
+    circle: Boolean,
+    link: Boolean,
+    text: Boolean
   },
 
   computed: {
+    bemNS () {
+      return this.$dlUseNamespace('button')
+    },
     _dlFormItemSize() {
-      return (this.dlFormItem || {}).dlFormItemSize;
+      return (this.dlFormItem || {}).dlFormItemSize
     },
     buttonSize() {
-      return this.size || this._dlFormItemSize || (this.$ELEMENT || {}).size;
+      return this.size || this._dlFormItemSize || (this.$ELEMENT || {}).size
     },
     buttonDisabled() {
-      return this.disabled || (this.dlForm || {}).disabled;
+      return this.disabled || (this.dlForm || {}).disabled
     }
   },
 
   methods: {
     handleClick(evt) {
-      this.$emit('click', evt);
+      this.$emit('click', evt)
     }
   }
 }

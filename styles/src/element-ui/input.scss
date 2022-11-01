@@ -1,0 +1,146 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(textarea) {
+  @include set-component-css-var('input', $input);
+}
+
+@include b(textarea, true) {
+  .el-textarea__inner {
+    font-size: getCssVar('input-font-size');
+    color: getCssVar('input-text-color');
+    border-color: getCssVar('input-border-color');
+
+    &::placeholder {
+      color: getCssVar('input-placeholder-color');
+    }
+
+    &:hover {
+      border-color: getCssVar('input-hover-border-color');
+    }
+
+    &:focus {
+      outline: none;
+      border-color: getCssVar('input-focus-border-color');
+    }
+  }
+
+  @include when(disabled) {
+    .el-textarea__inner {
+      color: map.get($input-disabled, 'text-color');
+      border-color: map.get($input-disabled, 'border-color');
+      background-color: map.get($input-disabled, 'bg-color');
+
+      &:hover {
+        border-color: map.get($input-disabled, 'border-color');
+      }
+    }
+  }
+
+  .el-input__count {
+    color: getCssVar('input-count-color');
+  }
+
+  .el-input__clear {
+    color: getCssVar('input-icon-color');
+
+    &:hover {
+      color: getCssVar('input-icon-color');
+    }
+  }
+
+  @include when(dashed) {
+    .el-textarea__inner {
+      border-style: dashed;
+    }
+  }
+}
+
+@include b(input) {
+  @include set-component-css-var('input', $input);
+}
+
+@include b(input, true) {
+  .el-input__inner {
+    font-size: getCssVar('input-font-size');
+    color: getCssVar('input-text-color');
+    border-color: getCssVar('input-border-color');
+
+    &::placeholder {
+      color: getCssVar('input-placeholder-color');
+    }
+
+    &:hover {
+      border-color: getCssVar('input-hover-border-color');
+    }
+
+    &:focus {
+      outline: none;
+      border-color: getCssVar('input-focus-border-color');
+    }
+  }
+
+  @include when(disabled) {
+    .el-input__inner {
+      color: map.get($input-disabled, 'text-color');
+      border-color: map.get($input-disabled, 'border-color');
+      background-color: map.get($input-disabled, 'bg-color');
+
+      &:hover {
+        border-color: map.get($input-disabled, 'border-color');
+      }
+    }
+  }
+
+  .el-input__count {
+    color: getCssVar('input-count-color');
+  }
+
+  .el-input--suffix {
+    color: getCssVar('input-text-color');
+
+    .el-input__inner {
+      border-color: transparent;
+    }
+  }
+
+  .el-input__clear {
+    color: getCssVar('input-icon-color');
+
+    &:hover {
+      color: getCssVar('input-icon-color');
+    }
+  }
+
+  .el-input__prefix,
+  .el-input__suffix {
+    color: getCssVar('input-icon-color');
+  }
+
+  .el-input-group__append,
+  .el-input-group__prepend {
+    font-size: getCssVar('input-font-size');
+    color: getCssVar('input-text-color');
+    border-color: getCssVar('input-border-color');
+    background-color: getCssVar('bg-color', 'blank');
+  }
+
+  .el-input-group__append {
+    border-left: none;
+  }
+
+  @include when(dashed) {
+    .el-input__inner {
+      border-style: dashed;
+    }
+  }
+}

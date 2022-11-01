@@ -1,6 +1,6 @@
 const path = require('path')
 const fs = require('fs')
-var { outputPath } = require('../config/rollup-config')
+var { outputPath } = require('../config/rollup-config.js')
 const chalk = require('chalk')
 
 module.exports = {

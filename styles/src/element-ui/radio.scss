@@ -1,0 +1,89 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(radio) {
+  @include set-component-css-var('radio', $radio);
+}
+
+@include b(radio, true) {
+  font-size: getCssVar('font-size', 'base');
+  color: getCssVar('radio-text-color');
+  font-weight: getCssVar('font-weight');
+  // height: map.get($radio-height, 'large');
+
+  &:hover {
+    color: getCssVar('color-primary');
+
+    .#{$el-namespace}-radio__inner {
+      border-color: getCssVar('radio-input-border-color-hover');;
+    }
+  }
+
+  .#{$el-namespace}-radio__inner {
+    border-color: getCssVar('radio-input-border-color');
+  }
+
+  &.#{$el-namespace}-radio--medium {
+    height: map.get($radio-height, 'default');
+  }
+
+  &.#{$el-namespace}-radio--small {
+    height: map.get($radio-height, 'small');
+  }
+
+  .#{$el-namespace}-radio__input {
+    @include when(disabled) {
+      .#{$el-namespace}-radio__inner {
+        background-color: map.get($radio-disabled, 'input-fill');
+        border-color: map.get($radio-disabled, 'input-border-color');
+        cursor: not-allowed;
+
+        &::after {
+          cursor: not-allowed;
+          background-color: map.get($radio-disabled, 'icon-color');
+        }
+
+        & + .#{$namespace}-radio__label {
+          cursor: not-allowed;
+        }
+      }
+      &.is-checked {
+        .#{$el-namespace}-radio__inner {
+          background-color: map.get($radio-disabled, 'checked-input-fill');
+          border-color: map.get($radio-disabled, 'checked-input-border-color');
+
+          &::after {
+            background-color: map.get($radio-disabled, 'checked-icon-color');
+          }
+        }
+      }
+      & + span.#{$el-namespace}-radio__label {
+        color: getCssVar('text-color', 'placeholder');
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  @include when(bordered) {
+    border-color: getCssVar('radio-input-border-color');
+
+    &:hover {
+      border-color: getCssVar('radio-input-border-color-hover');
+    }
+
+    &.is-disabled {
+      cursor: not-allowed;
+      border-color: getCssVar('radio-input-border-color');
+      background-color: getCssVar('disabled', 'bg-color');;
+    }
+  }
+}

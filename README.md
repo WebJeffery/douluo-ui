@@ -10,7 +10,31 @@
 - [Vite 3.2+](https://vitejs.dev/) 开发环境
 - [rollup](https://rollupjs.org/)， [gulp](https://gulpjs.com/) 打包构建项目
 
+### 常用命令
 
+```bash
+# 安装依赖
+npm install
+
+# 开发组件
+npm run dev
+
+# 开发文档
+npm run docs:dev
+
+# 部署文档
+npm run docs:deploy
+
+# 打包组件库
+npm run build:lib
+
+# 本地打包
+npm pack
+
+# 发布npm
+npm publish
+
+```
 
 ### 目录结构介绍
 
@@ -212,7 +236,7 @@ yarn docs:dev
 
 **命令脚步介绍**
 
-```json
+```js
   "scripts": {
     "bootstrap": "yarn || npm install", // 安装依赖（首推 yarn，yarn.lock会锁定依赖版本库）
     "dev": "vite", // vite 启动，默认 vite.config.js，index.html 入口文件是 examples/main.js
@@ -247,7 +271,7 @@ yarn docs:dev
 
 ```js
 import Button from "./src/button.vue";
-import { createNamespace } from "/src/utils/use-namespace";
+import { createNamespace } from "/src/utils/use-namespace.js";
 
 Button.install = (Vue, options = {}) => {
   Vue.component(createNamespace("button", { prefix: options.prefix }), Button);
@@ -276,7 +300,7 @@ export default Button;
   </el-button>
 </template>
 <script>
-import { useNamespace } from 'src/utils/use-namespace'
+import { useNamespace } from 'src/utils/use-namespace.js'
 
 export default {
   name: 'Button',

@@ -1,12 +1,12 @@
 /* 样式变量文件 */
-// sass 内置模块 math 函数模块，map 映射操作模块
+// sass 内置模块 math 函数模块，map 映射模块
 @use 'sass:math';
 @use 'sass:map';
-// @use 会自动加入命名空间，使用 as * 相当于解构直接使用
+// @use 自带命名空间，使用 as * 相当于解构直接使用
 @use '../mixins/function.scss' as *;
 
 // 定义类型 types
-$types: primary, primary-second, success, warning, danger, error, info;
+$types: primary, success, warning, danger, error, info;
 
 // Color 定义 map 类型结构
 $colors: () !default;
@@ -17,20 +17,17 @@ $colors: map.deep-merge(
     'primary': (
       'base': #409eff,
     ),
-    'primary-second': (
-      'base': #231909
-    ),
     'success': (
-      'base': #67c23a,
+      'base': #3CC58C,
     ),
     'warning': (
-      'base': #e6a23c,
+      'base': #FF9900,
     ),
     'danger': (
-      'base': #f56c6c,
+      'base': #FF4B38,
     ),
     'error': (
-      'base': #f56c6c,
+      'base': #FF4B38,
     ),
     'info': (
       'base': #909399,
@@ -42,7 +39,6 @@ $colors: map.deep-merge(
 $color-white: map.get($colors, 'white') !default;
 $color-black: map.get($colors, 'black') !default;
 $color-primary: map.get($colors, 'primary', 'base') !default;
-$color-primary-second: map.get($colors, 'primary-second', 'base') !default;
 $color-success: map.get($colors, 'success', 'base') !default;
 $color-warning: map.get($colors, 'warning', 'base') !default;
 $color-danger: map.get($colors, 'danger', 'base') !default;
@@ -73,7 +69,7 @@ $color-info: map.get($colors, 'info', 'base') !default;
 }
 
 // $colors.primary.light-i
-// --el-color-primary-light-i
+// --dl-color-primary-light-i
 // 10% 53a8ff
 // 20% 66b1ff
 // 30% 79bbff
@@ -90,7 +86,7 @@ $color-info: map.get($colors, 'info', 'base') !default;
   }
 }
 
-// --el-color-primary-dark-2
+// --dl-color-primary-dark-2
 @each $type in $types {
   @include set-color-mix-level($type, 2, 'dark', $color-black);
 }
@@ -102,8 +98,8 @@ $text-color: map.merge(
     'primary': #333,
     'regular': #666,
     'secondary': #999,
-    'placeholder': #ccc,
-    'disabled': #f5f5f5,
+    'placeholder': #999,
+    'disabled': #999,
   ),
   $text-color
 );
@@ -112,12 +108,12 @@ $text-color: map.merge(
 $border-color: () !default;
 $border-color: map.merge(
   (
-    '': #dcdfe6,
-    'light': #e4e7ed,
-    'lighter': #ebeef5,
-    'extra-light': #f2f6fc,
-    'dark': #d4d7de,
-    'darker': #cdd0d6,
+    '': #ccc,
+    'input': #ccc,
+    // 用于分割线、不可点击状态
+    'light': #f5f5f5,
+    // 用于表格边框描边
+    'extra-light': #eee,
   ),
   $border-color
 );
@@ -125,12 +121,10 @@ $border-color: map.merge(
 $fill-color: () !default;
 $fill-color: map.merge(
   (
-    '': #f0f2f5,
-    'light': #f5f7fa,
-    'lighter': #fafafa,
-    'extra-light': #fafcff,
-    'dark': #ebedf0,
-    'darker': #e6e8eb,
+    'input': #ccc,
+    'light': #f5f5f5,
+    'extra-light': #eee,
+    // 'bg': #f5f5f5,
     'blank': #ffffff,
   ),
   $fill-color
@@ -143,6 +137,11 @@ $bg-color: map.merge(
     '': #ffffff,
     'page': #f2f3f5,
     'overlay': #ffffff,
+    'input': #ccc,
+    'light': #f5f5f5,
+    'extra-light': #eee,
+    'blank': #ffffff,
+    'table': '#f8f8f8'
   ),
   $bg-color
 );
@@ -221,6 +220,16 @@ $font-size: map.merge(
   $font-size
 );
 
+$font-weight: () !default;
+$font-weight: map.merge(
+  (
+    'default': 400,
+    'primary': 600,
+  ),
+  $font-weight
+);
+
+
 // zIndex
 $z-index: () !default;
 $z-index: map.merge(
@@ -236,9 +245,10 @@ $z-index: map.merge(
 $disabled: () !default;
 $disabled: map.merge(
   (
-    'bg-color': getCssVar('fill-color', 'light'),
-    'text-color': getCssVar('text-color', 'placeholder'),
-    'border-color': getCssVar('border-color', 'light'),
+    'text-color': getCssVar('text-color', 'disabled'),
+    'bg-color': getCssVar('bg-color', 'light'),
+    'border-color': getCssVar('border-color-input'),
+    'icon-color': getCssVar('border-color-input'),
   ),
   $disabled
 );
@@ -281,25 +291,25 @@ $mask-color: map.merge(
 $checkbox: () !default;
 $checkbox: map.merge(
   (
-    // 'font-size': 14px,
-    // 'font-weight': getCssVar('font-weight-primary'),
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'input-height': 14px,
-    // 'input-width': 14px,
-    // 'border-radius': getCssVar('border-radius-small'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'input-border': getCssVar('border'),
-    // 'disabled-border-color': getCssVar('border-color'),
-    // 'disabled-input-fill': getCssVar('fill-color', 'light'),
-    // 'disabled-icon-color': getCssVar('text-color-placeholder'),
-    // 'disabled-checked-input-fill': getCssVar('border-color-extra-light'),
-    // 'disabled-checked-input-border-color': getCssVar('border-color'),
-    // 'disabled-checked-icon-color': getCssVar('text-color-placeholder'),
-    // 'checked-text-color': getCssVar('color-primary'),
-    // 'checked-input-border-color': getCssVar('color-primary'),
-    // 'checked-bg-color': getCssVar('color-primary'),
-    // 'checked-icon-color': getCssVar('color', 'white'),
-    // 'input-border-color-hover': getCssVar('color-primary'),
+    'input-height': 14px,
+    'input-width': 14px,
+    'font-weight': 400,
+    'text-color': getCssVar('text-color-regular'),
+    'font-size': getCssVar('font-size-base'),
+    'hover-color': getCssVar('color-primary'),
+    'input-border': getCssVar('border'),
+    'input-border-color': getCssVar('border-color-input'),
+    'input-border-color-hover': getCssVar('color-primary'),
+    'disabled-border-color': getCssVar('disabled-border-color'),
+    'disabled-bg-color': getCssVar('disabled-bg-color'),
+    'disabled-icon-color': getCssVar('disabled-icon-color'),
+    'disabled-checked-bg-color': getCssVar('disabled-bg-color'),
+    'disabled-checked-border-color': getCssVar('disabled-border-color'),
+    'disabled-checked-icon-color': getCssVar('disabled-icon-color'),
+    'checked-text-color': getCssVar('color-primary'),
+    'checked-border-color': getCssVar('color-primary'),
+    'checked-bg-color': getCssVar('color-primary'),
+    'checked-icon-color': getCssVar('color', 'white'),
   ),
   $checkbox
 );
@@ -307,9 +317,19 @@ $checkbox: map.merge(
 $checkbox-button: () !default;
 $checkbox-button: map.merge(
   (
-    // 'checked-bg-color': getCssVar('color-primary'),
-    // 'checked-text-color': getCssVar('color-white'),
-    // 'checked-border-color': getCssVar('color-primary'),
+    'min-width': 100px,
+    'text-color': getCssVar('text-color-regular'),
+    'font-weight': getCssVar('font-weight'),
+    'border-color': getCssVar('border-color-input'),
+    'disabled-text-color': getCssVar('disabled-text-color'),
+    'disabled-bg-color': getCssVar('disabled-bg-color'),
+    'disabled-border-color': getCssVar('border-color', 'extra-light'),
+    'checked-text-color': getCssVar('button-font-color-primary'),
+    'checked-bg-color': getCssVar('button-bg-color-primary'),
+    'checked-border-color': getCssVar('button-bg-color-primary'),
+    'checked-disabled-text-color': getCssVar('button-disabled-font-color-primary'),
+    'checked-disabled-bg-color': getCssVar('button-disabled-bg-color-primary'),
+    'checked-disabled-border-color': getCssVar('button-disabled-bg-color-primary'),
   ),
   $checkbox-button
 );
@@ -339,16 +359,14 @@ $checkbox-bordered-padding-right: map.merge(
 $radio: () !default;
 $radio: map.merge(
   (
-    // 'font-size': getCssVar('font-size-base'),
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'font-weight': getCssVar('font-weight-primary'),
-    // 'input-height': 14px,
-    // 'input-width': 14px,
-    // 'input-border-radius': getCssVar('border-radius-circle'),
-    // 'input-bg-color': getCssVar('fill-color', 'blank'),
-    // 'input-border': getCssVar('border'),
-    // 'input-border-color': getCssVar('border-color'),
-    // 'input-border-color-hover': getCssVar('color-primary'),
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('text-color-regular'),
+    'font-weight': getCssVar('font-weight'),
+    'input-border-radius': getCssVar('border-radius-circle'),
+    'input-bg-color': getCssVar('bg-color', 'blank'),
+    'input-border': getCssVar('border'),
+    'input-border-color': getCssVar('border-color-input'),
+    'input-border-color-hover': getCssVar('color-primary'),
   ),
   $radio
 );
@@ -359,10 +377,20 @@ $radio-height: map.merge($common-component-size, $radio-height);
 $radio-button: () !default;
 $radio-button: map.merge(
   (
-    // 'checked-bg-color': getCssVar('color-primary'),
-    // 'checked-text-color': getCssVar('color-white'),
-    // 'checked-border-color': getCssVar('color-primary'),
-    // 'disabled-checked-fill': getCssVar('border-color-extra-light'),
+    'min-width': 100px,
+    'text-color': getCssVar('text-color-regular'),
+    'font-weight': getCssVar('font-weight'),
+    'border-color': getCssVar('border-color-input'),
+    'disabled-text-color': getCssVar('disabled-text-color'),
+    'disabled-bg-color': getCssVar('disabled-bg-color'),
+    'disabled-border-color': getCssVar('border-color', 'extra-light'),
+    'checked-text-color': getCssVar('button-font-color-primary'),
+    'checked-bg-color': getCssVar('button-bg-color-primary'),
+    'checked-border-color': getCssVar('button-bg-color-primary'),
+    'checked-disabled-text-color': getCssVar('button-disabled-font-color-primary'),
+    'checked-disabled-bg-color': getCssVar('button-disabled-bg-color-primary'),
+    'checked-disabled-border-color': getCssVar('button-disabled-bg-color-primary'),
+    'disabled-checked-fill': map.get($disabled, 'border-color'),
   ),
   $radio-button
 );
@@ -370,12 +398,12 @@ $radio-button: map.merge(
 $radio-disabled: () !default;
 $radio-disabled: map.merge(
   (
-    // 'input-border-color': getCssVar('disabled-border-color'),
-    // 'input-fill': getCssVar('disabled-bg-color'),
-    // 'icon-color': getCssVar('disabled-bg-color'),
-    // 'checked-input-border-color': getCssVar('disabled-border-color'),
-    // 'checked-input-fill': getCssVar('disabled-bg-color'),
-    // 'checked-icon-color': getCssVar('text-color-placeholder'),
+    'input-border-color': getCssVar('disabled-border-color'),
+    'input-fill': getCssVar('disabled-bg-color'),
+    'icon-color': getCssVar('disabled-bg-color'),
+    'checked-input-border-color': getCssVar('disabled-border-color'),
+    'checked-input-fill': getCssVar('disabled-bg-color'),
+    'checked-icon-color': getCssVar('disabled-icon-color'),
   ),
   $radio-disabled
 );
@@ -383,9 +411,9 @@ $radio-disabled: map.merge(
 $radio-checked: () !default;
 $radio-checked: map.merge(
   (
-    // 'text-color': getCssVar('color-primary'),
-    // 'input-border-color': getCssVar('color-primary'),
-    // 'icon-color': getCssVar('color-primary'),
+    'text-color': getCssVar('color-primary'),
+    'input-border-color': getCssVar('color-primary'),
+    'icon-color': getCssVar('color-primary'),
   ),
   $radio-checked
 );
@@ -414,14 +442,18 @@ $radio-bordered-input-width: map.merge(
 $select: () !default;
 $select: map.merge(
   (
-    // 'border-color-hover': getCssVar('border-color-hover'),
-    // 'disabled-border': getCssVar('disabled-border-color'),
-    // 'font-size': getCssVar('font-size-base'),
+    'border-color': getCssVar('border-color-input'),
+    'border-color-hover': getCssVar('color-primary'),
+    'disabled-border': getCssVar('disabled-border-color'),
+    'font-size': getCssVar('font-size-base'),
     // 'close-hover-color': getCssVar('text-color-secondary'),
-    // 'input-color': getCssVar('text-color-placeholder'),
+    'input-color': getCssVar('text-color-primary'),
+    'placeholder-color': getCssVar('text-color-placeholder'),
+    'bg-color-hover': getCssVar('color-primary-light-3'),
     // 'multiple-input-color': getCssVar('text-color-regular'),
     // 'input-focus-border-color': getCssVar('color-primary'),
-    // 'input-font-size': 14px,
+    'disabled-text-color': getCssVar('text-color-disabled'),
+    'disabled-bg-color': getCssVar('bg-color-light'),
   ),
   $select
 );
@@ -432,7 +464,7 @@ $select-option: map.merge(
     // 'text-color': getCssVar('text-color-regular'),
     // 'disabled-color': getCssVar('text-color-placeholder'),
     // 'height': 34px,
-    // 'hover-background': getCssVar('fill-color', 'light'),
+    // 'hover-background': getCssVar('bg-color', 'light'),
     // 'selected-text-color': getCssVar('color-primary'),
   ),
   $select-option
@@ -555,19 +587,15 @@ $notification: map.merge(
 $input: () !default;
 $input: map.merge(
   (
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'border': getCssVar('border'),
-    // 'hover-border': getCssVar('border-color-hover'),
-    // 'focus-border': getCssVar('color-primary'),
-    // 'transparent-border': 0 0 0 1px transparent inset,
-    // 'border-color': getCssVar('border-color'),
-    // 'border-radius': getCssVar('border-radius-base'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'icon-color': getCssVar('text-color-placeholder'),
-    // 'placeholder-color': getCssVar('text-color-placeholder'),
-    // 'hover-border-color': getCssVar('border-color-hover'),
-    // 'clear-hover-color': getCssVar('text-color-secondary'),
-    // 'focus-border-color': getCssVar('color-primary'),
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('text-color-primary'),
+    'border-color': getCssVar('border-color'),
+    'placeholder-color': getCssVar('text-color-placeholder'),
+    'hover-border-color': getCssVar('color-primary'),
+    'focus-border-color': getCssVar('color-primary'),
+    'count-color': getCssVar('text-color-regular'),
+    'icon-color': getCssVar('border-color'),
+    'clear-hover-color': getCssVar('border-color'),
   ),
   $input
 );
@@ -575,10 +603,10 @@ $input: map.merge(
 $input-disabled: () !default;
 $input-disabled: map.merge(
   (
-    // 'fill': getCssVar('disabled-bg-color'),
-    // 'border': getCssVar('disabled-border-color'),
-    // 'text-color': getCssVar('disabled-text-color'),
-    // 'placeholder-color': getCssVar('text-color-placeholder'),
+    'text-color': getCssVar('disabled-text-color'),
+    'bg-color': getCssVar('disabled-bg-color'),
+    'border-color': getCssVar('disabled-border-color'),
+    'placeholder-color': getCssVar('text-color-placeholder'),
   ),
   $input-disabled
 );
@@ -602,9 +630,9 @@ $input-line-height: map.merge($common-component-size, $input-line-height);
 $input-number-width: () !default;
 $input-number-width: map.merge(
   (
-    // 'large': 180px,
-    // 'default': 150px,
-    // 'small': 120px,
+    'large': 180px,
+    'default': 150px,
+    'small': 120px,
   ),
   $input-number-width
 );
@@ -612,9 +640,9 @@ $input-number-width: map.merge(
 $input-padding-horizontal: () !default;
 $input-padding-horizontal: map.merge(
   (
-    // 'large': 16px,
-    // 'default': 12px,
-    // 'small': 8px,
+    'large': 16px,
+    'default': 12px,
+    'small': 8px,
   ),
   $input-padding-horizontal
 );
@@ -631,33 +659,35 @@ $cascader: map.merge(
     // 'menu-radius': getCssVar('border-radius-base'),
     // 'menu-border': solid 1px getCssVar('border-color-light'),
     // 'menu-shadow': getCssVar('box-shadow-light'),
-    // 'node-background-hover': getCssVar('fill-color', 'light'),
+    // 'node-background-hover': getCssVar('bg-color', 'light'),
     // 'node-color-disabled': getCssVar('text-color-placeholder'),
     // 'color-empty': getCssVar('text-color-placeholder'),
-    // 'tag-background': getCssVar('fill-color'),
+    // 'tag-background': getCssVar('bg-color'),
   ),
   $cascader
 );
 
 // Button 变量
-// css3 var in packages/theme-chalk/src/button.scss
+// css var in styles/src/element-ui /button.scss
 $button: () !default;
 $button: map.merge(
   (
+    'min-width': 120px,
+    'min-height': 40px,
+    'line-height': map.get($line-height, 'default'),
     'font-weight': getCssVar('font-weight-primary'),
     'text-color': getCssVar('text-color', 'regular'),
     'border-color': getCssVar('border-color'),
-    'bg-color': getCssVar('fill-color', 'blank'),
+    'bg-color': getCssVar('bg-color', 'blank'),
     'hover-text-color': getCssVar('color-primary'),
     'hover-border-color': getCssVar('color-primary', 'light-7'),
     'hover-bg-color': getCssVar('color-primary', 'light-9'),
     'disabled-text-color': getCssVar('disabled-text-color'),
     'disabled-border-color': getCssVar('border-color-light'),
-    'disabled-bg-color': getCssVar('fill-color', 'blank'),
+    'disabled-bg-color': getCssVar('bg-color', 'blank'),
     'active-text-color': getCssVar('button-hover-text-color'),
     'active-border-color': getCssVar('color-primary'),
     'active-bg-color': getCssVar('button', 'hover-bg-color'),
-    'divide-border-color': rgba($color-white, 0.5),
     'outline-color': getCssVar('color-primary', 'light-5'),
     'hover-link-text-color': getCssVar('color-info'),
     'active-color': getCssVar('text-color', 'primary'),
@@ -697,6 +727,7 @@ $button-font-size: map.merge(
     'large': getCssVar('font-size', 'base'),
     'default': getCssVar('font-size', 'base'),
     'small': 12px,
+    'mini': 12px,
   ),
   $button-font-size
 );
@@ -707,6 +738,7 @@ $button-border-radius: map.merge(
     'large': getCssVar('border-radius', 'base'),
     'default': getCssVar('border-radius', 'base'),
     'small': calc(#{getCssVar('border-radius', 'base')} - 1px),
+    'mini': calc(#{getCssVar('border-radius', 'base')} - 1px),
   ),
   $button-border-radius
 );
@@ -715,8 +747,9 @@ $button-padding-vertical: () !default;
 $button-padding-vertical: map.merge(
   (
     'large': 14px,
-    'default': 10px,
-    'small': 6px,
+    'default': 11px,
+    'small': 5px,
+    'mini': 1px,
   ),
   $button-padding-vertical
 );
@@ -724,9 +757,10 @@ $button-padding-vertical: map.merge(
 $button-padding-horizontal: () !default;
 $button-padding-horizontal: map.merge(
   (
-    'large': 29px,
-    'default': 17px,
-    'small': 12px,
+    'large': 24px,
+    'default': 18px,
+    'small': 11px,
+    'mini': 11px,
   ),
   $button-padding-horizontal
 );
@@ -743,7 +777,6 @@ $switch: map.merge(
 );
 
 // Dialog
-// css3 var in packages/theme-chalk/src/dialog.scss
 $dialog: () !default;
 $dialog: map.merge(
   (
@@ -765,19 +798,16 @@ $dialog: map.merge(
 $table: () !default;
 $table: map.merge(
   (
-    // 'border-color': getCssVar('border-color-lighter'),
-    // 'border': 1px solid getCssVar('table-border-color'),
-    // 'text-color': getCssVar('text-color-regular'),
-    // 'header-text-color': getCssVar('text-color-secondary'),
-    // 'row-hover-bg-color': getCssVar('fill-color', 'light'),
-    // 'current-row-bg-color': getCssVar('color-primary-light-9'),
-    // 'header-bg-color': getCssVar('bg-color'),
-    // 'fixed-box-shadow': getCssVar('box-shadow', 'light'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'tr-bg-color': getCssVar('fill-color', 'blank'),
-    // 'expanded-cell-bg-color': getCssVar('fill-color', 'blank'),
-    // 'fixed-left-column': inset 10px 0 10px -10px rgb(0 0 0 / 15%),
-    // 'fixed-right-column': inset -10px 0 10px -10px rgb(0 0 0 / 15%),
+    'font-size': getCssVar('font-size-base'),
+    'text-color': getCssVar('text-color-regular'),
+    'header-text-color': getCssVar('text-color-primary'),
+    'border-color': getCssVar('border-color-extra-light'),
+    'border': 1px solid getCssVar('table-border-color'),
+    'border-radius': getCssVar('border-radius-base'),
+    'line-height': map.get($line-height, 'default'),
+    'header-bg-color': getCssVar('bg-color-table'),
+    'bg-color': getCssVar('bg-color', 'blank'),
+    'pagination-margin-top': 30px
   ),
   $table
 );
@@ -795,9 +825,9 @@ $table-font-size: map.merge(
 $table-padding: () !default;
 $table-padding: map.merge(
   (
-    'large': 12px 0,
-    'default': 8px 0,
-    'small': 4px 0,
+    'large': 24px 0,
+    'default': 20px 0,
+    'small': 12px 0,
   ),
   $table-padding
 );
@@ -817,22 +847,25 @@ $table-cell-padding: map.merge(
 $pagination: () !default;
 $pagination: map.merge(
   (
-    // 'font-size': 14px,
-    // 'bg-color': getCssVar('fill-color', 'blank'),
-    // 'text-color': getCssVar('text-color-primary'),
-    // 'border-radius': 3px,
-    // 'button-color': getCssVar('text-color-primary'),
-    // 'button-width': 32px,
-    // 'button-height': 32px,
-    // 'button-disabled-color': getCssVar('text-color-placeholder'),
-    // 'button-disabled-bg-color': getCssVar('fill-color', 'blank'),
-    // 'button-bg-color': getCssVar('fill-color'),
-    // 'hover-color': getCssVar('color-primary'),
-    // 'height-extra-small': 24px,
-    // 'line-height-extra-small': getCssVar('pagination-height-extra-small'),
+    'font-size': getCssVar('font-size', 'base'),
+    'text-color': getCssVar('text-color-regular'),
+    'height': 30px,
+    'line-height': 30px,
+    'padding': 0 15px,
+    'bg-color': getCssVar('bg-color', 'blank'),
+    'border-radius': getCssVar('border-radius-base'),
+    'button-color': getCssVar('text-color-primary'),
+    'button-disabled-color': getCssVar('text-color-placeholder'),
+    'button-disabled-bg-color': getCssVar('bg-color', 'blank'),
+    'button-bg-color': getCssVar('bg-color'),
+    'hover-color': getCssVar('color-primary'),
+    'height-extra-small': 24px,
+    'line-height-extra-small': getCssVar('pagination-height-extra-small'),
   ),
   $pagination
 );
+
+
 
 // Popup
 // css3 var in packages/theme-chalk/src/popup.scss
@@ -876,8 +909,8 @@ $popper: map.merge(
 $skeleton: () !default;
 $skeleton: map.merge(
   (
-    'color': getCssVar('fill-color'),
-    'to-color': getCssVar('fill-color', 'darker'),
+    'color': getCssVar('bg-color'),
+    'to-color': getCssVar('bg-color', 'darker'),
   ),
   $skeleton
 );
@@ -929,7 +962,7 @@ $tag-icon-size: map.merge(
 $tree: () !default;
 $tree: map.merge(
   (
-    'node-hover-bg-color': getCssVar('fill-color', 'light'),
+    'node-hover-bg-color': getCssVar('bg-color', 'light'),
     'text-color': getCssVar('text-color-regular'),
     'expand-icon-color': getCssVar('text-color-placeholder'),
   ),
@@ -952,9 +985,10 @@ $dropdown: map.merge(
 $drawer: () !default;
 $drawer: map.merge(
   (
-    'bg-color':
-      var(#{getCssVarName('dialog', 'bg-color')}, #{getCssVar('bg-color')}),
-    'padding-primary': var(#{getCssVarName('dialog', 'padding-primary')}, 20px),
+    'body-padding': 0 20px
+    // 'bg-color':
+    //   var(#{getCssVarName('dialog', 'bg-color')}, #{getCssVar('bg-color')}),
+    // 'padding-primary': var(#{getCssVarName('dialog', 'padding-primary')}, 20px),
   ),
   $drawer
 );
@@ -980,7 +1014,7 @@ $card: map.merge(
     'border-color': getCssVar('border-color', 'light'),
     'border-radius': 4px,
     'padding': 20px,
-    'bg-color': getCssVar('fill-color', 'blank'),
+    'bg-color': getCssVar('bg-color', 'blank'),
   ),
   $card
 );
@@ -1011,7 +1045,7 @@ $menu: map.merge(
     // 'active-color': getCssVar('color-primary'),
     // 'text-color': getCssVar('text-color-primary'),
     // 'hover-text-color': getCssVar('color-primary'),
-    // 'bg-color': getCssVar('fill-color', 'blank'),
+    // 'bg-color': getCssVar('bg-color', 'blank'),
     // 'hover-bg-color': getCssVar('color-primary-light-9'),
     // 'item-height': 56px,
     // 'sub-item-height': calc(#{getCssVar('menu-item-height')} - 6px),
@@ -1039,8 +1073,8 @@ $rate: map.merge(
     // seems not be used, to be removed
     // 'icon-color': getCssVar('text-color-placeholder),
     'void-color': getCssVar('border-color', 'darker'),
-    'fill-color': #f7ba2a,
-    'disabled-void-color': getCssVar('fill-color'),
+    'bg-color': #f7ba2a,
+    'disabled-void-color': getCssVar('bg-color'),
     'text-color': getCssVar('text-color', 'primary'),
   ),
   $rate
@@ -1066,12 +1100,23 @@ $datepicker: map.merge(
 );
 
 $date-editor: () !default;
+$date-editor-width: 230px !default;
+$date-editor-range-width: 480px !default;
+$date-editor-icon-size: 16px !default;
 $date-editor: map.merge(
   (
-    'width': 220px,
+    'width': $date-editor-width,
+    'icon-size': $date-editor-icon-size,
     'monthrange-width': 300px,
     'daterange-width': 350px,
     'datetimerange-width': 400px,
+    'border-color': getCssVar('color-primary'),
+    'icon-color': getCssVar('color-primary'),
+    'placeholder-color': getCssVar('text-color-secondary'),
+    'text-color': getCssVar('text-color-primary'),
+    'range-width': $date-editor-range-width,
+    'hover-bg-color': getCssVar('color-primary'),
+    'disabled-color': getCssVar('text-color-secondary'),
   ),
   $date-editor
 );
@@ -1125,10 +1170,10 @@ $collapse: map.merge(
   (
     // 'border-color': getCssVar('border-color-lighter'),
     // 'header-height': 48px,
-    // 'header-bg-color': getCssVar('fill-color', 'blank'),
+    // 'header-bg-color': getCssVar('bg-color', 'blank'),
     // 'header-text-color': getCssVar('text-color-primary'),
     // 'header-font-size': 13px,
-    // 'content-bg-color': getCssVar('fill-color', 'blank'),
+    // 'content-bg-color': getCssVar('bg-color', 'blank'),
     // 'content-font-size': 13px,
     // 'content-text-color': getCssVar('text-color-primary'),
   ),
@@ -1144,7 +1189,7 @@ $transfer: map.merge(
     // 'border-radius': getCssVar('border-radius-base'),
     // 'panel-width': 200px,
     // 'panel-header-height': 40px,
-    // 'panel-header-bg-color': getCssVar('fill-color', 'light'),
+    // 'panel-header-bg-color': getCssVar('bg-color', 'light'),
     // 'panel-footer-height': 40px,
     // 'panel-body-height': 278px,
     // 'item-height': 30px,
@@ -1268,20 +1313,10 @@ $avatar-size: map.merge(
 $empty: () !default;
 $empty: map.merge(
   (
-    // 'padding': 40px 0,
-    // 'image-width': 160px,
-    // 'description-margin-top': 20px,
-    // 'bottom-margin-top': 20px,
-    // 'fill-color-0': getCssVar('color-white'),
-    // 'fill-color-1': #fcfcfd,
-    // 'fill-color-2': #f8f9fb,
-    // 'fill-color-3': #f7f8fc,
-    // 'fill-color-4': #eeeff3,
-    // 'fill-color-5': #edeef2,
-    // 'fill-color-6': #e9ebef,
-    // 'fill-color-7': #e5e7e9,
-    // 'fill-color-8': #e0e3e9,
-    // 'fill-color-9': #d5d7de,
+    'padding': 40px 0,
+    'image-width': 180px,
+    'description-margin': 20px 0,
+    'bottom-margin-top': 20px,
   ),
   $empty
 );
@@ -1292,7 +1327,7 @@ $descriptions: () !default;
 $descriptions: map.merge(
   (
     'table-border': 1px solid getCssVar('border-color-lighter'),
-    'item-bordered-label-background': getCssVar('fill-color', 'light'),
+    'item-bordered-label-background': getCssVar('bg-color', 'light'),
   ),
   $descriptions
 );
