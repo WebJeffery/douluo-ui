@@ -2,7 +2,7 @@
 export default {
   name: 'Icon',
   props: {
-      type: {
+      name: {
           type: String,
           default: ''
       },
@@ -34,17 +34,17 @@ export default {
 
     const classArr = [ this.bemNS.b() ]
     const domProps = {}
-    const type = this.type
+    const icon = this.name
 
-    if (/^el-/.test(type)) {
+    if (/^el-/.test(icon)) {
         // element 图标
-        classArr.push(type)
-    } else if (/^&#/.test(this.type)) {
+        classArr.push(icon)
+    } else if (/^&#/.test(icon)) {
         // 阿里 unicode 字体库
         classArr.push(this.$dlIconfont)
-        domProps.innerHTML = this.type
+        domProps.innerHTML = icon
     } else {
-      classArr.push(this.iconfont, this.type)
+      classArr.push(this.iconfont, icon)
     }
 
     return h('i', {

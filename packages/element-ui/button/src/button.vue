@@ -24,7 +24,7 @@
     </template>
     <template v-else-if="icon || $slots.icon">
       <span v-if="$slots.icon"><slot name="icon"></slot></span>
-      <dl-icon v-else :type="icon" />
+      <dl-icon v-else :name="icon" />
     </template>
     <span v-if="$slots.default"><slot></slot></span>
   </button>

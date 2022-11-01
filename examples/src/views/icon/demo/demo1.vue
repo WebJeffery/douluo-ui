@@ -1,16 +1,16 @@
 <template>
   <div class="page-component">
     <h2>使用方法</h2>
-    <dl-icon type="el-icon-edit" />
-    <dl-icon type="el-icon-share" />
-    <dl-icon type="el-icon-delete" />
+    <dl-icon name="el-icon-edit" />
+    <dl-icon name="el-icon-share" />
+    <dl-icon name="el-icon-delete" />
     <el-button type="primary" icon="el-icon-search">搜索</el-button>
 
     <h2>组件库图标</h2>
     <ul class="icon-list">
       <li v-for="name in dlIcons" :key="name">
         <span>
-          <dl-icon :type="'dl-icon-' + name" />
+          <dl-icon :name="'dl-icon-' + name" />
           <span class="icon-name">{{ 'dl-icon-' + name }}</span>
         </span>
       </li>
@@ -20,7 +20,7 @@
     <ul class="icon-list">
       <li v-for="name in icons" :key="name">
         <span>
-          <dl-icon :type="'el-icon-' + name" />
+          <dl-icon :name="'el-icon-' + name" />
           <span class="icon-name">{{ 'el-icon-' + name }}</span>
         </span>
       </li>
@@ -29,8 +29,8 @@
 </template>
 
 <script>
-import icons from './icon.json'
-import dlIcons from './dl-icon.json'
+import icons from 'examples/assets/json/el-icon.json'
+import dlIcons from 'examples/assets/json/dl-icon.json'
 
 export default {
   data() {

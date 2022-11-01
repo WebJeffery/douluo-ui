@@ -46,17 +46,17 @@ $button-icon-span-gap: map.merge(
   user-select: none;
   -webkit-appearance: none;
 
-  &:hover,
-  &:focus {
-    color: getCssVar('button', 'hover', 'text-color');
-    border-color: getCssVar('button', 'hover', 'border-color');
-    background-color: getCssVar('button', 'hover', 'bg-color');
-    outline: none;
+  // &:hover,
+  // &:focus {
+  //   color: getCssVar('button', 'hover', 'text-color');
+  //   border-color: getCssVar('button', 'hover', 'border-color');
+  //   background-color: getCssVar('button', 'hover', 'bg-color');
+  //   outline: none;
 
-    & [class*='#{$namespace}-icon'] {
-      color: getCssVar('button', 'hover', 'text-color');
-    }
-  }
+  //   & [class*='#{$namespace}-icon'] {
+  //     color: getCssVar('button', 'hover', 'text-color');
+  //   }
+  // }
 
   &:active {
     color: getCssVar('button', 'active', 'text-color');
