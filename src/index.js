@@ -1,9 +1,13 @@
-import { createNamespace } from './utils/use-namespace.js'
+import {
+  createNamespace,
+  useNamespace
+} from './utils/use-namespace.js'
 import { updateElementTheme } from './utils/update-element-theme.js'
 import { updateUITheme } from './utils/update-ui-theme.js'
 
 // 注册组件
 import Button from 'packages/element-ui/button/index.js'
+import Icon from 'packages/element-ui/icon/index.js'
 import DatePicker from 'packages/element-ui/date-picker/index.js'
 import TimePicker from 'packages/element-ui/time-picker/index.js'
 import Radio from 'packages/element-ui/radio/index.js'
@@ -28,6 +32,7 @@ import Select from 'packages/element-ui/select/index.js'
 
 const components = [
   Button,
+  Icon,
   DatePicker,
   TimePicker,
   Radio,
@@ -59,6 +64,9 @@ const install = (Vue, options = {}) => {
   components.forEach((component) => {
     Vue.component(createNamespace(component.name, { prefix: options.prefix }), component)
   })
+
+  Vue.prototype.$dlIconfont = options.iconfont || 'iconfont'
+  Vue.prototype.$dlUseNamespace = useNamespace
 }
 
 // 判断调用vue加载器，实现全局加载

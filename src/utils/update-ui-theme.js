@@ -10,6 +10,7 @@ export const updateUITheme = async function (options) {
     primaryColor,
     primarySecondColor,
     opacity = 0.7,
+    elementUI,
     button = {
       disabledFontColorPrimary: '#fff',
       disabledBgColorPrimary: '#ccc',
@@ -21,10 +22,17 @@ export const updateUITheme = async function (options) {
   } = options
   if (!primaryColor) return
 
-  await updateElementTheme({
-    oldTheme,
-    primaryColor: primaryColor
-  })
+  if (elementUI) {
+    try {
+      await updateElementTheme({
+        oldTheme,
+        primaryColor: primaryColor
+      })
+
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   // const primaryOpc = colorPalette(primary, opacity)
   // 第二种主题透明

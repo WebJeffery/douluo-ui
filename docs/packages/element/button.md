@@ -25,7 +25,7 @@ icon: new
 </el-row>
 
 <el-row>
-  <dl-button plain>朴素按钮</dl-button>
+  <dl-button>朴素按钮</dl-button>
   <dl-button type="primary" plain>主要按钮</dl-button>
   <dl-button type="success" plain>成功按钮</dl-button>
   <dl-button type="info" plain>信息按钮</dl-button>

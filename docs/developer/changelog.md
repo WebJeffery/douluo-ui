@@ -1,28 +1,26 @@
 # 更新日志
 
-## [1.1.0](https://github.com/JefferyXZF/douluo-ui/compare/v1.1.5...v1.2.0) (2022-08-29)
+## [1.1.0](https://github.com/JefferyXZF/douluo-ui/tree/develop)(2022-11-01)
 
 
 #### ✨ Features | 新功能
 
-* 新增 Button 按钮组件 ([#5](https://github.com/JefferyXZF/douluo-ui/pull/5))
-* 新增 DatePicker 日期组件 ([#4](https://github.com/JefferyXZF/douluo-ui/issues/4))
 
-
-## [1.0.2](https://github.com/JefferyXZF/douluo-ui/pull/2)(2022-08-14)
-
-#### ✨ Features | 新功能
-
-- **feat**
-  - vite 替换 vue-cli，css 变量和 scss 变量主题 [#2](https://github.com/JefferyXZF/douluo-ui/pull/2)
-## [1.0.1](https://github.com/JefferyXZF/douluo-ui/pull/1) (2022-07-18)
-
-#### ✨ Features | 新功能
-
-- **docs**  
-  - 使用 vuepress-theme-hope 主题 [vuepress-theme-hope](https://github.com/vuepress-theme-hope/vuepress-theme-hope)
-
-#### 🚀 Chore | 构建/工程依赖/工具
-
-- **ci**
-  - 增加git和代码规范 [8512ee5](https://github.com/JefferyXZF/douluo-ui/commit/8512ee55da3524be791051d0630993cfa9a71565)
+* 新增 Icon 图标
+* 新增 Button 按钮
+* 新增 Radio 单选框
+* 新增 Checkbox 多选框
+* 新增 Input 输入框
+* 新增 Select 选择器
+* 新增 TimePicker 时间选择器
+* 新增 DatePicker 日期选择器
+* 新增 DateTimePicker 日期时间选择器
+* 新增 Form 表单
+* 新增 Table 表格
+* 新增 Pagination 分页
+* 新增 Empty 空状态
+* 新增 Dialog 对话框
+* 新增 Tooltip 文字提示
+* 新增 Popover 弹出框
+* 新增 Popconfirm 气泡确认框
+* 新增 Drawer 抽屉

@@ -1,13 +1,13 @@
 <template>
-  <span v-if="lock" :class="[ns.b()]">
-    <span :class="[ns.is('lock', lock)]">
+  <span v-if="lock" :class="[bemNS.b()]">
+    <span :class="[bemNS.is('lock', lock)]">
       <i class="douluo-icons dl-icon-lock"></i>
     </span>
     <slot></slot>
   </span>
   <el-checkbox
     v-else
-    :class="[ns.b(), ns.is('bordered', border), ns.m(size)]"
+    :class="[bemNS.b(), bemNS.is('bordered', border), bemNS.m(size)]"
     v-bind="$attrs"
     v-on="$listeners"
     :border="border"
@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'Checkbox',
   inheritAttrs: false,
@@ -47,9 +46,10 @@ export default {
     }
   },
 
-  data() {
-    this.ns = useNamespace('checkbox')
-    return {}
+  computed: {
+    bemNS () {
+      return this.$dlUseNamespace('checkbox')
+    }
   }
 }
 </script>

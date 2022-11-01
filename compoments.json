@@ -1,6 +1,7 @@
 {
   "index": "./src/index.js",
   "button": "./packages/element-ui/button/index.js",
+  "icon": "./packages/element-ui/icon/index.js",
   "date-picker": "./packages/element-ui/date-picker/index.js",
   "time-picker": "./packages/element-ui/time-picker/index.js",
   "radio": "./packages/element-ui/radio/index.js",

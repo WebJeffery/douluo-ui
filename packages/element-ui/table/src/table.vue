@@ -1,10 +1,9 @@
 <template>
-  <div :class="[ns.b(), ns.is('border', border)]">
+  <div :class="[bemNS.b(), bemNS.is('border', border)]">
     <el-table
       ref="elTable"
       v-bind="$attrs"
       v-on="$listeners"
-      :border="border"
       :data="data"
       :span-method="this.merge ? this.mergeMethod : this.spanMethod"
     >
@@ -12,19 +11,29 @@
       <template v-if="column.length">
         <dl-column v-bind="$attrs" v-for="(item, index) in column" :key="index" :align="align" :column="item" />
       </template>
+      <!--操作按钮-->
+      <el-table-column
+        v-if="$scopedSlots.options || $slots.options"
+        :fixed="data.length ? 'right' : ''"
+        :label="optionsLabel"
+        :align="align"
+        min-width="100">
+          <template slot-scope="scope">
+              <slot name="options" v-bind="scope"></slot>
+          </template>
+      </el-table-column>
       <template #empty>
         <slot name="empty">
           <dl-empty />
         </slot>
       </template>
     </el-table>
-    <dl-pagination v-if="pagination" :class="ns.e('pagination')" v-bind="$attrs" v-on="$listeners" />
+    <dl-pagination v-if="pagination" :class="bemNS.e('pagination')" v-bind="$attrs" v-on="$listeners" />
   </div>
 </template>
 
 <script>
 import DlColumn from './column.vue'
-import { useNamespace } from 'src/utils/use-namespace.js'
 
 export default {
   name: 'Table',
@@ -58,16 +67,22 @@ export default {
       type: String,
       default: 'center'
     },
+    optionsLabel: {
+      type: String,
+      default: '操作'
+    },
     merge: Array
   },
   data() {
-    this.ns = useNamespace('table')
     return {
       mergeLine: {},
       mergeIndex: {}
     }
   },
   computed: {
+    bemNS() {
+      return this.$dlUseNamespace('table')
+    },
     dataLength() {
       return this.data.length
     }

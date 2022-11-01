@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'Input',
   inheritAttrs: false,
@@ -34,10 +33,13 @@ export default {
     dashed: Boolean
   },
 
-  data() {
-    this.nsInput = useNamespace('input')
-    this.nsTextarea = useNamespace('textarea')
-    return {}
+  computed: {
+    nsInput () {
+      return this.$dlUseNamespace('input')
+    },
+    nsTextarea () {
+      return this.$dlUseNamespace('textarea')
+    }
   }
 }
 </script>

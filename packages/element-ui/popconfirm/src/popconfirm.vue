@@ -1,5 +1,5 @@
 <template>
-  <el-popconfirm :class="ns.b()" v-bind="$attrs" v-on="$listeners">
+  <el-popconfirm :class="bemNS.b()" v-bind="$attrs" v-on="$listeners">
     <slot></slot>
     <template v-if="$slots.reference" slot="reference">
       <slot name="reference"></slot>
@@ -8,15 +8,14 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
-
 export default {
   name: 'Popconfirm',
   inheritAttrs: false,
 
-  data() {
-    this.ns = useNamespace('popconfirm')
-    return {}
+  computed: {
+    bemNS() {
+      return this.$dlUseNamespace('popconfirm')
+    }
   }
 }
 </script>

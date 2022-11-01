@@ -10,7 +10,7 @@
     :end-placeholder="endPlaceholder"
     :picker-options="pickerOptions"
     v-on="$listeners"
-    :class="[ns.b()]"
+    :class="[bemNS.b()]"
   >
     <template #range-separator>
       <slot name="range-separator"></slot>
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'DatePicker',
   inheritAttrs: false,
@@ -55,9 +54,11 @@ export default {
       default: 'daterange'
     }
   },
-  data() {
-    this.ns = useNamespace('date-picker')
-    return {}
+
+  computed: {
+    bemNS () {
+      return this.$dlUseNamespace('date-picker')
+    }
   }
 }
 </script>

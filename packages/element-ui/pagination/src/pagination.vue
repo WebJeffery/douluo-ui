@@ -1,5 +1,5 @@
 <template>
-  <div :class="ns.b()">
+  <div :class="bemNS.b()">
     <el-pagination
       v-bind="$attrs"
       :total="total"
@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'Pagination',
   inheritAttrs: false,
@@ -43,9 +42,10 @@ export default {
     }
   },
 
-  data() {
-    this.ns = useNamespace('pagination')
-    return {}
+  computed: {
+    bemNS() {
+      return this.$dlUseNamespace('pagination')
+    }
   },
 
   methods: {

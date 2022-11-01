@@ -1,23 +1,21 @@
 <template>
-  <div :class="ns.b()">
-    <div :class="ns.e('image')" :style="imageStyle">
+  <div :class="bemNS.b()">
+    <div :class="bemNS.e('image')" :style="imageStyle">
       <slot name="image">
         <img :src="imageEmpty" />
       </slot>
     </div>
-    <div :class="ns.e('description')">
+    <div :class="bemNS.e('description')">
       <slot v-if="$slots.description" name="description"></slot>
-      <p v-else :class="ns.bm('description', 'text')">{{ emptyDescription }}</p>
+      <p v-else :class="bemNS.bm('description', 'text')">{{ emptyDescription }}</p>
     </div>
-    <div v-if="$slots.default" :class="ns.e('bottom')">
+    <div v-if="$slots.default" :class="bemNS.e('bottom')">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
-
 export default {
   name: 'Empty',
 
@@ -33,12 +31,11 @@ export default {
     }
   },
 
-  data() {
-    this.ns = useNamespace('empty')
-    return {}
-  },
 
   computed: {
+    bemNS () {
+      return this.$dlUseNamespace('empty')
+    },
     emptyDescription() {
       return this.description || '暂无数据'
     },

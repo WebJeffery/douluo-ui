@@ -1,11 +1,15 @@
 <template>
-  <el-form ref="form" :class="[ns.b()]" :isLabelMidden="isLabelMidden" v-bind="$attrs" v-on="$listeners">
+  <el-form
+    ref="form"
+    :class="[bemNS.b()]"
+    :isLabelMidden="isLabelMidden"
+    v-bind="$attrs"
+    v-on="$listeners">
     <slot></slot>
   </el-form>
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'Form',
   inheritAttrs: false,
@@ -15,9 +19,10 @@ export default {
     isLabelMidden: Boolean
   },
 
-  data() {
-    this.ns = useNamespace('form')
-    return {}
+  computed: {
+    bemNS() {
+      return this.$dlUseNamespace('form')
+    }
   },
 
   methods: {
