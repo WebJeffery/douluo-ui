@@ -2,9 +2,9 @@
   <div>
     <h2>基础用法</h2>
     <el-row>
-      <dl-button>默认按钮</dl-button>
+      <dl-button icon="&#xe60f;">默认按钮</dl-button>
       <dl-button type="primary">主要按钮</dl-button>
-      <dl-button type="success">成功按钮</dl-button>
+      <dl-button icon="dl-icon-lock" type="success">成功按钮</dl-button>
       <dl-button type="info">信息按钮</dl-button>
       <dl-button type="warning">警告按钮</dl-button>
       <dl-button type="danger">危险按钮</dl-button>
@@ -123,11 +123,13 @@
       <dl-button size="large">大等按钮</dl-button>
       <dl-button>默认按钮</dl-button>
       <dl-button size="small">小型按钮</dl-button>
+      <dl-button size="mini">超小型按钮</dl-button>
     </el-row>
     <el-row>
       <dl-button size="large" round>大等按钮</dl-button>
       <dl-button round>默认按钮</dl-button>
       <dl-button size="small" round>小型按钮</dl-button>
+      <dl-button size="mini" round>超小型按钮</dl-button>
     </el-row>
   </div>
 </template>

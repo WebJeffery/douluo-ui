@@ -1,6 +1,6 @@
 <template>
   <el-select
-    :class="[ns.b()]"
+    :class="[bemNS.b()]"
     :clearable="clearable"
     :popper-class="`dl-select-dropdown ${popperClass}`"
     v-bind="$attrs"
@@ -40,8 +40,6 @@
   </el-select>
 </template>
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
-
 export default {
   name: 'Select',
   inheritAttrs: false,
@@ -76,9 +74,10 @@ export default {
     }
   },
 
-  data() {
-    this.ns = useNamespace('select')
-    return {}
+  computed: {
+    bemNS() {
+      return this.$dlUseNamespace('select')
+    }
   },
 
   methods: {

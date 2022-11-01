@@ -1,6 +1,6 @@
 <template>
   <el-radio
-    :class="[ns.b(), ns.is('bordered', border), ns.m(size)]"
+    :class="[bemNS.b(), bemNS.is('bordered', border), bemNS.m(size)]"
     v-bind="$attrs"
     v-on="$listeners"
     :border="border"
@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'Radio',
   inheritAttrs: false,
@@ -21,9 +20,10 @@ export default {
     size: String
   },
 
-  data() {
-    this.ns = useNamespace('radio')
-    return {}
+  computed: {
+    bemNS() {
+      return this.$dlUseNamespace('radio')
+    }
   }
 }
 </script>

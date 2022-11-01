@@ -1,5 +1,5 @@
 <template>
-  <el-dialog :class="ns.b()" v-bind="$attrs" v-on="$listeners">
+  <el-dialog :class="bemNS.b()" v-bind="$attrs" v-on="$listeners">
     <template v-if="$slots.title" slot="footer">
       <slot name="title"></slot>
     </template>
@@ -11,15 +11,14 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
-
 export default {
   name: 'Dialog',
   inheritAttrs: false,
 
-  data() {
-    this.ns = useNamespace('dialog')
-    return {}
+  computed: {
+    bemNS () {
+      return this.$dlUseNamespace('dialog')
+    }
   }
 }
 </script>

@@ -19,6 +19,11 @@ export const routeComponents = [
     component: () => import('@/views/button/index.vue')
   },
   {
+    title: 'Icon 组件',
+    path: '/icon',
+    component: () => import('@/views/icon/index.vue')
+  },
+  {
     title: 'DatePicker 组件',
     path: '/DatePicker',
     component: () => import('@/views/datePicker/index.vue')

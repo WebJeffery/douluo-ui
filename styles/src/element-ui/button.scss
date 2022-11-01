@@ -16,6 +16,7 @@ $button-icon-span-gap: map.merge(
     'large': 8px,
     'default': 6px,
     'small': 4px,
+    'mini': 2px,
   ),
   $button-icon-span-gap
 );
@@ -30,7 +31,6 @@ $button-icon-span-gap: map.merge(
   align-items: center;
   box-sizing: border-box;
   min-width: getCssVar('button', 'min-width');
-  min-height: getCssVar('button', 'min-height');
   line-height: getCssVar('button', 'line-height');
   font-weight: getCssVar('button', 'font-weight');
   color: getCssVar('button', 'text-color');
@@ -52,6 +52,10 @@ $button-icon-span-gap: map.merge(
     border-color: getCssVar('button', 'hover', 'border-color');
     background-color: getCssVar('button', 'hover', 'bg-color');
     outline: none;
+
+    & [class*='#{$namespace}-icon'] {
+      color: getCssVar('button', 'hover', 'text-color');
+    }
   }
 
   &:active {
@@ -300,7 +304,13 @@ $button-icon-span-gap: map.merge(
     min-height: 0;
   }
 
-  @each $size in (large, small) {
+  @include m(mini) {
+    min-width: 0;
+    min-height: 0;
+    height: 24px;
+  }
+
+  @each $size in (large, small, mini) {
     @include m($size) {
 
       // @include set-css-var-value(

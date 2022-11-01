@@ -8,7 +8,7 @@
     :end-placeholder="endPlaceholder"
     :picker-options="pickerOptions"
     v-on="$listeners"
-    :class="[ns.b()]"
+    :class="[bemNS.b()]"
   />
   <el-time-picker
     v-else
@@ -19,12 +19,11 @@
     :end-placeholder="endPlaceholder"
     :picker-options="pickerOptions"
     v-on="$listeners"
-    :class="[ns.b()]"
+    :class="[bemNS.b()]"
   />
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'TimePicker',
   inheritAttrs: false,
@@ -55,9 +54,10 @@ export default {
       default: '结束时间'
     }
   },
-  data() {
-    this.ns = useNamespace('date-editor')
-    return {}
+  computed: {
+    bemNS() {
+      return this.$dlUseNamespace('date-editor')
+    }
   }
 }
 </script>

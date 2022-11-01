@@ -1,7 +1,15 @@
 <template>
   <div>
     <h2>基础表格</h2>
-    <dl-table :column="tableData.column" :data="tableData.data" />
+    <dl-table :column="tableData.column" :data="tableData.data" border>
+      <div slot="options" slot-scope="scope" class="options">
+          <dl-button size="mini" type="primary" ghost>预览</dl-button>
+          <dl-button size="mini" class="mt-10" ghost>查看留言</dl-button>
+          <dl-button size="mini" class="mt-10" :type="scope.row.linksInfo ? 'danger' : ''" ghost>
+              {{ scope.row.linksInfo ? '已屏蔽' : '屏蔽' }}
+          </dl-button>
+      </div>
+    </dl-table>
   </div>
 </template>
 

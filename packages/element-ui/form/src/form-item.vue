@@ -1,5 +1,10 @@
 <template>
-  <el-form-item ref="formItem" :class="[ns.b()]" :label="label" v-bind="$attrs" v-on="$listeners">
+  <el-form-item
+    ref="formItem"
+    :class="[bemNS.b()]"
+    :label="label"
+    v-bind="$attrs"
+    v-on="$listeners">
     <slot v-if="$slots.label" name="label">{{ label }}</slot>
     <slot></slot>
     <slot v-if="$slots.error" name="error"></slot>
@@ -7,7 +12,6 @@
 </template>
 
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
 export default {
   name: 'FormItem',
   inheritAttrs: false,
@@ -16,9 +20,11 @@ export default {
     label: String
   },
 
-  data() {
-    this.ns = useNamespace('form-item')
-    return {}
+
+  computed: {
+    bemNS () {
+      return this.$dlUseNamespace('form-item')
+    }
   },
 
   methods: {

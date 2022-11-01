@@ -37,8 +37,7 @@ const _bem = (namespace, block, blockSuffix, element, modifier) => {
   return cls
 }
 
-export const useNamespace = (block) => {
-  const namespace = cssNamespace
+export const useNamespace = (block, namespace = cssNamespace) => {
 
   const b = (blockSuffix = '') => _bem(namespace, block, blockSuffix, '', '')
 

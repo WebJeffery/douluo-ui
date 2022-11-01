@@ -1,17 +1,17 @@
 <template>
   <button
     :class="[
-      ns.b(),
-      ns.m(type),
-      ns.m(buttonSize),
-      ns.is('disabled', buttonDisabled),
-      ns.is('loading', loading),
-      ns.is('plain', plain),
-      ns.is('ghost', ghost),
-      ns.is('round', round),
-      ns.is('circle', circle),
-      ns.is('text', text),
-      ns.is('link', link)
+      bemNS.b(),
+      bemNS.m(type),
+      bemNS.m(buttonSize),
+      bemNS.is('disabled', buttonDisabled),
+      bemNS.is('loading', loading),
+      bemNS.is('plain', plain),
+      bemNS.is('ghost', ghost),
+      bemNS.is('round', round),
+      bemNS.is('circle', circle),
+      bemNS.is('text', text),
+      bemNS.is('link', link)
     ]"
     @click="handleClick"
     :disabled="buttonDisabled || loading"
@@ -24,14 +24,12 @@
     </template>
     <template v-else-if="icon || $slots.icon">
       <span v-if="$slots.icon"><slot name="icon"></slot></span>
-      <i v-else :class="icon"></i>
+      <dl-icon v-else :type="icon" />
     </template>
     <span v-if="$slots.default"><slot></slot></span>
   </button>
 </template>
 <script>
-import { useNamespace } from 'src/utils/use-namespace.js'
-
 export default {
   name: 'Button',
 
@@ -63,12 +61,10 @@ export default {
     text: Boolean
   },
 
-  data() {
-    this.ns = useNamespace('button')
-    return {}
-  },
-
   computed: {
+    bemNS () {
+      return this.$dlUseNamespace('button')
+    },
     _dlFormItemSize() {
       return (this.dlFormItem || {}).dlFormItemSize
     },
