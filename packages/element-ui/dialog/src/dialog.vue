@@ -1,5 +1,9 @@
 <template>
-  <el-dialog :class="bemNS.b()" v-bind="$attrs" v-on="$listeners">
+  <el-dialog
+    :class="bemNS.b()"
+    :append-to-body="appendToBody"
+    v-bind="$attrs"
+    v-on="$listeners">
     <template v-if="$slots.title" slot="footer">
       <slot name="title"></slot>
     </template>
@@ -14,6 +18,13 @@
 export default {
   name: 'Dialog',
   inheritAttrs: false,
+
+  props: {
+    appendToBody: {
+      type: Boolean,
+      default: true
+    }
+  },
 
   computed: {
     bemNS () {
