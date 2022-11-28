@@ -24,9 +24,9 @@
         line-height: 40px;
         text-align: center;
         border-radius: 4px;
-        border: 1px dashed #CCCCCC;
+        border: 1px dashed getCssVar('border-color-input'),;
         font-size: 14px;
-        color: #999;
+        color: getCssVar('text-color-secondary');
         cursor: pointer;
         &:hover{
             border: 1px dashed getCssVar('color','primary');
@@ -39,11 +39,20 @@
             color:getCssVar('text-color-disabled');
             cursor: not-allowed;
             &:hover{
-                border: 1px dashed #CCCCCC;
+                border: 1px dashed getCssVar('border-color-input'),;
             }
             @include when(select) {
-                border: 1px dashed #CCCCCC;
+                border: 1px dashed getCssVar('border-color-input'),;
             }
         }
+    }
+    .el-tag:not(:last-child){
+        margin-right: 20px;
+    }
+    .dl-tag-group--title{
+        margin-left: 3px
+    }
+    .dl-tag-group--tag-list{
+        margin-top: 10px;
     }
 }

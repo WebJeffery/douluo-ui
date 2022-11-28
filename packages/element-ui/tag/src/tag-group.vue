@@ -3,15 +3,14 @@
     <slot>
       <span :class="[bemNS.m('button'), bemNS.is('select', select), bemNS.is('disabled', disabled)]" @click="addClick">
         <dl-icon name="dl-icon-add" />
-        <span style="margin-left: 3px">{{ title }}</span>
+        <span :class="bemNS.m('title')">{{ title }}</span>
       </span>
     </slot>
-    <div style="margin-top: 10px" v-if="tagList && tagList.length > 0">
+    <div :class="bemNS.m('tag-list')" v-if="tagList && tagList.length > 0">
       <dl-tag
         @closeFunc="closeFun(index, $event)"
         :closable="closable"
         :disabled="disabled"
-        style="margin-right: 20px"
         v-for="(item, index) in tagList"
         :key="index"
       >
