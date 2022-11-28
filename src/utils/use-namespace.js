@@ -1,4 +1,3 @@
-
 let componentNamespace = 'dl'
 // 组件前缀命名只能更新一次，防止重复执行修改组件注册出错
 let isUpdated = false
@@ -38,28 +37,21 @@ const _bem = (namespace, block, blockSuffix, element, modifier) => {
 }
 
 export const useNamespace = (block, namespace = cssNamespace) => {
-
   const b = (blockSuffix = '') => _bem(namespace, block, blockSuffix, '', '')
 
-  const e = (element) => element ? _bem(namespace, block, '', element, '') : ''
+  const e = (element) => (element ? _bem(namespace, block, '', element, '') : '')
 
-  const m = (modifier) => modifier ? _bem(namespace, block, '', '', modifier) : ''
+  const m = (modifier) => (modifier ? _bem(namespace, block, '', '', modifier) : '')
 
-  const be = (blockSuffix, element) => blockSuffix && element
-    ? _bem(namespace, block, blockSuffix, element, '')
-    : ''
+  const be = (blockSuffix, element) => (blockSuffix && element ? _bem(namespace, block, blockSuffix, element, '') : '')
 
-  const em = (element, modifier) => element && modifier
-    ? _bem(namespace, block, '', element, modifier)
-    : ''
+  const em = (element, modifier) => (element && modifier ? _bem(namespace, block, '', element, modifier) : '')
 
-  const bm = (blockSuffix, modifier) => blockSuffix && modifier
-    ? _bem(namespace, block, blockSuffix, '', modifier)
-    : ''
+  const bm = (blockSuffix, modifier) =>
+    blockSuffix && modifier ? _bem(namespace, block, blockSuffix, '', modifier) : ''
 
-  const bem = (blockSuffix, element, modifier) => blockSuffix && element && modifier
-    ? _bem(namespace, block, blockSuffix, element, modifier)
-    : ''
+  const bem = (blockSuffix, element, modifier) =>
+    blockSuffix && element && modifier ? _bem(namespace, block, blockSuffix, element, modifier) : ''
 
   const is = (name, ...args) => {
     const state = args.length >= 1 ? args[0] : true
@@ -86,8 +78,7 @@ export const useNamespace = (block, namespace = cssNamespace) => {
   }
 
   const cssVarName = (name) => `--${namespace}-${name}`
-  const cssVarBlockName = (name) =>
-    `--${namespace}-${block}-${name}`
+  const cssVarBlockName = (name) => `--${namespace}-${block}-${name}`
 
   return {
     cssNamespace,
@@ -104,7 +95,7 @@ export const useNamespace = (block, namespace = cssNamespace) => {
     cssVar,
     cssVarName,
     cssVarBlock,
-    cssVarBlockName,
+    cssVarBlockName
   }
 }
 

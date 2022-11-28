@@ -24,6 +24,22 @@
 }
 
 
+.dl-icon-add:before {
+  content: "\e608";
+}
+
+.dl-icon-close:before {
+  content: "\e607";
+}
+
+.dl-icon-warning:before {
+  content: "\e606";
+}
+
+.dl-icon-info:before {
+  content: "\e675";
+}
+
 .dl-icon-lock:before {
   content: "\e604";
 }
@@ -32,16 +48,8 @@
   content: "\e663";
 }
 
-.dl-icon-info:before {
-  content: "\e606";
-}
-
 .dl-icon-success:before {
   content: "\e603";
-}
-
-.dl-icon-warning:before {
-  content: "\e602";
 }
 
 .dl-icon-error:before {
