@@ -1,0 +1,58 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(tag-group) {
+  @include set-component-css-var('tag-group', $tag);
+}
+
+@include b(tag-group) {
+    @include m(button) {
+        display: inline-block;
+        box-sizing: border-box;
+        padding: 0 24px;
+        min-width: 120px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px dashed getCssVar('border-color-input'),;
+        font-size: 14px;
+        color: getCssVar('text-color-secondary');
+        cursor: pointer;
+        &:hover{
+            border: 1px dashed getCssVar('color','primary');
+        }
+        @include when(select) {
+            border: 1px dashed getCssVar('color','primary');
+        }
+        @include when(disabled) {
+            background-color:getCssVar('bg-color-light');
+            color:getCssVar('text-color-disabled');
+            cursor: not-allowed;
+            &:hover{
+                border: 1px dashed getCssVar('border-color-input'),;
+            }
+            @include when(select) {
+                border: 1px dashed getCssVar('border-color-input'),;
+            }
+        }
+    }
+    .el-tag:not(:last-child){
+        margin-right: 20px;
+    }
+    .dl-tag-group--title{
+        margin-left: 3px
+    }
+    .dl-tag-group--tag-list{
+        margin-top: 10px;
+    }
+}

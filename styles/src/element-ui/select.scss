@@ -50,6 +50,20 @@
     color: getCssVar('color-primary');
   }
 
+  @include when(change-size) {
+    .el-input {
+      width: 100%;
+      min-width: 0;
+    }
+  }
+}
+
+.el-input {
+  @include b(select, true) {
+    .el-input__inner {
+      border: 0;
+    }
+  }
 }
 
 .dl-select-dropdown.el-select-dropdown {

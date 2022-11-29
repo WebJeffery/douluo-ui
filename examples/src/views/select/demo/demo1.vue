@@ -2,7 +2,9 @@
   <div>
     <h2>基本用法</h2>
     <dl-select v-model="value" placeholder="请选择" :options="options" />
-
+    
+    <h2>修改宽度</h2>
+    <dl-select v-model="value" placeholder="请选择" :options="options" width="300" />
 
     <h2>有禁用选项</h2>
     <dl-select v-model="value1" placeholder="请选择" :options="options1" />

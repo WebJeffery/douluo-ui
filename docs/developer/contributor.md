@@ -18,7 +18,7 @@
     |-- README.md               # readme 项目介绍
     |-- babel.config.js         # babel 配置文件
     |-- commitlint.config.js    # commitlint 校验 comit message 配置
-    |-- compoments.json         # 项目组件路径
+    |-- components.json         # 项目组件路径
     |-- components.d.ts         # vite ts 文件类型声明
     |-- gulpfile.js             # gulp 打包 css
     |-- index.html              # vite 入口文件 /examples/main.js
@@ -223,7 +223,7 @@ yarn docs:dev
 在开发前，首先要对开发的组件进行设计，要实现什么功能，考虑功能拓展性，事先定义 `props`、`event 事件`、`slot 插槽`，为了组件样式灵活，可能要对外暴露样式接口，例如自定义 `class`、`style`。同时，为了兼容 `elemnt-ui` API，需要考虑用 `$attrs`、`$listeners` 、组件内定义插槽，条件允许，可以先参考 [element-ui](https://github.com/ElemeFE/element) 和 [element-plus](https://github.com/element-plus/element-plus) 源码实现
 
 
-开发基础组件，在 `packages/element-ui` 目录下创建，参考 `button` 组件，然后在 `src/ui/element-ui.js` 和 根目录下 `compoments.json` 添加文件路径
+开发基础组件，在 `packages/element-ui` 目录下创建，参考 `button` 组件，然后在 `src/ui/element-ui.js` 和 根目录下 `components.json` 添加文件路径
 
 开发业务组件，参考 `element-ui` 目录，在 `packages/business` 创建文件组件，然后引入路径和上面一样
 

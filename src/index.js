@@ -1,7 +1,4 @@
-import {
-  createNamespace,
-  useNamespace
-} from './utils/use-namespace.js'
+import { createNamespace, useNamespace } from './utils/use-namespace.js'
 import { updateElementTheme } from './utils/update-element-theme.js'
 import { updateUITheme } from './utils/update-ui-theme.js'
 
@@ -29,6 +26,8 @@ import Popover from 'packages/element-ui/popover/index.js'
 import Popconfirm from 'packages/element-ui/popconfirm/index.js'
 import Tooltip from 'packages/element-ui/tooltip/index.js'
 import Select from 'packages/element-ui/select/index.js'
+import Tag from 'packages/element-ui/tag/index.js'
+import TagGroup from 'packages/element-ui/tag-group/index.js'
 
 const components = [
   Button,
@@ -53,7 +52,9 @@ const components = [
   Popover,
   Popconfirm,
   Tooltip,
-  Select
+  Select,
+  Tag,
+  TagGroup
 ]
 
 const install = (Vue, options = {}) => {

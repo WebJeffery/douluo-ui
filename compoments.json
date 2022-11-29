@@ -21,5 +21,6 @@
   "drawer": "./packages/element-ui/drawer/index.js",
   "popconfirm": "./packages/element-ui/popconfirm/index.js",
   "tooltip": "./packages/element-ui/tooltip/index.js",
-  "select": "./packages/element-ui/select/index.js"
+  "select": "./packages/element-ui/select/index.js",
+  "tag": "./packages/element-ui/tag/index.js"
 }
