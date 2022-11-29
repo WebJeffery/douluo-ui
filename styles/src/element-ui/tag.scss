@@ -1,0 +1,46 @@
+@use 'sass:map';
+
+// 样式变量
+@use '../common/var' as *;
+// el 命名空间
+@use '../mixins/config' as *;
+// mixin 函数，例如：b()，e()，m()
+@use '../mixins/mixins' as *;
+// set-css-var-value set-component-css-var css 变量方法
+@use '../mixins/var' as *;
+
+// 创建组件 css 变量
+@include b(tag) {
+  @include set-component-css-var('tag', $tag);
+}
+
+@include b(tag, true) {
+    @each $type in (primary, success, warning, error) {
+        border: none;
+        @at-root {
+            @include m($type) {
+                background-color:getCssVar('color',$type,'light-9');
+                color:getCssVar('color',$type);
+                @include when(disabled) {
+                    background-color:getCssVar('bg-color-light');
+                    color:getCssVar('text-color-disabled');
+                    cursor: not-allowed;
+                    .el-tag__close{
+                        cursor: not-allowed;
+                        color: getCssVar('text-color-disabled');
+                        &:hover{
+                            background-color: getCssVar('bg-color-light');
+                        }
+                    }
+                }
+            }
+        }
+        .el-tag__close{
+            color: getCssVar('color','primary');
+            &:hover{
+                background-color: getCssVar('color','primary');
+                color: #fff;
+            }
+        }
+    }
+}

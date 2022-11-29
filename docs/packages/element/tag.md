@@ -1,123 +1,128 @@
+---
+title: Tag 标签
+pageClass: demo-tag
+icon: new
+---
+
 # Tag 标签
-
-用于标记和选择。
-
 ### 基础用法
 
-:::demo 由`type`属性来选择tag的类型，也可以通过`color`属性来自定义背景色。
+基础的标签用法。
+
+:::demo 使用`success`、`warning`、`error`属性来定义标签的状态。
 
 ```html
-<el-tag>标签一</el-tag>
-<el-tag type="success">标签二</el-tag>
-<el-tag type="info">标签三</el-tag>
-<el-tag type="warning">标签四</el-tag>
-<el-tag type="danger">标签五</el-tag>
+<el-row>
+  <dl-tag>我是标签</dl-tag>
+</el-row>
+
+<el-row>
+  <dl-tag type="success">成功标签</dl-tag>
+  <dl-tag type="warning">等待中标签</dl-tag>
+  <dl-tag type="error">失败标签</dl-tag>
+</el-row>
+```
+:::
+
+### 禁用状态
+
+标签不可用状态。
+
+:::demo 你可以使用`disabled`属性来定义标签是否可用，它接受一个`Boolean`值。
+
+```html
+<el-row>
+  <dl-tag disabled>禁用标签</dl-tag>
+</el-row>
+
+<el-row>
+  <dl-tag type="success" disabled>成功标签</dl-tag>
+  <dl-tag type="warning" disabled>等待中标签</dl-tag>
+  <dl-tag type="error" disabled>失败标签</dl-tag>
+</el-row>
 ```
 :::
 
 ### 可移除标签
 
-:::demo 设置`closable`属性可以定义一个标签是否可移除。默认的标签移除时会附带渐变动画，如果不想使用，可以设置`disable-transitions`属性，它接受一个`Boolean`，true 为关闭。
+:::demo 你可以使用`closable`属性来定义按钮是否可移除，它接受一个`Boolean`值。
 
 ```html
-<el-tag
-  v-for="tag in tags"
-  :key="tag.name"
-  closable
-  :type="tag.type">
-  {{tag.name}}
-</el-tag>
+<el-row>
+  <dl-tag closable>可移除标签</dl-tag>
+</el-row>
 
-<script>
-  export default {
-    data() {
-      return {
-        tags: [
-          { name: '标签一', type: '' },
-          { name: '标签二', type: 'success' },
-          { name: '标签三', type: 'info' },
-          { name: '标签四', type: 'warning' },
-          { name: '标签五', type: 'danger' }
-        ]
-      };
-    }
-  }
-</script>
+<el-row>
+  <dl-tag type="success" closable>成功标签</dl-tag>
+  <dl-tag type="warning" closable>等待中标签</dl-tag>
+  <dl-tag type="error" closable>失败标签</dl-tag>
+</el-row>
 ```
 :::
 
-### 动态编辑标签
+### 可移除标签禁用状态
 
-动态编辑标签可以通过点击标签关闭按钮后触发的 `close` 事件来实现
+:::demo 你可以使用`closable`属性来定义按钮是否可移除，它接受一个`Boolean`值。<br/>你可以使用`disabled`属性来定义标签是否可用，它接受一个`Boolean`值。
 
-:::demo
 ```html
-<el-tag
-  :key="tag"
-  v-for="tag in dynamicTags"
-  closable
-  :disable-transitions="false"
-  @close="handleClose(tag)">
-  {{tag}}
-</el-tag>
-<el-input
-  class="input-new-tag"
-  v-if="inputVisible"
-  v-model="inputValue"
-  ref="saveTagInput"
-  size="small"
-  @keyup.enter.native="handleInputConfirm"
-  @blur="handleInputConfirm"
->
-</el-input>
-<el-button v-else class="button-new-tag" size="small" @click="showInput">+ New Tag</el-button>
+<el-row>
+  <dl-tag closable disabled>可移除标签</dl-tag>
+</el-row>
 
-<style>
-  .el-tag + .el-tag {
-    margin-left: 10px;
-  }
-  .button-new-tag {
-    margin-left: 10px;
-    height: 32px;
-    line-height: 30px;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .input-new-tag {
-    width: 90px;
-    margin-left: 10px;
-    vertical-align: bottom;
-  }
-</style>
+<el-row>
+  <dl-tag type="success" closable disabled>成功标签</dl-tag>
+  <dl-tag type="warning" closable disabled>等待中标签</dl-tag>
+  <dl-tag type="error" closable disabled>失败标签</dl-tag>
+</el-row>
+```
+:::
+
+### 可编辑标签
+
+:::demo 提供插槽，可以自定义业务类型，默认为添加标签。
+
+```html
+<el-row>
+  <dl-tag-group title="添加标签" :tagList="tagList" @close='close' @click='addClick'/>
+</el-row>
+<el-row>
+  <dl-tag-group  :tagList="['黄金糕', '双皮奶', '蚵仔煎']" >
+    <dl-select v-model="value" placeholder="请选择"  :options="options"></dl-select>
+  </dl-tag-group>
+</el-row>
 
 <script>
   export default {
     data() {
       return {
-        dynamicTags: ['标签一', '标签二', '标签三'],
-        inputVisible: false,
-        inputValue: ''
-      };
+        tagList:['标签1', '标签2', '标签3'],
+        options: [{
+          value: '选项1',
+          label: '黄金糕'
+        }, {
+          value: '选项2',
+          label: '双皮奶'
+        }, {
+          value: '选项3',
+          label: '蚵仔煎'
+        }, {
+          value: '选项4',
+          label: '龙须面'
+        }, {
+          value: '选项5',
+          label: '北京烤鸭'
+        }],
+        value: ''
+      }
     },
     methods: {
-      handleClose(tag) {
-        this.dynamicTags.splice(this.dynamicTags.indexOf(tag), 1);
+      // 添加标签
+      addClick(){
+        console.log('click')
       },
-
-      showInput() {
-        this.inputVisible = true;
-        this.$nextTick(_ => {
-          this.$refs.saveTagInput.$refs.input.focus();
-        });
-      },
-
-      handleInputConfirm() {
-        let inputValue = this.inputValue;
-        if (inputValue) {
-          this.dynamicTags.push(inputValue);
-        }
-        this.inputVisible = false;
-        this.inputValue = '';
+      // 删除标签
+      close(index){
+        console.log(index)
       }
     }
   }
@@ -125,58 +130,21 @@
 ```
 :::
 
-### 不同尺寸
+### 可编辑标签禁用状态
 
-Tag 组件提供除了默认值以外的三种尺寸，可以在不同场景下选择合适的按钮尺寸。
-
-:::demo 额外的尺寸：`medium`、`small`、`mini`，通过设置`size`属性来配置它们。
+:::demo 你可以使用`disabled`属性来定义按钮是否可禁用，它接受一个`Boolean`值。
 
 ```html
-<el-tag closable>默认标签</el-tag>
-<el-tag size="medium" closable>中等标签</el-tag>
-<el-tag size="small" closable>小型标签</el-tag>
-<el-tag size="mini" closable>超小标签</el-tag>
-```
-:::
+<el-row>
+  <dl-tag-group title="添加标签" disabled :tagList="tagList" />
+</el-row>
 
-### 不同主题
-
-Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
-
-:::demo 通过设置`effect`属性来改变主题，默认为 `light`
-```html
-<div class="tag-group">
-  <span class="tag-group__title">Dark</span>
-  <el-tag
-    v-for="item in items"
-    :key="item.label"
-    :type="item.type"
-    effect="dark">
-    {{ item.label }}
-  </el-tag>
-</div>
-<div class="tag-group">
-  <span class="tag-group__title">Plain</span>
-  <el-tag
-    v-for="item in items"
-    :key="item.label"
-    :type="item.type"
-    effect="plain">
-    {{ item.label }}
-  </el-tag>
-</div>
 
 <script>
   export default {
     data() {
       return {
-        items: [
-          { type: '', label: '标签一' },
-          { type: 'success', label: '标签二' },
-          { type: 'info', label: '标签三' },
-          { type: 'danger', label: '标签四' },
-          { type: 'warning', label: '标签五' }
-        ]
+        tagList:['标签1', '标签2', '标签3']
       }
     }
   }
@@ -184,20 +152,22 @@ Tag 组件提供了三个不同的主题：`dark`、`light` 和 `plain`
 ```
 :::
 
-### Attributes
+### Tag Attributes
 | 参数      | 说明          | 类型      | 可选值                           | 默认值  |
 |---------- |-------------- |---------- |--------------------------------  |-------- |
-| type | 类型 | string | success/info/warning/danger | — |
-| closable | 是否可关闭 | boolean | — | false |
-| disable-transitions | 是否禁用渐变动画 | boolean | — | false |
-| hit | 是否有边框描边 | boolean | — | false |
-| color | 背景色 | string | — | — |
-| size | 尺寸 | string | medium / small / mini | — |
-| effect | 主题 | string | dark / light / plain | light |
+| type | 类型 | string  | primary / success / warning / error | primary |
+| disabled | 是否禁用 | boolean | — | false |
+| closable | 是否可以移除 | boolean | — | false |
+| title | 添加属性按钮文本 | string | — | — |
+| tagList | 标签数据数组 | array | — | [] |
 
-
-### Events
+### Tag-Group Events
 | 事件名称 | 说明 | 回调参数 |
-|---------- |-------- |---------- |
-| click | 点击 Tag 时触发的事件 | — |
-| close | 关闭 Tag 时触发的事件 | — |
+|---------|---------|---------|
+| click | 点击添加标签按钮触发 | - |
+| close | 点击删除标签触发 | (index: number,event: Event) |
+
+### Tag-Group Slots
+|   name  | 说明     |
+|---------|---------|
+|    —    | 添加标签按钮 |

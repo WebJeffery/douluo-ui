@@ -36,7 +36,6 @@ const creatApp = async () => {
     }).$mount()
     console.error('主题更新失败')
   }
-
 }
 
 creatApp()

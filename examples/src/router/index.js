@@ -93,6 +93,11 @@ export const routeComponents = [
     path: '/select',
     component: () => import('@/views/select/index.vue')
   },
+  {
+    title: 'Tag 组件',
+    path: '/tag',
+    component: () => import('@/views/tag/index.vue')
+  }
 ]
 
 const createRouter = () =>

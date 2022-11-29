@@ -68,6 +68,7 @@
     "conventional-changelog-gitmoji-config": "^1.4.3",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.0",
+    "cssnano": "^5.1.12",
     "cz-conventional-changelog": "^3.3.0",
     "cz-customizable": "^6.9.1",
     "eslint": "^7.32.0",
