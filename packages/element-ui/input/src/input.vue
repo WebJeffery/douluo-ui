@@ -2,6 +2,7 @@
   <el-input
     :class="[type === 'textarea' ? nsTextarea.b() : nsInput.b(), nsInput.is('dashed', dashed)]"
     :type="type"
+    :style="customStyle"
     v-bind="$attrs"
     v-on="$listeners"
   >
@@ -30,7 +31,11 @@ export default {
       type: String,
       default: 'text'
     },
-    dashed: Boolean
+    dashed: Boolean,
+    width: {
+      type: [Number, String],
+      default: ''
+    }
   },
 
   computed: {
@@ -39,7 +44,14 @@ export default {
     },
     nsTextarea () {
       return this.$dlUseNamespace('textarea')
-    }
+    },
+    customStyle() {
+      const style = {}
+      if (this.width) {
+        style.width = this.width + 'px'
+      }
+      return style
+    },
   }
 }
 </script>
