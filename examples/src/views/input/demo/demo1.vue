@@ -4,6 +4,9 @@
 
     <dl-input v-model="input" placeholder="请输入内容" />
 
+    <h2>修改宽度</h2>
+    <dl-input v-model="input" placeholder="请输入内容" width="240" />
+
     <h2>禁用状态</h2>
     <dl-input placeholder="请输入内容" v-model="input" :disabled="true" />
     <div style="margin-top: 20px;">
@@ -59,11 +62,8 @@
     </div>
     <div style="margin-top: 15px">
       <dl-input placeholder="请输入内容" v-model="input3" class="input-with-select">
-        <el-select v-model="select" slot="prepend" placeholder="请选择">
-          <el-option label="餐厅名" value="1" />
-          <el-option label="订单号" value="2" />
-          <el-option label="用户电话" value="3" />
-        </el-select>
+        <dl-select v-model="select" slot="prepend" placeholder="请选择" width="140" :options="searchData">
+        </dl-select>
         <el-button slot="append" icon="el-icon-search" />
       </dl-input>
     </div>
@@ -95,7 +95,29 @@ export default {
       textarea: '',
       textarea2: '',
       select: '',
-      text: ''
+      text: '',
+      searchData: Object.freeze([
+          {
+              id: 2,
+              value: '点评ID'
+          },
+          {
+              id: 9,
+              value: '订单编号'
+          },
+          {
+              id: 1,
+              value: '手机号'
+          },
+          {
+              id: 3,
+              value: '疾病'
+          },
+          {
+              id: 4,
+              value: '评论内容'
+          }
+      ])
     }
   }
 }

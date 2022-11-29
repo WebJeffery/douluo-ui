@@ -1,8 +1,9 @@
 <template>
   <el-select
-    :class="[bemNS.b()]"
+    :class="[bemNS.b(), bemNS.is('change-size', updateSize)]"
     :clearable="clearable"
     :popper-class="`dl-select-dropdown ${popperClass}`"
+    :style="customStyle"
     v-bind="$attrs"
     v-on="$listeners"
     @change="handleChange"
@@ -71,12 +72,26 @@ export default {
     popperClass: {
       type: String,
       default: ''
+    },
+    width: {
+      type: [Number, String],
+      default: ''
     }
   },
 
   computed: {
     bemNS() {
       return this.$dlUseNamespace('select')
+    },
+    customStyle() {
+      const style = {}
+      if (this.width) {
+        style.width = this.width + 'px'
+      }
+      return style
+    },
+    updateSize () {
+      return !!this.width
     }
   },
 
